@@ -14,9 +14,14 @@ public class TargetControll : MonoBehaviour
     private bool isRun;
     private int turn = 1;
 
+    private float ScaleVal_X;   //스케일 값은 float로 되어있음
+    private float ScaleVal_Y;
+
     private void Start(){
         //애니메이터 변수 초기화
         animator = GetComponent<Animator>();
+        ScaleVal_X = transform.localScale.x;
+        ScaleVal_Y = transform.localScale.y;
     }
     
 
@@ -24,6 +29,7 @@ public class TargetControll : MonoBehaviour
     private void Update()
     {
 
+        //방향키로 움직임 설정
         isRun = false;
         moveX = 0;
         moveY = 0;
@@ -55,6 +61,6 @@ public class TargetControll : MonoBehaviour
         }
         transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
         animator.SetBool("isRun", isRun);
-        transform.localScale = new Vector3(1.2f*turn, 1.2f, 1);
+        transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
 }
