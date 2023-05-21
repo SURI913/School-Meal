@@ -19,9 +19,9 @@ public class fireballD : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if (ray.collider != null)
         {
-            if (ray.collider.tag == "enemy")
+            if (ray.collider.tag == "MidBoss")
             {
-                gamed.enemyHP = gamed.enemyHP - 1;
+                GameManager.enemyHP = GameManager.enemyHP - 1;
             }
             Destroyfireball();
         }

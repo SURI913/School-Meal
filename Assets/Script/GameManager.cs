@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     //주석 깨진거 수정해주세요
     public double Hp; //����ü��
     public double MaxHp; //�ִ�ü��
-    public double enemyHP;
+    public static double enemyHP = 5;
     public GameObject enemy;
 
     GameObject HPtext;
