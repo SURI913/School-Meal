@@ -40,6 +40,7 @@ public class TargetControll : MonoBehaviour
             //회전 및 애니메이션 키  설정
             isRun = true;
             turn = -1;
+            playerattack.attack = 0;
         }
         if(Input.GetKey("left"))
         {
@@ -48,16 +49,19 @@ public class TargetControll : MonoBehaviour
             //회전 및 애니메이션 키  설정
             isRun = true;
             turn = 1;
+            playerattack.attack = 1;
         }
         if (Input.GetKey("up"))
         {
             moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
             isRun = true;
+            playerattack.attack = 2;
         }
         if(Input.GetKey("down"))
         {
             moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
             isRun = true;
+            playerattack.attack = 3;
         }
         transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
         animator.SetBool("isRun", isRun);
