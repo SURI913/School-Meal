@@ -7,16 +7,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public static GameManager instance; //싱글턴 접근
     //주석 깨진거 수정해주세요
     public double Hp; //현재체력
     public double MaxHp; //최대체력
-    public static double enemyHP = 5;
+    public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
 
-    public static GameManager instance; //싱글턴 접근
-    //public double Hp; //현재체력
-    //public double MaxHp; //최대체력
-
-    ///public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
