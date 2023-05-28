@@ -21,7 +21,10 @@ public class TrackeControl : MonoBehaviour
     //애니메이션을 위한 변수
     private Animator animator;
     private bool isRun;
+<<<<<<< Updated upstream
     //private int turn = 1;
+=======
+>>>>>>> Stashed changes
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
