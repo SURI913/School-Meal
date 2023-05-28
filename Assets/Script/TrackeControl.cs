@@ -23,6 +23,7 @@ public class TrackeControl : MonoBehaviour
     private bool isRun;
     public int turn = 1;
 
+
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
 
