@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
 
     //주석 깨진거 수정해주세요
-    public double Hp; //����ü��
-    public double MaxHp; //�ִ�ü��
+    public double Hp; //현재체력
+    public double MaxHp; //최대체력
     public static double enemyHP = 5;
 
     public static GameManager instance; //싱글턴 접근
@@ -80,11 +80,11 @@ public class GameManager : MonoBehaviour
 
     public void HpSystem()
     {
-        if (Hp > MaxHp) //�ִ�ü��
+        if (Hp > MaxHp) //체력이 최대체력을 넘어가지 못하게하기
         {
             Hp = MaxHp;
         }
-        if (Hp <= 0) // ���
+        if (Hp <= 0) // 플레이어 체력이 0이되면 사망
         {
             //죽음 처리하는 함수 만들어서 여기에 생성해주세요
 
@@ -167,17 +167,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemy);
         }
-    }
-
-    // 함수 이름 수정 필요
-    public void r()
-    {
-        Hp = Hp + 1;
-    }
-
-    public void l()
-    {
-        Hp = Hp - 1;
     }
 
     // Update is called once per frame

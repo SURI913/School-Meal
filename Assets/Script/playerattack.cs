@@ -8,6 +8,7 @@ public class playerattack : MonoBehaviour
     public GameObject fireballL;
     public GameObject fireballU;
     public GameObject fireballD;
+    public static double attack = 0;
     public Transform pos;
     public float cooltime;
     public float curtime;
@@ -21,21 +22,24 @@ public class playerattack : MonoBehaviour
     {
         if(curtime <= 0)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.B))
             {
-                Instantiate(fireballR, pos.position, transform.rotation);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                Instantiate(fireballL, pos.position, transform.rotation);
-            }
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                Instantiate(fireballU, pos.position, transform.rotation);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                Instantiate(fireballD, pos.position, transform.rotation);
+                if (attack == 0) //오른쪽
+                {
+                    Instantiate(fireballR, pos.position, transform.rotation);
+                }
+                if (attack == 1) //왼쪽
+                {
+                    Instantiate(fireballL, pos.position, transform.rotation);
+                }
+                if (attack == 2) //위
+                {
+                    Instantiate(fireballU, pos.position, transform.rotation);
+                }
+                if (attack == 3) //아래
+                {
+                    Instantiate(fireballD, pos.position, transform.rotation);
+                }
             }
             curtime = cooltime;
         }
