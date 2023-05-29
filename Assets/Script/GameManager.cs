@@ -8,11 +8,10 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance; //싱글턴 접근
-    //주석 깨진거 수정해주세요
+    
     public double Hp; //현재체력
     public double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
-
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
@@ -48,7 +47,17 @@ public class GameManager : MonoBehaviour
     public GameObject Retry;
     public GameObject AllBulrCam; //블러처리
 
-    
+    //게임클리어
+    bool isClear;
+
+    //스테이지 관리
+    //첫 스타트 스테이지를 1-1로 설정한다 (Start버튼이 눌리고 게임씬이 생성되면 매번 이 씬부터 시작 GameManager 생성을 위해)
+    private int StageNumber1;
+    private int StageNumber2;
+
+    public GameObject StageNumber;
+
+
     private void Awake() {
         //싱글턴 변수 instance가 비어있는가?
         if(instance == null){
@@ -60,6 +69,18 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두 개 이상의 게임매니저가 존재합니다!");
             Destroy(gameObject);
         }
+        
+
+    }
+
+    private void Start(){
+        //플레이어 데이터 가져오기
+        Hp = PlayerData.CurrnetHp;
+        MaxHp = PlayerData.MaxHp;
+        StageNumber1 = PlayerData.StageNum1;
+        StageNumber2 = PlayerData.StageNum2;
+        isClear = false;
+        StageNumber.GetComponent<Text>().text = $"{StageNumber1} - {StageNumber2}";
     }
 
     IEnumerator GameOver(){
@@ -220,9 +241,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
     public void ReSetScene(){
-        //Time.timeScale = 1; //일시정지 해제
+        Time.timeScale = 1; //일시정지 해제
         //씬이름변경
-        //SceneManager.LoadScene("StartGameScene");
+        SceneManager.LoadScene("1-1");
     }
 
     //플레이 종료 함수
@@ -230,5 +251,4 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; //일시정지 해제
         Application.Quit();
     }
-    
 }
