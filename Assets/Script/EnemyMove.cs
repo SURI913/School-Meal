@@ -9,12 +9,22 @@ public class EnemyMove : MonoBehaviour
     public LayerMask isLayer;
     public float speed;
 
-    public GameObject bullet; //ÃÑ¾Ë
-    public GameObject pos; //ÃÑ¾Ë »ı¼ºÀ§Ä¡
+    public GameObject bullet; //ï¿½Ñ¾ï¿½
+    public GameObject pos; //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
+
+    //ì• ë‹ˆë©”ì´ì…˜ì„ ìœ„í•œ ë³€ìˆ˜
+    private Animator animator;
+    private bool isRun;
+    private int turn = 1;
+
+    private float ScaleVal_X;   //ìŠ¤ì¼€ì¼ ê°’ì€ floatë¡œ ë˜ì–´ìˆìŒ
+    private float ScaleVal_Y;
 
     void Start()
     {
-
+        animator = GetComponent<Animator>();
+        ScaleVal_X = transform.localScale.x;
+        ScaleVal_Y = transform.localScale.y;
     }
     public float cooltime;
     public float currenttime;
@@ -24,19 +34,24 @@ public class EnemyMove : MonoBehaviour
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
         if (raycast.collider != null)
         {
-            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //ÀÏÁ¤¹üÀ§ ¾È ÀÌ¸é °ø°İ
+            isRun = true;
+            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
+                isRun = false;
                 if (currenttime <= 0)
                 {
                     GameObject bulletcopy = Instantiate(bullet, transform.position, transform.rotation);
                     currenttime = cooltime;
                 }
             }
-            else //¾Æ´Ï¸é ´Ù°¡°¡±â
+            else //ï¿½Æ´Ï¸ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½ ì£¼ì„ê¹¨ì§„ê±° ìˆ˜ì •í•´ì£¼ì„¸ìš”!
             {
+                isRun = true;
                 transform.position = Vector3.MoveTowards(transform.position, raycast.collider.transform.position, Time.deltaTime * speed);
             }
             currenttime -= Time.deltaTime;
         }
+        animator.SetBool("isRun", isRun);
+        transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
 }

@@ -21,7 +21,7 @@ public class EnemyBullect : MonoBehaviour
         {
             if (ray.collider.tag == "player")
             {
-                //ÇÃ·¹ÀÌ¾î Ã¼·Â°¨¼Ò
+                //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½Â°ï¿½ï¿½ï¿½
             }
             DestroyBullet();
         }

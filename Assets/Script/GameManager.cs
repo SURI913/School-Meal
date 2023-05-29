@@ -215,16 +215,19 @@ public class GameManager : MonoBehaviour
     }
 
     //씬 전환 함수
-    public void ChangeStartScene(){;
+    public void ChangeStartScene(){
+        Time.timeScale = 1; //일시정지 해제
         SceneManager.LoadScene("StartScene");
     }
     public void ReSetScene(){
+        //Time.timeScale = 1; //일시정지 해제
         //씬이름변경
         //SceneManager.LoadScene("StartGameScene");
     }
 
     //플레이 종료 함수
     public void ExitGame(){
+        Time.timeScale = 1; //일시정지 해제
         Application.Quit();
     }
     
