@@ -52,6 +52,16 @@ public class NextStage : MonoBehaviour
             PlayerData.StageNum1=3;
             PlayerData.StageNum2=1;
         }
+        else if(other.tag == "3-2" && Input.GetKeyDown(KeyCode.Space.ToString())){
+            SceneManager.LoadScene(other.tag);
+            PlayerData.StageNum1=3;
+            PlayerData.StageNum2=2;
+        }
+        else if(other.tag == "3-3" && Input.GetKeyDown(KeyCode.Space.ToString())){
+            SceneManager.LoadScene(other.tag);
+            PlayerData.StageNum1=3;
+            PlayerData.StageNum2=3;
+        }
         else if(other.tag == "4-1" && Input.GetKeyDown(KeyCode.Space.ToString())){
             SceneManager.LoadScene(other.tag);
             PlayerData.StageNum1=4;
@@ -86,6 +96,16 @@ public class NextStage : MonoBehaviour
             SceneManager.LoadScene(other.tag);
             PlayerData.StageNum1=0;
             PlayerData.StageNum2=0;
+        }
+        else if(other.tag == "Shop" && Input.GetKeyDown(KeyCode.Space.ToString())){ //정비스테이지
+            SceneManager.LoadScene(other.tag);
+            PlayerData.StageNum1=11;
+            PlayerData.StageNum2=11;
+        }
+        else if(other.tag == "CoinEvent" && Input.GetKeyDown(KeyCode.Space.ToString())){ //정비스테이지
+            SceneManager.LoadScene(other.tag);
+            PlayerData.StageNum1=22;
+            PlayerData.StageNum2=22;
         }
     }
 }

@@ -80,7 +80,16 @@ public class GameManager : MonoBehaviour
         StageNumber1 = PlayerData.StageNum1;
         StageNumber2 = PlayerData.StageNum2;
         isClear = false;
-        StageNumber.GetComponent<Text>().text = $"{StageNumber1} - {StageNumber2}";
+
+        if(StageNumber1 == 0){
+            StageNumber.GetComponent<Text>().text = $"MidBOSS";
+        }
+        else if(StageNumber1 == 9){
+            StageNumber.GetComponent<Text>().text = $"BOSS";
+        }
+        else{
+            StageNumber.GetComponent<Text>().text = $"{StageNumber1} - {StageNumber2}";
+        }
     }
 
     IEnumerator GameOver(){
