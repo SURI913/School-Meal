@@ -416,6 +416,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8528898485393985388, guid: eea55b34ae78d9a44ab87bbe0a02d637, type: 3}
   m_PrefabInstance: {fileID: 1438615962}
   m_PrefabAsset: {fileID: 0}
+--- !u!70 &291299995
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291299994}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.70206714, y: 2.4709144}
+  m_Size: {x: 2.3769915, y: 2.5228755}
+  m_Direction: 0
+--- !u!70 &291299996
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291299994}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.5416381, y: 1.407369}
+  m_Size: {x: 3.2375286, y: 3.2549782}
+  m_Direction: 0
 --- !u!1 &297134428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,6 +3980,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 10
+--- !u!50 &1271519165
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271519141}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1274508524
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,7 +5067,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8528898485393985360, guid: eea55b34ae78d9a44ab87bbe0a02d637, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eea55b34ae78d9a44ab87bbe0a02d637, type: 3}
 --- !u!1 &1449945510
 GameObject:
