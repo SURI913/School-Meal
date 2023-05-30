@@ -16,7 +16,7 @@ public class PlayerScoreViewer : MonoBehaviour
 
     private void Update()
     {
-        // Text UI¿¡ ÇöÀç Á¡¼ö Á¤º¸¸¦ ¾÷µ¥ÀÌÆ®
+        // Text UIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         textScore.text = "Score " + PlayerController.Score;
     }
 }
