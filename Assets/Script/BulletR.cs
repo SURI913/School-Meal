@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballU : MonoBehaviour
+public class BulletR: MonoBehaviour
 {
     public float speed;
     public float distance;
@@ -10,7 +10,7 @@ public class fireballU : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Destroyfireball", 2);
+        Invoke("DestroyBullet", 2);
     }
 
     // Update is called once per frame
@@ -23,12 +23,12 @@ public class fireballU : MonoBehaviour
             {
                 GameManager.enemyHP = GameManager.enemyHP - 1;
             }
-            Destroyfireball();
+            DestroyBullet();
         }
-        transform.Translate(transform.up * speed * Time.deltaTime);
+        transform.Translate(transform.right * speed * Time.deltaTime);
     }
 
-    void Destroyfireball()
+    void DestroyBullet()
     {
         Destroy(gameObject);
     }

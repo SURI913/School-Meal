@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fireballR : MonoBehaviour
+public class BulletL: MonoBehaviour
 {
     public float speed;
     public float distance;
@@ -10,25 +10,25 @@ public class fireballR : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Destroyfireball", 2);
+        Invoke("DestroyBullet", 2);
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
-        if(ray.collider != null)
+        if (ray.collider != null)
         {
-            if(ray.collider.tag == "MidBoss")
+            if (ray.collider.tag == "MidBoss")
             {
                 GameManager.enemyHP = GameManager.enemyHP - 1;
             }
-            Destroyfireball();
+            DestroyBullet();
         }
-        transform.Translate(transform.right * speed * Time.deltaTime);
+        transform.Translate(transform.right * -1 * speed * Time.deltaTime);
     }
 
-    void Destroyfireball()
+    void DestroyBullet()
     {
         Destroy(gameObject);
     }
