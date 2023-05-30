@@ -5,35 +5,35 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 1;                      // Àû °ø°Ý·Â
+    private int damage = 1;                      // ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½
     [SerializeField]
-    private int scorePoint = 100;             // Àû Ã³Ä¡½Ã È¹µæ Á¡¼ö
-    private PlayerController playerController;  // ÇÃ·¹ÀÌ¾î Á¡¼ö(Score) Á¤º¸¿¡ Á¢±ÙÇÏ±â À§ÇØ
+    private int scorePoint = 100;             // ï¿½ï¿½ Ã³Ä¡ï¿½ï¿½ È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private PlayerController playerController;  // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½(Score) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Awake()
     {
-        // ¿ÀºêÁ§Æ® Ç®¸µÀ» ÀÌ¿ëÇØ ¿ÀºêÁ§Æ®¸¦ Àç»ç¿ëÇÒ °æ¿ì¿¡´Â ÃÖÃÊ 1¹ø¸¸ Find¸¦ ÀÌ¿ëÇÏ¿©
-        // PlayerControllerÀÇ Á¤º¸¸¦ ÀúÀåÇØµÎ°í »ç¿ëÇÏ´Â °ÍÀÌ ¿¬»ê¿¡ È¿À²ÀûÀÓ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ Findï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½
+        // PlayerControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ØµÎ°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ê¿¡ È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Àû¿¡°Ô ºÎµúÈù ¿ÀºêÁ§Æ®ÀÇ ÅÂ±×°¡ "Player"ÀÌ¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Â±×°ï¿½ "Player"ï¿½Ì¸ï¿½
         if (collision.CompareTag("Player"))
         {
-            // Àû °ø°Ý·Â¸¸Å­ ÇÃ·¹ÀÌ¾î Ã¼·Â °¨¼Ò
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·Â¸ï¿½Å­ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
-            // Àû »ç¸Á
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½
             OnDie();
         }
     }
 
     public void OnDie()
     {
-        // ÇÃ·¹ÀÌ¾îÀÇ Á¡¼ö¸¦ scorePoint¸¸Å­ Áõ°¡½ÃÅ²´Ù.
-        playerController.Score += scorePoint;
-        // Àû ¿ÀºêÁ§Æ® »èÁ¦
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ scorePointï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½.
+        //playerController.Score += scorePoint;
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         Destroy(gameObject);
     }
 }

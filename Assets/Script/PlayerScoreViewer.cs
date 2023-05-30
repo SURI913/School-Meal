@@ -17,6 +17,6 @@ public class PlayerScoreViewer : MonoBehaviour
     private void Update()
     {
         // Text UI�� ���� ���� ������ ������Ʈ
-        textScore.text = "Score " + PlayerController.Score;
+        //textScore.text = "Score " + PlayerController.Score;
     }
 }
