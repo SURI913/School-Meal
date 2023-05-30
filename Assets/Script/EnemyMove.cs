@@ -9,7 +9,8 @@ public class EnemyMove : MonoBehaviour
     public LayerMask isLayer;
     public float speed;
 
-    public GameObject bullet; //�Ѿ�
+    public GameObject bullet1;
+    public GameObject bullet2;
     public GameObject pos; //�Ѿ� ������ġ
 
     //애니메이션을 위한 변수
@@ -40,7 +41,7 @@ public class EnemyMove : MonoBehaviour
                 isRun = false;
                 if (currenttime <= 0)
                 {
-                    GameObject bulletcopy = Instantiate(bullet, transform.position, transform.rotation);
+                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
                     currenttime = cooltime;
                 }
             }
@@ -51,6 +52,28 @@ public class EnemyMove : MonoBehaviour
             }
             currenttime -= Time.deltaTime;
         }
+
+        RaycastHit2D raycast1 = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
+        if (raycast1.collider != null)
+        {
+            isRun = true;
+            if (Vector2.Distance(transform.position, raycast1.collider.transform.position) < atkDistance) //�������� �� �̸� ����
+            {
+                isRun = false;
+                if (currenttime <= 0)
+                {
+                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
+                    currenttime = cooltime;
+                }
+            }
+            else //�ƴϸ� �ٰ����� 주석깨진거 수정해주세요!
+            {
+                isRun = true;
+                transform.position = Vector3.MoveTowards(transform.position, raycast1.collider.transform.position, Time.deltaTime * speed);
+            }
+            currenttime -= Time.deltaTime;
+        }
+
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
