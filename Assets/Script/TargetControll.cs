@@ -13,6 +13,9 @@ public class TargetControll : MonoBehaviour
     private Animator animator;
     private bool isRun;
     private int turn = 1;
+    private float jumpPower = 6.0f; //점프 높이
+    private int jumpCount = 0;
+    Rigidbody2D rigidbody;
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
@@ -22,6 +25,8 @@ public class TargetControll : MonoBehaviour
         animator = GetComponent<Animator>();
         ScaleVal_X = transform.localScale.x;
         ScaleVal_Y = transform.localScale.y;
+
+        rigidbody = GetComponent<Rigidbody2D>();
     }
     
 
@@ -51,20 +56,42 @@ public class TargetControll : MonoBehaviour
             turn = 1;
             playerattack.attack = 1;
         }
-        if (Input.GetKey("up"))
+        //점프 코드 
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
         {
-            moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-            isRun = true;
-            playerattack.attack = 2;
+            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            jumpCount = 1;
         }
-        if(Input.GetKey("down"))
-        {
-            moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-            isRun = true;
-            playerattack.attack = 3;
-        }
+        //if (Input.GetKey("up"))
+        //{
+        //    moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        //    isRun = true;
+        //    playerattack.attack = 2;
+        //}
+        //if(Input.GetKey("down"))
+        //{
+        //    moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        //    isRun = true;
+        //    playerattack.attack = 3;
+        //}
         transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            jumpCount = 0;
+            //Ground 라는 오브젝트에 닿으면 점프 카운트를 0으로 바꾼다.
+        }
+    }
+    private void LateUpdate()
+    {
+        // 바깥으로 못나가게 함
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -12f, 27f),
+            Mathf.Clamp(transform.position.y, -6f, 6f));
+    }
+
+
 }
