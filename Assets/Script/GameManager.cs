@@ -69,8 +69,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두 개 이상의 게임매니저가 존재합니다!");
             Destroy(gameObject);
         }
-        
-
     }
 
     private void Start(){
