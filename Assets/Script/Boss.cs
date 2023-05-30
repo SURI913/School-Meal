@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BossState {  MoveToAppearpoint = 0, Phase01, Phase02, }
+public enum BossState {  MoveToAppearpoint , Phase01 , Phase02, }
 
 public class Boss : MonoBehaviour
 {
@@ -62,7 +62,7 @@ public class Boss : MonoBehaviour
                 Debug.Log("∆‰¿Ã¡Ó ∏ÿ√„");
                 bossWeapon.StopFiring(AttackType.CircleFire);
                 // phase02∑Œ ∫Ø∞Ê
-                bossWeapon.StartFiring(AttackType.CircleFire02);
+                ChangeState(BossState.Phase02);
             }
             yield return null;
         }
