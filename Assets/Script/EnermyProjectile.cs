@@ -13,7 +13,7 @@ public class EnermyProjectile : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // 부딪힌 오브젝트 체력 감소(플레이어)
-            collision.GetComponent<PlayerHp>().TakeDamage(damage);
+            //collision.GetComponent<PlayerHp>().TakeDamage(damage);
             // 내 오브젝트 삭제(발사체)
             Destroy(gameObject);
         }
