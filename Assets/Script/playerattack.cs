@@ -17,10 +17,9 @@ public class playerattack : MonoBehaviour
     {
         
     }
-
     void Update()
     {
-        if(curtime <= 0)
+        if(curtime >= 0)
         {
             if (Input.GetKey(KeyCode.B))
             {

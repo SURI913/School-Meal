@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType {  CircleFire = 0, }
+public enum AttackType {  CircleFire = 0, CircleFire02 }
 
 public class BossWeapon : MonoBehaviour
 {
@@ -23,8 +23,8 @@ public class BossWeapon : MonoBehaviour
 
     private IEnumerator CircleFire()
     {
-        float attackRate = 0.5f;                 // 공격 주기
-        int count = 30;                              // 발사체 생성 개수
+        float attackRate = 1.0f;                 // 공격 주기
+        int count = 15;                              // 발사체 생성 개수
         float intervalAngle = 360 / count;  // 발사체 사이의 각도
         float weightAngle = 0;                   // 가중되는 각도 (항상 같은 위치로 발사하지 않도록 설정)
 
@@ -49,6 +49,24 @@ public class BossWeapon : MonoBehaviour
 
             // attackRate 시간만큼 대기
             yield return  new WaitForSeconds(attackRate);
+        }
+    }
+
+    private IEnumerable CircleFire02()
+    {
+        Debug.Log("페이즈 2시작");
+        Vector3 targetPosition = Vector3.zero;   // 목표위치 중앙
+        float attackRate = 0.1f;
+        while(true)
+        {
+            // 발사체 생성
+            GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            // 발사체 이동방향
+            Vector3 direction = (targetPosition - clone.transform.position).normalized;
+            // 발사체 이동방향 설정
+            clone.GetComponent<Movement2D>().MoveTo(direction);
+            // attackRate 시간만큼 대기
+            yield return new WaitForSeconds(attackRate);
         }
     }
 }
