@@ -203,24 +203,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410902281}
   m_CullTransparentMesh: 1
---- !u!1 &426442198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8780983823961734675, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
-  m_PrefabInstance: {fileID: 5980312594642052195}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &426442204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426442198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95525c7035c03354696df36c55387941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!1 &433917341
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +380,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -471,6 +454,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180e63ea818dca14ca3d9c549073093c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 612377337}
+  speed: 2.5
+  center: {x: 0, y: 0}
+  size: {x: 25, y: 11}
+--- !u!4 &612377337 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3077785153178210069, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
+  m_PrefabInstance: {fileID: 5980312594642052195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &805638978
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +608,23 @@ MonoBehaviour:
   Hp: 5
   MaxHp: 10
   enemy: {fileID: 1805565866}
+  BackGroundMusic: {fileID: 0}
+  ButtonSound: {fileID: 0}
+  PlayerAttackSound: {fileID: 0}
+  EnemyAttackSound: {fileID: 0}
+  EnemyHitSound: {fileID: 0}
+  PlayerHitSound: {fileID: 0}
+  GameoverSound: {fileID: 0}
+  MuteMusic: {fileID: 0}
+  OnMusic: {fileID: 0}
+  MuteSound: {fileID: 0}
+  OnSound: {fileID: 0}
+  MusicHandle: {fileID: 0}
+  SoundHandle: {fileID: 0}
+  Gameover: {fileID: 0}
+  Retry: {fileID: 0}
+  AllBulrCam: {fileID: 0}
+  StageNumber: {fileID: 0}
 --- !u!4 &881958638
 Transform:
   m_ObjectHideFlags: 0

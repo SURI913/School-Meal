@@ -60,4 +60,5 @@ public class TrackeControl : MonoBehaviour
     {
         follow = false;
     }
+ 
 }
