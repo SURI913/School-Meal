@@ -36,8 +36,6 @@ public class Boss : MonoBehaviour
 
     private IEnumerator MoveToAppearpoint()
     {
-        //animator.SetBool("isRun", true);   //애니메이션
-        // �̵����� ����[�ڷ�ƾ ���� �� 1ȸ ȣ��]
         movement2D.MoveTo(Vector3.down);
 
         while (true)
@@ -64,32 +62,26 @@ public class Boss : MonoBehaviour
         {
             if(bossHP.currentHP <= 500*0.7f)
             {
-                animator.SetBool("isRun", false);   //애니메이션
                 // �� ��� ���� ����
-                Debug.Log("������ ����");
+                Debug.Log("1페이즈 끝");
                 bossWeapon.StopFiring(AttackType.CircleFire);
-                // phase02�� ����
-                ChangeState(BossState.Phase02);
+                // 2페이즈 시작
+                bossWeapon.StartFiring(AttackType.CircleFire02);
+                break;
             }
             yield return null;
         }
-    }
-
-    private IEnumerable Phase02()
-    {
-        animator.SetBool("isRun", true);   //애니메이션
-        Debug.Log("������ ����");
-        bossWeapon.StartFiring(AttackType.CircleFire02);
-
-        Vector3 direction = Vector3.right;
-        movement2D.MoveTo(direction);
         while (true)
         {
-            if (transform.position.x <= 9 || transform.position.x >= -9)
+            if (bossHP.currentHP <= 500 * 0.3f)
             {
-                animator.SetBool("isRun", false);   //애니메이션
-                direction *= -1;
-                movement2D.MoveTo(direction);
+                //animator.SetBool("isRun", false);   //애니메이션
+                // �� ��� ���� ����
+                Debug.Log("2페이즈 끝");
+                bossWeapon.StopFiring(AttackType.CircleFire02);
+                // 3페이즈 시작
+                bossWeapon.StartFiring(AttackType.CircleFire03);
+                break;
             }
             yield return null;
         }
@@ -97,9 +89,9 @@ public class Boss : MonoBehaviour
 
     public void Ondie()
     {
-        // ���� �ı� ��ƼŬ ����
+        // 보스 죽음 파티클 생성
         Instantiate(bossDie, transform.position, Quaternion.identity);
-        // ���� ������Ʈ ����;
+        // 보스삭제
         Destroy(gameObject);
     }
 
