@@ -29,18 +29,18 @@ public class HPControll : MonoBehaviour
     [SerializeField]
     private GameObject Bossface;
 
-    private double PlayerMaxHp;
-    private double PlayerCurrentHP;
-    private double AllEnemyMaxHp;
-    private double AllEnemyCurrentHP;
+    public static float PlayerMaxHp;
+    public static float PlayerCurrentHP;
+    public static float AllEnemyMaxHp;
+    public static float AllEnemyCurrentHP;
 
     public void PlayerSliderEvent(){
-        PlayerSliderHP.value = (float)PlayerCurrentHP;
+        PlayerSliderHP.value = PlayerCurrentHP;
         PlayerText.text = $"{PlayerCurrentHP}/{PlayerMaxHp}";
     }
 
     public void AllEnemySliderEvent(){
-        AllEnemySliderHP.value = (float)AllEnemyCurrentHP;
+        AllEnemySliderHP.value = AllEnemyCurrentHP;
         AllEnemyText.text = $"{AllEnemyCurrentHP}/{AllEnemyMaxHp}";
     }
     // Start is called before the first frame update
@@ -52,15 +52,15 @@ public class HPControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerCurrentHP = GameManager.instance.GetCurrnetHP();
-        PlayerMaxHp = GameManager.instance.GetMaxHP();
+        PlayerCurrentHP = ((float)GameManager.instance.GetCurrnetHP());
+        PlayerMaxHp = ((float)GameManager.instance.GetMaxHP());
         PlayerSliderEvent();
         //변수 받아와서 누가 공격받았는지 보고 띄우도록 수정
         if(GameManager.instance.WhoseDamage() == 1){
             EnemyHp.SetActive(true);
             //잡몹이 공격당했다.
-            AllEnemyCurrentHP = GameManager.instance.GetenemyHP();
-            AllEnemyMaxHp = GameManager.instance.GetenemyHP();
+            AllEnemyCurrentHP = ((float)GameManager.instance.GetenemyHP());
+            AllEnemyMaxHp = ((float)GameManager.instance.GetenemyHP());
             AllEnemySliderEvent();
             Enemyface.SetActive(true);
             MidBossface.SetActive(false);
@@ -69,7 +69,7 @@ public class HPControll : MonoBehaviour
         else if(GameManager.instance.WhoseDamage() == 2){
             EnemyHp.SetActive(true);
             //중간보스몹이 공격당했다.
-            AllEnemyCurrentHP = GameManager.instance.GetMidBossHP();
+            AllEnemyCurrentHP = ((float)GameManager.instance.GetMidBossHP());
             AllEnemyMaxHp = 200;
             AllEnemySliderEvent();
             Enemyface.SetActive(false);
@@ -79,7 +79,7 @@ public class HPControll : MonoBehaviour
         else if(GameManager.instance.WhoseDamage() == 3){
             EnemyHp.SetActive(true);
             //보스몹이 공격당했다.
-            AllEnemyCurrentHP = GameManager.instance.GetBossHP();
+            AllEnemyCurrentHP = ((float)GameManager.instance.GetBossHP());
             AllEnemyMaxHp = 500;
             AllEnemySliderEvent();
             Enemyface.SetActive(false);

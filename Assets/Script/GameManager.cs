@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
-    public GameObject enemy;
-
     //공격한 적이 누구인가
     private bool isEnemyHit = false;
     private bool isMidBossHit = false;
@@ -63,6 +61,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject StageNumber;
 
+    //매점 관리
+    public GameObject Weapon1L;
+    public GameObject Weapon1R;
+    public GameObject Weapon2L;
+    public GameObject Weapon2R;
+    public GameObject CurrnetWeaponL;
+    public GameObject CurrnetWeaponR;
+    private int Coin;
+    public GameObject Cointext;
+
 
     private void Awake() {
         //싱글턴 변수 instance가 비어있는가?
@@ -83,6 +91,7 @@ public class GameManager : MonoBehaviour
         MaxHp = PlayerData.MaxHp;
         StageNumber1 = PlayerData.StageNum1;
         StageNumber2 = PlayerData.StageNum2;
+        Coin = PlayerData.coin;
         isClear = false;
         //스테이지 정보 가져오기
         if(StageNumber1 == 0){
@@ -94,6 +103,16 @@ public class GameManager : MonoBehaviour
         else{
             StageNumber.GetComponent<Text>().text = $"{StageNumber1}학년 {StageNumber2}반";
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //HpSystem();
+        //enemyHpSystem();
+        //코인 초기화
+        Cointext.GetComponent<Text>().text = $"{Coin}";
     }
 
     //게임 오버
@@ -232,16 +251,9 @@ public class GameManager : MonoBehaviour
         //적 캐릭터 죽음
         if (enemyHP <= 0)
         {
-            Destroy(enemy);
+            //Destroy(enemy);
         }
         //캐릭터 죽음처리는 각자 캐릭터 안에!!!
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        HpSystem();
-        enemyHpSystem();
     }
     
     //효과음 및 배경음악 재생 함수
@@ -305,5 +317,56 @@ public class GameManager : MonoBehaviour
 
     public void NonPaused(){
         Time.timeScale = 1; //일시정지 해제
+    }
+
+    //매점 구매 함수
+    // 가격 무기 5, 전체 체력 채우기 7, 50%채우기 3, 최대체력 올리기 10
+    public void purchaseWeapon(int number){
+        if(number == 1 && Coin >= 5){
+            //첫번째 상점 무기로 변경
+            CurrnetWeaponL = Weapon1L;
+            CurrnetWeaponR = Weapon1R;
+            Coin -=5;
+        }
+        else if(number == 2 && Coin >=7){
+            //두번째 상점 무기로 변경
+            CurrnetWeaponL = Weapon2L;
+            CurrnetWeaponR = Weapon2R;
+            Coin-=7;
+        }
+    }
+
+    public GameObject GetWeaposnL(){
+        return CurrnetWeaponL;
+    }
+    public GameObject GetWeaposnR(){
+        return CurrnetWeaponR;
+    }
+    public void purchaseMaxHpPlus(float plusMaxHp){
+        if(Coin >= 7){
+            MaxHp+= (double)plusMaxHp;
+            Coin -= 7;
+        }
+    }
+
+    public void purchasehalfHp(){
+        if(Coin >= 3){
+            Hp += Hp*0.5;
+            Coin -= 3;
+        }
+    }
+    public void purchaseMaxHp(){
+        if(Coin >= 10){
+            Hp = MaxHp;
+            Coin -= 10;
+        }
+    }
+
+    //코인관리 함수
+    public int GetCoin(){
+        return Coin;
+    }
+    public int SetCoin(){
+        return Coin;
     }
 }

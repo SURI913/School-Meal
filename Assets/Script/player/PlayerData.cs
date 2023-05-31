@@ -11,13 +11,18 @@ public class PlayerData : MonoBehaviour
 
     public static double CurrnetHp = 100;
     public static double MaxHp = 100;
+    public static int coin = 0;
+
     public static int StageNum1 = 1;
     public static int StageNum2 = 1;
+    public static GameObject WeaponL;
+    public static GameObject WeaponR;
 
     void Start () {
         try {
             CurrnetHp = 100;
             MaxHp = 100;
+            coin = 0;
             StageNum1 = 1;
             StageNum2 = 1;
         }       
@@ -31,10 +36,14 @@ public class PlayerData : MonoBehaviour
         if(GameManager.instance){   //게임매니저 인스턴스가 있다면
             CurrnetHp = GameManager.instance.GetCurrnetHP();
             MaxHp = GameManager.instance.GetMaxHP();
+            coin = GameManager.instance.GetCoin();
+            WeaponL = GameManager.instance.GetWeaposnL();
+            WeaponR = GameManager.instance.GetWeaposnR();
         }
         else{
             CurrnetHp = 100;
             MaxHp = 100;
+            coin = 0;
             StageNum1 = 1;
             StageNum2 = 1;
             //인스턴스가 없으면 싹다 초기화
