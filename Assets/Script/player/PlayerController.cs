@@ -39,12 +39,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         FollowTarget();
-//<<<<<<< HEAD:Assets/Script/TrackeControl.cs
         follow = true;
-//=======
         follow = true;  //계속 플레이어를 따라다님
-
-//>>>>>>> 3045e9907cfa0d8e0343610508e54b8292ad9dc0:Assets/Script/player/PlayerController.cs
     }
     void FollowTarget()
     {
@@ -59,18 +55,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (target.position.x > transform.position.x)
-
             turn = -1;
         else
             turn = 1;
-
-        {
-            turn = -1;
-        }
-        else
-        {
-            turn = 1;
-        }
 
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X * turn, ScaleVal_Y, 1);

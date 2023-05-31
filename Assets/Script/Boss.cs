@@ -22,6 +22,7 @@ public class Boss : MonoBehaviour
         movement2D = GetComponent<Movement2D>();
         bossWeapon = GetComponent<BossWeapon>();
         bossHP = GetComponent<BossHP>();
+        animator = GetComponent<Animator>();
     }
     public void ChangeState(BossState newState)
     {
@@ -35,7 +36,7 @@ public class Boss : MonoBehaviour
 
     private IEnumerator MoveToAppearpoint()
     {
-        animator.SetBool("isRun", true);   //애니메이션
+        //animator.SetBool("isRun", true);   //애니메이션
         // �̵����� ����[�ڷ�ƾ ���� �� 1ȸ ȣ��]
         movement2D.MoveTo(Vector3.down);
 
@@ -43,7 +44,7 @@ public class Boss : MonoBehaviour
         {
             if(transform.position.y <= bossAppearPoint )
             {
-                animator.SetBool("isRun", false);   //애니메이션
+                //animator.SetBool("isRun", false);   //애니메이션
                 // �̵������� (0, 0, 0)���� ������ ���ߵ��� �Ѵ�.
                 movement2D.MoveTo(Vector3.zero);
                 // Phase01 ���·� ����

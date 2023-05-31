@@ -448,6 +448,27 @@ CapsuleCollider2D:
   m_Offset: {x: -1.5416381, y: 1.407369}
   m_Size: {x: 3.2375286, y: 3.2549782}
   m_Direction: 0
+--- !u!95 &291300004
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291299994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cef1eebb43b90a64fa43b86514b16503, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &297134428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,6 +3063,7 @@ MonoBehaviour:
   EnemyHitSound: {fileID: 1575666791}
   PlayerHitSound: {fileID: 814027022}
   GameoverSound: {fileID: 1998368784}
+  GameClearSound: {fileID: 0}
   MuteMusic: {fileID: 21300000, guid: c9e714ca3b76b5145b2d6cf66e48d5e7, type: 3}
   OnMusic: {fileID: 21300000, guid: 0f2d2ac8517c57f43845063c90ed2185, type: 3}
   MuteSound: {fileID: 21300000, guid: 80749ebd5d271fe49a1de9fe49262290, type: 3}
@@ -3051,6 +3073,8 @@ MonoBehaviour:
   Gameover: {fileID: 107947702}
   Retry: {fileID: 463716920}
   AllBulrCam: {fileID: 1052216307}
+  Door: {fileID: 0}
+  Gameclear: {fileID: 0}
   StageNumber: {fileID: 646168043}
 --- !u!4 &881958638
 Transform:
@@ -3979,7 +4003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e404f7a76e15f4b9606572da6b5b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
 --- !u!50 &1271519165
 Rigidbody2D:
   serializedVersion: 4
