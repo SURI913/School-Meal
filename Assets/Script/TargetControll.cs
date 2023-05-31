@@ -69,7 +69,7 @@ public class TargetControll : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.name == "Ground"&& collision.gameObject.name == "SGround")
         {
             jumpCount = 0;
             //Ground 라는 오브젝트에 닿으면 점프 카운트를 0으로 바꾼다.
@@ -79,7 +79,7 @@ public class TargetControll : MonoBehaviour
     {
         // 바깥으로 못나가게 함
         //값 수정 필요
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -12f, 27f),
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -16.5f, 31.5f),
             Mathf.Clamp(transform.position.y, -6f, 6f));
     }
 
