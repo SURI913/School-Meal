@@ -5,35 +5,31 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 1;                      // �� ���ݷ�
-    [SerializeField]
-    private int scorePoint = 100;             // �� óġ�� ȹ�� ����
+    private int damage = 1;                      //데미지 1
     private PlayerController playerController;  // �÷��̾� ����(Score) ������ �����ϱ� ����
 
     private void Awake()
     {
-        // ������Ʈ Ǯ���� �̿��� ������Ʈ�� ������ ��쿡�� ���� 1���� Find�� �̿��Ͽ�
-        // PlayerController�� ������ �����صΰ� ����ϴ� ���� ���꿡 ȿ������
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ������ �ε��� ������Ʈ�� �±װ� "Player"�̸�
+        //공격대상이 플레이어라면
         if (collision.CompareTag("Player"))
         {
-            // �� ���ݷ¸�ŭ �÷��̾� ü�� ����
+            //플레이어의 체력을 깎음
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
-            // �� ���
+            if(collision.GetComponent<PlayerHp>().CurrentHP <=0){
+                
+            }
             OnDie();
         }
     }
 
     public void OnDie()
     {
-        // �÷��̾��� ������ scorePoint��ŭ ������Ų��.
-        //playerController.Score += scorePoint;
-        // �� ������Ʈ ����
+        //체력이 0이라면
         Destroy(gameObject);
     }
 }

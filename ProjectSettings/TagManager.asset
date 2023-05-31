@@ -29,6 +29,7 @@ TagManager:
   - 6-1
   - 6-2
   - 6-3
+  - Enemy
   layers:
   - Default
   - TransparentFX

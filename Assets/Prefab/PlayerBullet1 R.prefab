@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4704665443311021364}
   - component: {fileID: 7707436600318368310}
   - component: {fileID: -7216642572614921756}
+  - component: {fileID: 5206711099012236301}
   m_Layer: 0
   m_Name: PlayerBullet1 R
   m_TagString: Untagged
@@ -97,8 +98,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8580f6e9e633a9543af1496129caaeb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  distance: 0
+  speed: 100
+  distance: 1
   isLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &5206711099012236301
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787299881679389491}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1ce7e273b34d374cb3f2a5e9ff49c5b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
