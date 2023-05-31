@@ -15,7 +15,7 @@ public class TargetControll : MonoBehaviour
     private int turn = 1;
     private float jumpPower = 6.0f; //점프 높이
     private int jumpCount = 0;
-    Rigidbody2D rigidbody;
+    new Rigidbody2D rigidbody;
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
@@ -62,18 +62,7 @@ public class TargetControll : MonoBehaviour
             rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpCount = 1;
         }
-        //if (Input.GetKey("up"))
-        //{
-        //    moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        //    isRun = true;
-        //    playerattack.attack = 2;
-        //}
-        //if(Input.GetKey("down"))
-        //{
-        //    moveY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        //    isRun = true;
-        //    playerattack.attack = 3;
-        //}
+        
         transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
@@ -89,6 +78,7 @@ public class TargetControll : MonoBehaviour
     private void LateUpdate()
     {
         // 바깥으로 못나가게 함
+        //값 수정 필요
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -12f, 27f),
             Mathf.Clamp(transform.position.y, -6f, 6f));
     }

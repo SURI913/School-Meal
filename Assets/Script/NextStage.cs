@@ -42,7 +42,7 @@ public class NextStage : MonoBehaviour
             PlayerData.StageNum1=2;
             PlayerData.StageNum2=3;
         }
-        else if(other.tag == "Cfeteria" && Input.GetKeyDown(KeyCode.Space.ToString())){
+        else if(other.tag == "Cafeteria" && Input.GetKeyDown(KeyCode.Space.ToString())){
             SceneManager.LoadScene(other.tag);
             PlayerData.StageNum1=9;
             PlayerData.StageNum2=9;

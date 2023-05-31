@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
     public double Hp; //현재체력
     public double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
+    public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double MaxMidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double MaxBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
     public GameObject enemy;
 
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
     public AudioSource PlayerHitSound;   //플레이어 데미지
 
     public AudioSource GameoverSound;   //게임오버 사운드
+    public AudioSource GameClearSound;   //게임오버 사운드
 
     //소리가 0일때 스프라이트 변경을 위한 변수
     public Sprite MuteMusic;
@@ -48,7 +52,9 @@ public class GameManager : MonoBehaviour
     public GameObject AllBulrCam; //블러처리
 
     //게임클리어
-    bool isClear;
+    bool isClear = false;
+    public GameObject Door; //문 오픈
+    public GameObject Gameclear;
 
     //스테이지 관리
     //첫 스타트 스테이지를 1-1로 설정한다 (Start버튼이 눌리고 게임씬이 생성되면 매번 이 씬부터 시작 GameManager 생성을 위해)
@@ -78,28 +84,40 @@ public class GameManager : MonoBehaviour
         StageNumber1 = PlayerData.StageNum1;
         StageNumber2 = PlayerData.StageNum2;
         isClear = false;
-
+        //스테이지 정보 가져오기
         if(StageNumber1 == 0){
-            StageNumber.GetComponent<Text>().text = $"MidBOSS";
+            StageNumber.GetComponent<Text>().text = $"급식실";
         }
         else if(StageNumber1 == 9){
-            StageNumber.GetComponent<Text>().text = $"BOSS";
+            StageNumber.GetComponent<Text>().text = $"교장실";
         }
         else{
-            StageNumber.GetComponent<Text>().text = $"{StageNumber1} - {StageNumber2}";
+            StageNumber.GetComponent<Text>().text = $"{StageNumber1}학년 {StageNumber2}반";
         }
     }
 
+    //게임 오버
     IEnumerator GameOver(){
         Destroy(BackGroundMusic);
         GameoverSound.Play();
         AllBulrCam.SetActive(true);
-        Time.timeScale = 0; //일시정지
         GameOverAnim  = Gameover.GetComponent<Animator>();
         Gameover.SetActive(true);
         GameOverAnim.SetTrigger("isGameOver");
-        yield return new WaitForSeconds(1);
         Retry.SetActive(true);
+        Time.timeScale = 0; //일시정지
+        yield return new WaitForSeconds(1);
+    }
+
+    //게임 클리어
+    IEnumerator GameClear(){
+        GameClearSound.Play();
+        GameOverAnim  = Gameclear.GetComponent<Animator>();
+        Gameclear.SetActive(true);
+        GameOverAnim.SetTrigger("isGameOver");  //동일한 애니메이션임
+        yield return new WaitForSeconds(2);
+        Gameclear.SetActive(false);
+        Door.SetActive(true);
     }
 
     public void HpSystem()
@@ -126,7 +144,13 @@ public class GameManager : MonoBehaviour
         return MaxHp;
     }
     public double GetenemyHP(){
+        return MaxenemyHP;
+    }
+    public double GetMaxenemyHP(){
         return enemyHP;
+    }
+    public double GetMaxMidBossHP(){
+        return MaxMidBossHP;
     }
     public double GetMidBossHP(){
         return MidBossHP;
@@ -134,8 +158,18 @@ public class GameManager : MonoBehaviour
     public double GetBossHP(){
         return BossHP;
     }
+    public double GetMaxBossHP(){
+        return MaxBossHP;
+    }
 
     //데미지로 인한 체력 조정함수, 공격당할 때 마다 업데이트
+    public void setMaxHp(double Max){
+        MaxHp = Max;
+    }
+
+    public void setCurrentHp(double currentHp){
+        Hp = currentHp;
+    }
 
     public void setenemyHP(double currentHp){
         enemyHP = currentHp;
@@ -158,15 +192,23 @@ public class GameManager : MonoBehaviour
     }
 
     //누가 공격당했는지 설정 , 트리거 실행될때 마다 값 바뀜
-    public void SetisHitEnemy(bool ishited){    //잡몹
-        isEnemyHit = ishited;
-    }
-
-    public void SetisHitMidBoss(bool ishited){    //중간보스
-        isMidBossHit = ishited;
-    }
-    public void SetisHitBoss(bool ishited){    //보스
-        isBossHit = ishited;
+    public int setWhoseDamage(int Hit){
+        if(Hit == 1){
+            isEnemyHit = true;
+            isMidBossHit = false;
+            isBossHit = false;
+        }
+        else if(Hit == 2 ){
+            isEnemyHit = false;
+            isMidBossHit = true;
+            isBossHit = false;
+        }
+        else if(isBossHit){
+            isEnemyHit = false;
+            isMidBossHit = false;
+            isBossHit = true;
+        }
+        return 0;
     }
 
     public int WhoseDamage(){
@@ -184,6 +226,7 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
+    //이건 삭제하고 에너미 스크립트에서 처리
     public void enemyHpSystem()
     {
         //적 캐릭터 죽음
@@ -191,6 +234,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemy);
         }
+        //캐릭터 죽음처리는 각자 캐릭터 안에!!!
     }
 
     // Update is called once per frame
@@ -257,5 +301,9 @@ public class GameManager : MonoBehaviour
     public void ExitGame(){
         Time.timeScale = 1; //일시정지 해제
         Application.Quit();
+    }
+
+    public void NonPaused(){
+        Time.timeScale = 1; //일시정지 해제
     }
 }

@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     private Movement2D movement2D;
     private BossWeapon bossWeapon;
     private BossHP bossHP;
+    //ë°ë¯¸ì§€ ì• ë‹ˆë©”ì´ì…˜
+    private Animator animator;
 
     private void Awake()
     {
@@ -23,26 +25,28 @@ public class Boss : MonoBehaviour
     }
     public void ChangeState(BossState newState)
     {
-        // ÀÌÀü¿¡ Àç»ıÁßÀÌ´ø »óÅÂ Á¾·á
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         StopCoroutine(bossState.ToString());
-        // »óÅÂ º¯°æ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         bossState = newState;
-        // »õ·Î¿î »óÅÂ Àç»ı
+        // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         StartCoroutine(bossState.ToString());
     }
 
     private IEnumerator MoveToAppearpoint()
     {
-        // ÀÌµ¿¹æÇâ ¼³Á¤[ÄÚ·çÆ¾ ½ÇÇà ½Ã 1È¸ È£Ãâ]
+        animator.SetBool("isRun", true);   //ì• ë‹ˆë©”ì´ì…˜
+        // ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½[ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1È¸ È£ï¿½ï¿½]
         movement2D.MoveTo(Vector3.down);
 
         while (true)
         {
             if(transform.position.y <= bossAppearPoint )
             {
-                // ÀÌµ¿¹æÇâÀ» (0, 0, 0)À¸·Î ¼³Á¤ÇØ ¸ØÃßµµ·Ï ÇÑ´Ù.
+                animator.SetBool("isRun", false);   //ì• ë‹ˆë©”ì´ì…˜
+                // ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (0, 0, 0)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
                 movement2D.MoveTo(Vector3.zero);
-                // Phase01 »óÅÂ·Î º¯°æ
+                // Phase01 ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ChangeState(BossState.Phase01);
             }
             yield return null;
@@ -51,17 +55,19 @@ public class Boss : MonoBehaviour
 
     private IEnumerator Phase01()
     {
-        // ¿ø ÇüÅÂÀÇ ¹æ»ç °ø°İ ½ÃÀÛ
+        animator.SetBool("isRun", true);   //ì• ë‹ˆë©”ì´ì…˜
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         bossWeapon.StartFiring(AttackType.CircleFire);
 
         while (true)
         {
             if(bossHP.currentHP <= 500*0.7f)
             {
-                // ¿ø ¹æ»ç °ø°İ ÁßÁö
-                Debug.Log("ÆäÀÌÁî ¸ØÃã");
+                animator.SetBool("isRun", false);   //ì• ë‹ˆë©”ì´ì…˜
+                // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 bossWeapon.StopFiring(AttackType.CircleFire);
-                // phase02·Î º¯°æ
+                // phase02ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ChangeState(BossState.Phase02);
             }
             yield return null;
@@ -70,7 +76,8 @@ public class Boss : MonoBehaviour
 
     private IEnumerable Phase02()
     {
-        Debug.Log("ÆäÀÌÁî ½ÃÀÛ");
+        animator.SetBool("isRun", true);   //ì• ë‹ˆë©”ì´ì…˜
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         bossWeapon.StartFiring(AttackType.CircleFire02);
 
         Vector3 direction = Vector3.right;
@@ -79,6 +86,7 @@ public class Boss : MonoBehaviour
         {
             if (transform.position.x <= 9 || transform.position.x >= -9)
             {
+                animator.SetBool("isRun", false);   //ì• ë‹ˆë©”ì´ì…˜
                 direction *= -1;
                 movement2D.MoveTo(direction);
             }
@@ -88,9 +96,9 @@ public class Boss : MonoBehaviour
 
     public void Ondie()
     {
-        // º¸½º ÆÄ±« ÆÄÆ¼Å¬ »ı¼º
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½ï¿½
         Instantiate(bossDie, transform.position, Quaternion.identity);
-        // º¸½º ¿ÀºêÁ§Æ® »èÁ¦;
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½;
         Destroy(gameObject);
     }
 

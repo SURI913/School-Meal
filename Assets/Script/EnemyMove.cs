@@ -53,10 +53,13 @@ public class EnemyMove : MonoBehaviour
             currenttime -= Time.deltaTime;
         }
 
+        //오른쪽 움직임
+
         RaycastHit2D raycast1 = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if (raycast1.collider != null)
         {
             isRun = true;
+            turn = -1;
             if (Vector2.Distance(transform.position, raycast1.collider.transform.position) < atkDistance) //�������� �� �̸� ����
             {
                 isRun = false;

@@ -12,24 +12,32 @@ public class BossHP : MonoBehaviour
     private GameObject player_attack;
     private AudioSource hit;
 
+    //ë°ë¯¸ì§€ ì• ë‹ˆë©”ì´ì…˜
+    private Animator animator;
+
     private void Start()
     {
-        currentHP = maxHP;
+        maxHP = GameManager.instance.GetMaxBossHP();
         currentHP = GameManager.instance.GetBossHP();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boss = GetComponent<Boss>();
+
+        animator = GetComponent<Animator>(); //ì• ë‹ˆë©”ì´ì…˜
     }
 
     public void TakeDamage(float damage)
     {
-        // ÇöÀç Ã¼·ÂÀ» damage¸¸Å­ °¨¼Ò
+        //ë°ë¯¸ì§€ë¥¼ ì…ì€ ê²½ìš° ìµœê·¼ì²´ë ¥ ê°ì†Œì‹œí‚´
+        animator.SetBool("isHunted", true);
         currentHP -= damage;
         GameManager.instance.setBossHP(currentHP);
-        // Ã¼·ÂÀÌ 0ÀÌÇÏ = ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ »ç¸Á
+        GameManager.instance.PlayEnemyHitSound();
+        GameManager.instance.setWhoseDamage(3);
         if(currentHP <= 0)
         {
-            // Ã¼·ÂÀÌ 0dlaus OnDie() ÇÔ¼ö¸¦ È£ÃâÇØ¼­ Á×¾úÀ»¶§ Ã³¸®¸¦ ÇÑ´Ù.
+            // Ã¼ï¿½ï¿½ï¿½ï¿½ 0dlaus OnDie() ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
             boss.Ondie();
         }
+        animator.SetBool("isHunted", false);
     }
 }

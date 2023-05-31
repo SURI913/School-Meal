@@ -5,35 +5,31 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 1;                      // Àû °ø°İ·Â
-    [SerializeField]
-    private int scorePoint = 100;             // Àû Ã³Ä¡½Ã È¹µæ Á¡¼ö
-    private PlayerController playerController;  // ÇÃ·¹ÀÌ¾î Á¡¼ö(Score) Á¤º¸¿¡ Á¢±ÙÇÏ±â À§ÇØ
+    private int damage = 1;                      //ë°ë¯¸ì§€ 1
+    private PlayerController playerController;  // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½(Score) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Awake()
     {
-        // ¿ÀºêÁ§Æ® Ç®¸µÀ» ÀÌ¿ëÇØ ¿ÀºêÁ§Æ®¸¦ Àç»ç¿ëÇÒ °æ¿ì¿¡´Â ÃÖÃÊ 1¹ø¸¸ Find¸¦ ÀÌ¿ëÇÏ¿©
-        // PlayerControllerÀÇ Á¤º¸¸¦ ÀúÀåÇØµÎ°í »ç¿ëÇÏ´Â °ÍÀÌ ¿¬»ê¿¡ È¿À²ÀûÀÓ
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Àû¿¡°Ô ºÎµúÈù ¿ÀºêÁ§Æ®ÀÇ ÅÂ±×°¡ "Player"ÀÌ¸é
+        //ê³µê²©ëŒ€ìƒì´ í”Œë ˆì´ì–´ë¼ë©´
         if (collision.CompareTag("Player"))
         {
-            // Àû °ø°İ·Â¸¸Å­ ÇÃ·¹ÀÌ¾î Ã¼·Â °¨¼Ò
+            //í”Œë ˆì´ì–´ì˜ ì²´ë ¥ì„ ê¹ìŒ
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
-            // Àû »ç¸Á
+            if(collision.GetComponent<PlayerHp>().CurrentHP <=0){
+                
+            }
             OnDie();
         }
     }
 
     public void OnDie()
     {
-        // ÇÃ·¹ÀÌ¾îÀÇ Á¡¼ö¸¦ scorePoint¸¸Å­ Áõ°¡½ÃÅ²´Ù.
-        playerController.Score += scorePoint;
-        // Àû ¿ÀºêÁ§Æ® »èÁ¦
+        //ì²´ë ¥ì´ 0ì´ë¼ë©´
         Destroy(gameObject);
     }
 }
