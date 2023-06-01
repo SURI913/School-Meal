@@ -11,8 +11,13 @@ GameObject:
   - component: {fileID: 8891795002188924801}
   - component: {fileID: 329609741931109251}
   - component: {fileID: 2642030322788605723}
+<<<<<<< HEAD
+  - component: {fileID: 6627583640619100613}
+  - component: {fileID: -3634106795023978096}
+=======
   - component: {fileID: -3728669803927432906}
   - component: {fileID: 2966783479310182822}
+>>>>>>> a37cea211f09c80c2763e1b2d2688d4d1e39ec1a
   m_Layer: 0
   m_Name: NomalBullet1
   m_TagString: Untagged
@@ -103,8 +108,13 @@ MonoBehaviour:
   distance: 3
   isLayer:
     serializedVersion: 2
+<<<<<<< HEAD
+    m_Bits: 512
+--- !u!114 &6627583640619100613
+=======
     m_Bits: 256
 --- !u!114 &-3728669803927432906
+>>>>>>> a37cea211f09c80c2763e1b2d2688d4d1e39ec1a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+<<<<<<< HEAD
+--- !u!61 &-3634106795023978096
+=======
 --- !u!61 &2966783479310182822
+>>>>>>> a37cea211f09c80c2763e1b2d2688d4d1e39ec1a
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
