@@ -1,71 +1,96 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class EnemyRun : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Transform target;
+    public float distance;
+    public float atkDistance;
+    public LayerMask isLayer;
+    public float speed;
 
-    [Header("�߰� �ӵ�")]
-    [SerializeField] [Range(1f, 4f)] float moveSpeed = 3f;
-
-    [Header("�����Ÿ�")]
-    [SerializeField] [Range(0f, 3f)] float contactDistance = 1f;
+    public GameObject bullet1;
+    public GameObject bullet2;
+    public GameObject pos; //�Ѿ� ������ġ
 
     //애니메이션을 위한 변수
     private Animator animator;
     private bool isRun;
-    public int turn = 1;
-
+    private int turn = 1;
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
 
-    private bool follow = false;
-
+    private float jumpPower = 7.0f;
+    new Rigidbody2D rigidbody;
+    private PlayerController player;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
         animator = GetComponent<Animator>();
-
         ScaleVal_X = transform.localScale.x;
         ScaleVal_Y = transform.localScale.y;
-        
     }
+    public float cooltime;
+    public float currenttime;
+
     void Update()
     {
-        FollowTarget();
-        follow = true;  //계속 플레이어를 따라다님
-
-    }
-    void FollowTarget()
-    {
-        isRun = false;
-        if (Vector2.Distance(transform.position, target.position) > contactDistance && follow){
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
+        if (raycast.collider != null)
+        {
             isRun = true;
-        }
-        else{
-            rb.velocity = Vector2.zero;
+            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //�������� �� �̸� ����
+            {
+                isRun = false;
+                if (currenttime <= 0)
+                {
+                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
+                    currenttime = cooltime;
+                }
+            }
+            else //�ƴϸ� �ٰ����� 주석깨진거 수정해주세요!
+            {
+                isRun = true;
+                transform.position = Vector3.MoveTowards(transform.position, raycast.collider.transform.position, Time.deltaTime * speed);
+            }
+            currenttime -= Time.deltaTime;
         }
 
-        if (target.position.x > transform.position.x)
+        //오른쪽 움직임
+
+        RaycastHit2D raycast1 = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
+        if (raycast1.collider != null)
         {
+            isRun = true;
             turn = -1;
+            if (Vector2.Distance(transform.position, raycast1.collider.transform.position) < atkDistance) //�������� �� �̸� ����
+            {
+                isRun = false;
+                if (currenttime <= 0)
+                {
+                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
+                    currenttime = cooltime;
+                }
+            }
+            else //�ƴϸ� �ٰ����� 주석깨진거 수정해주세요!
+            {
+                isRun = true;
+                transform.position = Vector3.MoveTowards(transform.position, raycast1.collider.transform.position, Time.deltaTime * speed);
+            }
+            currenttime -= Time.deltaTime;
         }
-        else
-        {
-            turn = 1;
-        }
-        animator.SetBool("isRun", isRun);
-        transform.localScale = new Vector3(ScaleVal_X * turn, ScaleVal_Y, 1);
-    }
 
-    public void SetFollow(bool isTrigger){
-        follow = isTrigger;
+        animator.SetBool("isRun", isRun);
+        transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.name=="SGround")
+    //    {
+    //        rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+    //    }
+    //}
+
 }
