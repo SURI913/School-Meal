@@ -8,12 +8,12 @@ public class BulletR: MonoBehaviour
     public float distance;
     public LayerMask isLayer;
     // Start is called before the first frame update
-    private Animator animator; //애니메이션 등록
+    //private Animator animator; //애니메이션 등록
     void Start()
     {
         Invoke("DestroyBullet", 2);
-        animator = GetComponent<Animator>();
-        animator.SetBool("isHunted", true);
+        //animator = GetComponent<Animator>();
+        //animator.SetBool("isHunted", true);
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class BulletR: MonoBehaviour
         {
             if (ray.collider.tag == "MidBoss")
             {
-                animator.SetBool("isHunted", false);
+                //animator.SetBool("isHunted", false);
                 //GameManager.enemyHP = GameManager.enemyHP - 1; //적 체력 스크립트 따로 추가해서 관리할거 (player꺼)
-                GameManager.instance.GetisHitMidBoss(); //사운드 통일되었으니 palyer 제외 아무거나 가져오기
+                //GameManager.instance.GetisHitMidBoss(); //사운드 통일되었으니 palyer 제외 아무거나 가져오기
             }
             DestroyBullet();
         }

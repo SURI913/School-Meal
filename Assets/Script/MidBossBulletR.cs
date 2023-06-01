@@ -11,7 +11,7 @@ public class MidBossBulletR : MonoBehaviour
     private Animator animator; //애니메이션 추가
     void Start()
     {
-        Invoke("DestroyBullet", 2);
+        Invoke("DestroyBullet", 3);
         animator = GetComponent<Animator>(); //애니메이션
     }
 
