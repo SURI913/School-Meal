@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyRun : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     public float distance;
     public float atkDistance;
