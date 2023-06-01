@@ -138,7 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e404f7a76e15f4b9606572da6b5b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
 --- !u!114 &3077785153178210070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,11 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d502539360eeb498f0cc90a0bb9baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballR: {fileID: 1105824707117821261, guid: dbeed592dd391ae479f3c018aa9d7c96, type: 3}
-  fireballL: {fileID: 1105824707117821261, guid: dbeed592dd391ae479f3c018aa9d7c96, type: 3}
-  fireballU: {fileID: 1105824707117821261, guid: dbeed592dd391ae479f3c018aa9d7c96, type: 3}
-  fireballD: {fileID: 1105824707117821261, guid: dbeed592dd391ae479f3c018aa9d7c96, type: 3}
-  pos: {fileID: 3077785154255718323}
+  rightattack: {fileID: 317862037724060260, guid: e48b4e47ececdb04ba210a8539fcd189, type: 3}
+  leftattack: {fileID: 317862037724060260, guid: 7483140b7b6ce21438f9fac0b50eb203, type: 3}
+  upattack: {fileID: 317862037724060260, guid: 49be6d91e2c3fa24abb52056db08929a, type: 3}
+  pos1: {fileID: 0}
+  pos2: {fileID: 0}
+  pos3: {fileID: 0}
   cooltime: 0.5
   curtime: 0
 --- !u!114 &1891866768351531662
