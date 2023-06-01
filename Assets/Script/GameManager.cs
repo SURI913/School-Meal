@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public GameObject Weapon2R;
     public GameObject CurrnetWeaponL;
     public GameObject CurrnetWeaponR;
-    public int Coin;
+    private int Coin;
     public GameObject Cointext;
 
 
@@ -366,7 +366,7 @@ public class GameManager : MonoBehaviour
     public int GetCoin(){
         return Coin;
     }
-    public int SetCoin(){
-        return Coin;
+    public void SetCoin(int money){
+        Coin += money;
     }
 }

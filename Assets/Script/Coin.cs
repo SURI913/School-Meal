@@ -5,31 +5,29 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Coin : MonoBehaviour
 {
-    public double CoinAmount;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private int CoinAmount;
+    public int min=0;
+    public int max=0;
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-
-        CoinAmount = GameManager.instance.GetCoin();
-
-        if(collision.gameObject.name=="Coin")
+        if(collision.tag == "Player")
         {
-            GameManager.instance.Coin += 10;
-            Destroy(gameObject);
-        }
-        else if(collision.gameObject.name == "Coin1")
-        {
-            GameManager.instance.Coin += 12;
-            Destroy(gameObject);
+            //공간안에 있는게 플레이어라면
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                RandomAmountCoin();
+
+                //G키를 눌렀을 때
+                GameManager.instance.SetCoin(CoinAmount);
+                //게임매니저에 코인값을 보낸다.
+                Destroy(gameObject);
+            }
         }
     }
-    void Start()
+    
+    private void RandomAmountCoin()
     {
-        
-    }
-
-    // Update is called once per frame[
-    void Update()
-    {
-        
+        CoinAmount = Random.Range(min, max);
     }
 }
