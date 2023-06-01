@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c8c54f60eef904c98bb45fee39ce13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 20
   distance: 1
   isLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!95 &8246186684471558977
 Animator:
   serializedVersion: 5

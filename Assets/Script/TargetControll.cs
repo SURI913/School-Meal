@@ -45,7 +45,6 @@ public class TargetControll : MonoBehaviour
             //회전 및 애니메이션 키  설정
             isRun = true;
             turn = -1;
-            playerattack.attack = 0;
         }
         if(Input.GetKey("left"))
         {
@@ -54,7 +53,6 @@ public class TargetControll : MonoBehaviour
             //회전 및 애니메이션 키  설정
             isRun = true;
             turn = 1;
-            playerattack.attack = 1;
         }
         //점프 코드 
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)

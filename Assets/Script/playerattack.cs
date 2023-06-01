@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class playerattack : MonoBehaviour
 {
-    public GameObject fireballR;
-    public GameObject fireballL;
-    public GameObject fireballU;
-    public GameObject fireballD;
-    public static double attack = 0;
-    public Transform pos;
+    public GameObject rightattack;
+    public GameObject leftattack;
+    public GameObject upattack;
+    public Transform pos1;
+    public Transform pos2;
+    public Transform pos3;
     public float cooltime;
     public float curtime;
 
@@ -19,29 +19,23 @@ public class playerattack : MonoBehaviour
     }
     void Update()
     {
-        if(curtime >= 0)
+        curtime -= Time.deltaTime;
+
+        if (curtime <= 0)
         {
-            if (Input.GetKey(KeyCode.B))
+            if (Input.GetKey(KeyCode.D)) //오른쪽 공격
             {
-                if (attack == 0) //오른쪽
-                {
-                    Instantiate(fireballR, pos.position, transform.rotation);
-                }
-                if (attack == 1) //왼쪽
-                {
-                    Instantiate(fireballL, pos.position, transform.rotation);
-                }
-                if (attack == 2) //위
-                {
-                    Instantiate(fireballU, pos.position, transform.rotation);
-                }
-                if (attack == 3) //아래
-                {
-                    Instantiate(fireballD, pos.position, transform.rotation);
-                }
+                Instantiate(rightattack, pos1.position, transform.rotation);
+            }
+            else if (Input.GetKey(KeyCode.A)) //왼쪽 공격
+            {
+                Instantiate(leftattack, pos2.position, transform.rotation);
+            }
+            else if (Input.GetKey(KeyCode.W)) //윗쪽 공격
+            {
+                Instantiate(upattack, pos3.position, transform.rotation);
             }
             curtime = cooltime;
         }
-        curtime -= Time.deltaTime;
     }
 }
