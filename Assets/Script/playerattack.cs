@@ -7,9 +7,7 @@ public class playerattack : MonoBehaviour
     public GameObject rightattack;
     public GameObject leftattack;
     public GameObject upattack;
-    public Transform pos1;
-    public Transform pos2;
-    public Transform pos3;
+    public Transform pos;
     public float cooltime;
     public float curtime;
 
@@ -23,17 +21,17 @@ public class playerattack : MonoBehaviour
 
         if (curtime <= 0)
         {
-            if (Input.GetKey(KeyCode.D)) //¿À¸¥ÂÊ °ø°Ý
+            if (Input.GetKey(KeyCode.D)) //ì˜¤ë¥¸ìª½ ê³µê²©
             {
-                Instantiate(rightattack, pos1.position, transform.rotation);
+                Instantiate(rightattack, pos.position, transform.rotation);
             }
-            else if (Input.GetKey(KeyCode.A)) //¿ÞÂÊ °ø°Ý
+            else if (Input.GetKey(KeyCode.A)) //ì™¼ìª½ ê³µê²©
             {
-                Instantiate(leftattack, pos2.position, transform.rotation);
+                Instantiate(leftattack, pos.position, transform.rotation);
             }
-            else if (Input.GetKey(KeyCode.W)) //À­ÂÊ °ø°Ý
+            else if (Input.GetKey(KeyCode.W)) //ìœ—ìª½ ê³µê²©
             {
-                Instantiate(upattack, pos3.position, transform.rotation);
+                Instantiate(upattack, pos.position, transform.rotation);
             }
             curtime = cooltime;
         }
