@@ -366,7 +366,7 @@ public class GameManager : MonoBehaviour
     public int GetCoin(){
         return Coin;
     }
-    public int SetCoin(){
-        return Coin;
+    public void SetCoin(int money){
+        Coin += money;
     }
 }
