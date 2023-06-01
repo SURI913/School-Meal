@@ -156,12 +156,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4741797696011722590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734bfaf3ae340cc4eb1247e1ce0d85ea, type: 3}
+  m_Script: {fileID: 11500000, guid: ed58a7fe23c429240aed1fb32dc66ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
   contactDistance: 1
-  turn: 1
 --- !u!114 &3095535548204614329
 MonoBehaviour:
   m_ObjectHideFlags: 0
