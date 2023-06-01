@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2966783479310182822}
 >>>>>>> a37cea211f09c80c2763e1b2d2688d4d1e39ec1a
   m_Layer: 0
-  m_Name: NomalBullet1
+  m_Name: enemyBullet L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

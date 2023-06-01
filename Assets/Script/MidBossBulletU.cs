@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidBossBulletL : MonoBehaviour
+public class MidBossBulletU : MonoBehaviour
 {
     public float speed;
     public float distance;
@@ -30,7 +30,7 @@ public class MidBossBulletL : MonoBehaviour
             }
             DestroyBullet();
         }
-        transform.Translate(transform.right * -1 * speed * Time.deltaTime);
+        transform.Translate(transform.up * speed * Time.deltaTime);
     }
 
     void DestroyBullet()

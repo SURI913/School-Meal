@@ -10,9 +10,24 @@ public class EnemyRun : MonoBehaviour
     public LayerMask isLayer;
     public float speed;
 
-    public GameObject bullet1;
-    public GameObject bullet2;
-    public GameObject pos; //�Ѿ� ������ġ
+    public int atkrand;
+    public double posrand1;
+    public double posrand2;
+    public double posrand3;
+
+    public GameObject bulletL;
+    public GameObject bulletR;
+    public GameObject bulletU;
+    public GameObject bulletD1;
+    public GameObject bulletD2;
+    public GameObject bulletD3;
+    public GameObject enemy;
+    public Transform pos1; // 중간보스 중심 공격좌표
+
+    public Transform pos2; // 공격이떨어지는 랜덤 좌표1
+    public Transform pos3;
+    public Transform pos4;
+
 
     //애니메이션을 위한 변수
     private Animator animator;
@@ -31,12 +46,60 @@ public class EnemyRun : MonoBehaviour
         animator = GetComponent<Animator>();
         ScaleVal_X = transform.localScale.x;
         ScaleVal_Y = transform.localScale.y;
+        pos2.transform.position = new Vector3(-17f, 4.5f, -1);
+        pos3.transform.position = new Vector3(-17f, 4.5f, -1);
+        pos4.transform.position = new Vector3(-17f, 4.5f, -1);
     }
     public float cooltime;
     public float currenttime;
+    public float atktime1;
+    public float atktime2;
+    public float atktime3;
 
     void Update()
     {
+        atktime1 += Time.deltaTime;
+        atktime2 += Time.deltaTime;
+        atktime3 += Time.deltaTime;
+
+        pos2.transform.Translate(new Vector3(0.02f, 0, 0));
+        pos3.transform.Translate(new Vector3(0.05f, 0, 0));
+        pos4.transform.Translate(new Vector3(0.1f, 0, 0));
+        if (pos2.transform.position.x >= 31)
+        {
+            pos2.transform.position = new Vector3(-17f, 4.5f, -1);
+        }
+        if (pos3.transform.position.x >= 31)
+        {
+            pos3.transform.position = new Vector3(-17f, 4.5f, -1);
+        }
+        if (pos4.transform.position.x >= 31)
+        {
+            pos4.transform.position = new Vector3(-17f, 4.5f, -1);
+        }
+
+        if (atktime1 >= 2)
+        {
+            GameObject bulletcopy1 = Instantiate(bulletD1, pos2.position, transform.rotation);
+            GameObject bulletcopy2 = Instantiate(bulletD2, pos3.position, transform.rotation);
+            atktime1 = 0;
+        }
+        if (atktime2 >= 7)
+        {
+            GameObject bulletcopy1 = Instantiate(bulletD3, pos2.position, transform.rotation);
+            GameObject bulletcopy3 = Instantiate(bulletD1, pos4.position, transform.rotation);
+            atktime2 = 0;
+        }
+        if (atktime3 >= 11)
+        {
+            GameObject bulletcopy1 = Instantiate(bulletD2, pos2.position, transform.rotation);
+            GameObject bulletcopy2 = Instantiate(bulletD3, pos3.position, transform.rotation);
+            GameObject bulletcopy3 = Instantiate(bulletD1, pos4.position, transform.rotation);
+            atktime3 = 0;
+        }
+
+
+
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
         if (raycast.collider != null)
         {
@@ -46,7 +109,18 @@ public class EnemyRun : MonoBehaviour
                 isRun = false;
                 if (currenttime <= 0)
                 {
-                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
+                    atkrand = Random.Range(0, 10); // 0~9 까지 랜덤 숫자
+                    if (atkrand >= 1)
+                    {
+                        GameObject bulletcopy1 = Instantiate(bulletR, pos1.position, transform.rotation);
+                        GameObject bulletcopy2 = Instantiate(bulletL, pos1.position, transform.rotation);
+                        GameObject bulletcopy3 = Instantiate(bulletU, pos1.position, transform.rotation);
+                    }
+                    else
+                    {
+                        GameObject bulletcopy4 = Instantiate(enemy, pos1.position, transform.rotation);
+                        GameObject bulletcopy5 = Instantiate(enemy, pos1.position, transform.rotation);
+                    }
                     currenttime = cooltime;
                 }
             }
@@ -70,7 +144,18 @@ public class EnemyRun : MonoBehaviour
                 isRun = false;
                 if (currenttime <= 0)
                 {
-                    GameObject bulletcopy = Instantiate(bullet1, transform.position, transform.rotation);
+                    atkrand = Random.Range(0, 10); // 0~9 까지 랜덤 숫자
+                    if (atkrand >= 3)
+                    {
+                        GameObject bulletcopy1 = Instantiate(bulletR, pos1.position, transform.rotation);
+                        GameObject bulletcopy2 = Instantiate(bulletL, pos1.position, transform.rotation);
+                        GameObject bulletcopy3 = Instantiate(bulletU, pos1.position, transform.rotation);
+                    }
+                    else
+                    {
+                        GameObject bulletcopy4 = Instantiate(enemy, pos1.position, transform.rotation);
+                        GameObject bulletcopy5 = Instantiate(enemy, pos1.position, transform.rotation);
+                    }
                     currenttime = cooltime;
                 }
             }
