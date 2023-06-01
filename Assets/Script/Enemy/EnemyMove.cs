@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class EnemyRun : MonoBehaviour
 {
     public float distance;
     public float atkDistance;
@@ -20,6 +21,10 @@ public class EnemyMove : MonoBehaviour
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
+
+    private float jumpPower = 7.0f;
+    new Rigidbody2D rigidbody;
+    private PlayerController player;
 
     void Start()
     {
@@ -80,4 +85,12 @@ public class EnemyMove : MonoBehaviour
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.name=="SGround")
+    //    {
+    //        rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+    //    }
+    //}
+
 }
