@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public GameObject Weapon2R;
     public GameObject CurrnetWeaponL;
     public GameObject CurrnetWeaponR;
-    private int Coin;
+    public int Coin;
     public GameObject Cointext;
 
 

@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 267677206}
   - component: {fileID: 267677207}
+  - component: {fileID: 267677208}
   m_Layer: 0
-  m_Name: RoyalEXPTicket
+  m_Name: Coin1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +208,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &267677208
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267677205}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.00000011920929}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!1 &548044341
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,8 +335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893911383}
   m_LocalRotation: {x: 0.8571901, y: 0.004231847, z: 0.012473908, w: 0.51483184}
-  m_LocalPosition: {x: 0.00767959, y: -0.47219366, z: 0.4007619}
-  m_LocalScale: {x: 0.9800746, y: 1.0224082, z: 0.40639374}
+  m_LocalPosition: {x: 0.003, y: -0.4723, z: 0.4006}
+  m_LocalScale: {x: 0.98918927, y: 1.0224082, z: 0.40639374}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1166243728}
@@ -474,8 +491,9 @@ GameObject:
   - component: {fileID: 1382223780}
   - component: {fileID: 1382223782}
   - component: {fileID: 1382223781}
+  - component: {fileID: 1382223783}
   m_Layer: 0
-  m_Name: EXPTicket
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -562,6 +580,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1382223783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382223779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4dd44abda56a648a578dd4dd0486ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1853552065
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,8 +701,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127250089}
   m_LocalRotation: {x: 0.8571901, y: 0.004231847, z: 0.012473908, w: 0.51483184}
-  m_LocalPosition: {x: 0.005620524, y: -0.45686987, z: 0.42416966}
-  m_LocalScale: {x: 0.9800746, y: 1.0224082, z: 0.40639374}
+  m_LocalPosition: {x: -0.0037, y: -0.457, z: 0.4237}
+  m_LocalScale: {x: 0.998402, y: 1.0224082, z: 0.40639374}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 548044343}

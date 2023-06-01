@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: 62c56c18900884445a666013c3507b8f
   - enabled: 1
-    path: Assets/Scenes/StageDumeScene1.unity
+    path: Assets/Scenes/StageDumeScene2.unity
     guid: 5ce4e7264efdc0c4f97e553b2d5c2cce
   m_configObjects: {}
