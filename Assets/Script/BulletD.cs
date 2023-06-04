@@ -19,10 +19,6 @@ public class BulletD: MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if (ray.collider != null)
         {
-            if (ray.collider.tag == "MidBoss")
-            {
-                GameManager.enemyHP = GameManager.enemyHP - 1;
-            }
             DestroyBullet();
         }
         transform.Translate(transform.up * -1 * speed * Time.deltaTime);

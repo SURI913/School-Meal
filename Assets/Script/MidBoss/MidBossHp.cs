@@ -26,7 +26,7 @@ public class MidBossHp : MonoBehaviour
         animator = GetComponent<Animator>(); //애니메이션
     }
 
-    public void TakeDamage(float damage)
+    private void TakeDamage(float damage)
     {
         //데미지를 입은 경우 최근체력 감소시킴
         animator.SetBool("isHunted", true);
@@ -42,5 +42,11 @@ public class MidBossHp : MonoBehaviour
             Destroy(gameObject);
         }
         animator.SetBool("isHunted", false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.collider.CompareTag("PlayerBullet")){
+            TakeDamage(1);
+        }
     }
 }

@@ -322,17 +322,20 @@ public class GameManager : MonoBehaviour
     //매점 구매 함수
     // 가격 무기 5, 전체 체력 채우기 7, 50%채우기 3, 최대체력 올리기 10
     public void purchaseWeapon(int number){
-        if(number == 1 && Coin >= 5){
+        if(number == 1 && Coin >= 5 && CurrnetWeaponL == !Weapon1L){
             //첫번째 상점 무기로 변경
             CurrnetWeaponL = Weapon1L;
             CurrnetWeaponR = Weapon1R;
             Coin -=5;
         }
-        else if(number == 2 && Coin >=7){
+        else if(number == 2 && Coin >=7 && CurrnetWeaponL == !Weapon2L){
             //두번째 상점 무기로 변경
             CurrnetWeaponL = Weapon2L;
             CurrnetWeaponR = Weapon2R;
             Coin-=7;
+        }
+        else{
+            
         }
     }
 

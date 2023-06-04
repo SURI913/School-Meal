@@ -9,8 +9,9 @@ public class EnemyHp : MonoBehaviour
     private double currentHP;
     private SpriteRenderer spriteRenderer;
 
-    public double MaxHP => maxHP;               // maxHP ������ ������ �� �ִ� ������Ƽ (Get�� ����)
+    public double MaxHP => maxHP;               // maxHP 다른 함수에서 얘를 부를 수 있게
     public double CurrentHP => currentHP;      // currentHP ������ ������ �� �ִ� ������Ƽ (Get�� ����)
+    //이거 가져오는게 실시간으로 모든 값 가져오는게 아니라 초기값만 가져오는지 체크
 
     //데미지 애니메이션
     private Animator animator;
@@ -26,7 +27,7 @@ public class EnemyHp : MonoBehaviour
         animator = GetComponent<Animator>(); //애니메이션
     }
 
-    public void TakeDamage(float damage)
+    private void TakeDamage(float damage)
     {
         //데미지를 입은 경우 최근체력 감소시킴
         animator.SetBool("isHunted", true);
@@ -43,4 +44,12 @@ public class EnemyHp : MonoBehaviour
         }
         animator.SetBool("isHunted", false);
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.collider.CompareTag("PlayerBullet")){
+            TakeDamage(1);
+        }
+    }
+
+    //캐릭터 데미지 x이유 총알이 들어간걸 인식 x
 }

@@ -22,11 +22,6 @@ public class BulletL: MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
         if (ray.collider != null)
         {
-            if (ray.collider.tag == "MidBoss")
-            {
-                //animator.SetBool("isHunted", false);
-                //GameManager.enemyHP = GameManager.enemyHP - 1; //적 체력 스크립트 따로 추가해서 관리할거 (player꺼)
-            }
             DestroyBullet();
         }
         transform.Translate(transform.right * -1 * speed * Time.deltaTime);

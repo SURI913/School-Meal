@@ -9,9 +9,6 @@ public class PlayerHp : MonoBehaviour
     private double currentHP;
     private SpriteRenderer spriteRenderer;
 
-    public double MaxHP => maxHP;               // maxHP ������ ������ �� �ִ� ������Ƽ (Get�� ����)
-    public double CurrentHP => currentHP;      // currentHP ������ ������ �� �ִ� ������Ƽ (Get�� ����)
-
     //데미지 애니메이션
     private Animator animator;
 
@@ -40,5 +37,12 @@ public class PlayerHp : MonoBehaviour
             Destroy(gameObject);
         }
         animator.SetBool("isHunted", false);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        //에너미 근접공격
+        if(other.collider.CompareTag("Enemy")){
+            TakeDamage(1);
+        }
     }
 }
