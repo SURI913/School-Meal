@@ -163,10 +163,10 @@ public class GameManager : MonoBehaviour
         return MaxHp;
     }
     public double GetenemyHP(){
-        return MaxenemyHP;
+        return enemyHP;
     }
     public double GetMaxenemyHP(){
-        return enemyHP;
+        return MaxenemyHP;
     }
     public double GetMaxMidBossHP(){
         return MaxMidBossHP;
@@ -245,16 +245,6 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
-    //이건 삭제하고 에너미 스크립트에서 처리
-    public void enemyHpSystem()
-    {
-        //적 캐릭터 죽음
-        if (enemyHP <= 0)
-        {
-            //Destroy(enemy);
-        }
-        //캐릭터 죽음처리는 각자 캐릭터 안에!!!
-    }
     
     //효과음 및 배경음악 재생 함수
     public void SetSoundVloum(float volume){

@@ -27,14 +27,15 @@ public class EnemyHp : MonoBehaviour
         animator = GetComponent<Animator>(); //애니메이션
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
+        Debug.Log("너드남 데미지 들어감");
         //데미지를 입은 경우 최근체력 감소시킴
-        animator.SetBool("isHunted", true);
+        StartCoroutine(DamageMotion());
         currentHP -= damage;
         GameManager.instance.setenemyHP(currentHP);   //적 체력값 전달
         GameManager.instance.PlayEnemyHitSound();
-        GameManager.instance.setWhoseDamage(1);
+        GameManager.instance.setWhoseDamage(1); //잡몹이 데미지 입음
 
         //체력이 0이면 플레이어 죽음
         if(currentHP <= 0) 
@@ -44,12 +45,11 @@ public class EnemyHp : MonoBehaviour
         }
         animator.SetBool("isHunted", false);
     }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("PlayerBullet")){
-            TakeDamage(1);
-        }
-    }
-
     //캐릭터 데미지 x이유 총알이 들어간걸 인식 x
+
+    IEnumerator DamageMotion(){
+        animator.SetBool("isHunted", true);
+        yield return new WaitForSecondsRealtime(1.0f);
+        animator.SetBool("isHunted", false);
+    }
 }

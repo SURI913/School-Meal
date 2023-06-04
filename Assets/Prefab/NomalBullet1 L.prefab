@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5237858094959993822}
   - component: {fileID: 6014278311940931250}
+  - component: {fileID: 6394571279503910858}
   - component: {fileID: -2532369903625375536}
+  - component: {fileID: 2670803813975080901}
   m_Layer: 0
   m_Name: NomalBullet1 L
   m_TagString: Untagged
@@ -85,6 +87,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6394571279503910858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317862037724060260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9635057838a23e8479d4eabedfda58d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!114 &-2532369903625375536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +113,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  distance: 0.5
+  distance: 0
   isLayer:
     serializedVersion: 2
     m_Bits: 192
+--- !u!58 &2670803813975080901
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317862037724060260}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.11419651}
+  serializedVersion: 2
+  m_Radius: 0.40595976

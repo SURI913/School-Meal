@@ -67,7 +67,7 @@ public class TargetControll : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground"&& collision.gameObject.name == "SGround")
+        if (collision.gameObject.name == "Ground" || collision.gameObject.name == "SGround")
         {
             jumpCount = 0;
             //Ground 라는 오브젝트에 닿으면 점프 카운트를 0으로 바꾼다.

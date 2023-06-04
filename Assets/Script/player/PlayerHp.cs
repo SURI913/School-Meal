@@ -9,8 +9,14 @@ public class PlayerHp : MonoBehaviour
     private double currentHP;
     private SpriteRenderer spriteRenderer;
 
+    private bool isDamage = false;
+    [SerializeField]
+    private float damageInterval = 1.0f; // 데미지를 주는 간격
+
+
     //데미지 애니메이션
     private Animator animator;
+
 
 
     private void Start()
@@ -39,10 +45,27 @@ public class PlayerHp : MonoBehaviour
         animator.SetBool("isHunted", false);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionStay2D(Collision2D other) {
         //에너미 근접공격
-        if(other.collider.CompareTag("Enemy")){
-            TakeDamage(1);
+        if(other.collider.CompareTag("Enemy") && isDamage ==false){
+            StartCoroutine(DamagerCooltime());
         }
     }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Enemy"))
+        {
+            isDamage = false;
+        }
+    }
+
+    IEnumerator DamagerCooltime(){
+        isDamage = true;
+        TakeDamage(1);
+        yield return new WaitForSecondsRealtime(damageInterval);
+        isDamage = false;
+    }
+
+
 }
