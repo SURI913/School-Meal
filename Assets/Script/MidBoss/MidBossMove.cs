@@ -9,12 +9,7 @@ public class MidBossMove : MonoBehaviour
     public LayerMask isLayer;   //레이캐스트를 쓰기 위한 변수
     public float speed; //캐릭터 움직임 스피드
 
-    public int atkrand; //공격 랜덤으로 지정하는 변수
-
-    //책 떨어지는 공격 랜덤 포지션 변수
-    public double posrand1;
-    public double posrand2;
-    public double posrand3;
+    private int atkrand = 0; //공격 랜덤으로 지정하는 변수
 
     //총알 오브젝트 생성(프리펩)
     public GameObject bulletL;
@@ -32,12 +27,9 @@ public class MidBossMove : MonoBehaviour
     private Vector3 pos; // 중간보스 중심 공격좌표
 
     //떨어지는 랜덤 좌표(위치 프리펩 x MidBoss 스테이지 만들 때 따로 추가하는걸로)
-    [SerializeField]
-    private Transform pos2; // 공격이떨어지는 랜덤 좌표1
-    [SerializeField]
-    private Transform pos3;
-    [SerializeField]
-    private Transform pos4;
+    private Vector3 pos2; // 공격이떨어지는 랜덤 좌표1
+    private Vector3 pos3;
+    private Vector3 pos4;
 
 
     //애니메이션을 위한 변수
@@ -48,25 +40,23 @@ public class MidBossMove : MonoBehaviour
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
 
-    new Rigidbody2D rigidbody;
-
     void Start()
     {
         animator = GetComponent<Animator>();
         ScaleVal_X = transform.localScale.x;
         ScaleVal_Y = transform.localScale.y;
         //위치 초기값설정
-        pos2.transform.position = new Vector3(-17f, 4.5f, -1);
-        pos3.transform.position = new Vector3(-17f, 4.5f, -1);
-        pos4.transform.position = new Vector3(-17f, 4.5f, -1);
+        pos2 = new Vector3(-17f, 4.5f, -1);
+        pos3 = new Vector3(-17f, 4.5f, -1);
+        pos4 = new Vector3(-17f, 4.5f, -1);
 
         pos = this.GetComponent<Transform>().position;
     }
     public float cooltime; //공격 쿨타임
-    public float currenttime;
-    public float atktime1;
-    public float atktime2;
-    public float atktime3;
+    private float currenttime = 0;
+    private float atktime1 = 0;
+    private float atktime2 = 0;
+    private float atktime3 = 0;
 
     void Update()
     {
@@ -76,49 +66,49 @@ public class MidBossMove : MonoBehaviour
 
         pos = this.GetComponent<Transform>().position;
 
-        pos2.transform.Translate(new Vector3(0.02f, 0, 0));
-        pos3.transform.Translate(new Vector3(0.05f, 0, 0));
-        pos4.transform.Translate(new Vector3(0.1f, 0, 0));
-        if (pos2.transform.position.x >= 31)
+        pos2 += new Vector3(0.02f, 0, 0);
+        pos3 += new Vector3(0.05f, 0, 0);
+        pos4 += new Vector3(0.1f, 0, 0);
+        if (pos2.x >= 31)   //범위 벗어나면
         {
-            pos2.transform.position = new Vector3(-17f, 4.5f, -1);
+            pos2 = new Vector3(-17f, 4.5f, -1); //초기화
         }
-        if (pos3.transform.position.x >= 31)
+        if (pos3.x >= 31)
         {
-            pos3.transform.position = new Vector3(-17f, 4.5f, -1);
+            pos3 = new Vector3(-17f, 4.5f, -1);
         }
-        if (pos4.transform.position.x >= 31)
+        if (pos4.x >= 31)
         {
-            pos4.transform.position = new Vector3(-17f, 4.5f, -1);
+            pos4 = new Vector3(-17f, 4.5f, -1);
         }
-
+        //총알 떨어트리는 페이즈
         if (atktime1 >= 2)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD1, pos2.position, transform.rotation);
-            GameObject bulletcopy2 = Instantiate(bulletD2, pos3.position, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD1, pos2, transform.rotation);
+            GameObject bulletcopy2 = Instantiate(bulletD2, pos3, transform.rotation);
             atktime1 = 0;
         }
         if (atktime2 >= 7)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD3, pos2.position, transform.rotation);
-            GameObject bulletcopy3 = Instantiate(bulletD1, pos4.position, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD3, pos2, transform.rotation);
+            GameObject bulletcopy3 = Instantiate(bulletD1, pos4, transform.rotation);
             atktime2 = 0;
         }
         if (atktime3 >= 11)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD2, pos2.position, transform.rotation);
-            GameObject bulletcopy2 = Instantiate(bulletD3, pos3.position, transform.rotation);
-            GameObject bulletcopy3 = Instantiate(bulletD1, pos4.position, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD2, pos2, transform.rotation);
+            GameObject bulletcopy2 = Instantiate(bulletD3, pos3, transform.rotation);
+            GameObject bulletcopy3 = Instantiate(bulletD1, pos4, transform.rotation);
             atktime3 = 0;
         }
 
 
-
+        //왼쪽 움직임
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * -1, distance, isLayer);
         if (raycast.collider != null)
         {
             isRun = true;
-            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //�������� �� �̸� ����
+            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //공격할 범위까지 왔다면
             {
                 isRun = false;
                 if (currenttime <= 0)
@@ -138,7 +128,7 @@ public class MidBossMove : MonoBehaviour
                     currenttime = cooltime;
                 }
             }
-            else //�ƴϸ� �ٰ����� 주석깨진거 수정해주세요!
+            else //공격범위가 아니라면 다가가기
             {
                 isRun = true;
                 transform.position = Vector3.MoveTowards(transform.position, raycast.collider.transform.position, Time.deltaTime * speed);
@@ -153,7 +143,7 @@ public class MidBossMove : MonoBehaviour
         {
             isRun = true;
             turn = -1;
-            if (Vector2.Distance(transform.position, raycast1.collider.transform.position) < atkDistance) //�������� �� �̸� ����
+            if (Vector2.Distance(transform.position, raycast1.collider.transform.position) < atkDistance) //공격할 범위까지 왔다면
             {
                 isRun = false;
                 if (currenttime <= 0)
@@ -173,7 +163,7 @@ public class MidBossMove : MonoBehaviour
                     currenttime = cooltime;
                 }
             }
-            else //�ƴϸ� �ٰ����� 주석깨진거 수정해주세요!
+            else //아니라면 다가가기 주석깨진거 수정해주세요!
             {
                 isRun = true;
                 transform.position = Vector3.MoveTowards(transform.position, raycast1.collider.transform.position, Time.deltaTime * speed);

@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8797752989461467687}
   - component: {fileID: 8715016327661501935}
+  - component: {fileID: 5876717086718154100}
   - component: {fileID: -75756038250458674}
+  - component: {fileID: 1895342330207792068}
   m_Layer: 0
   m_Name: MidBossBulletD2
   m_TagString: Untagged
@@ -85,6 +87,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5876717086718154100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146487891407011177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ca299a6d0db0b40a37093b0d41ed4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!114 &-75756038250458674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +117,19 @@ MonoBehaviour:
   isLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!58 &1895342330207792068
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146487891407011177}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0031149387}
+  serializedVersion: 2
+  m_Radius: 0.22982828
