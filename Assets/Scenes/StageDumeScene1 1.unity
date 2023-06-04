@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180e63ea818dca14ca3d9c549073093c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 903963142}
+  target: {fileID: 567418984}
   speed: 2.5
   center: {x: 7.5, y: 0}
   size: {x: 51, y: 10.2}
@@ -2419,6 +2419,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560342890}
   m_CullTransparentMesh: 1
+--- !u!4 &567418984 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3077785153178210069, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
+  m_PrefabInstance: {fileID: 903963141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &569465159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2806,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3378700811516285104, guid: 60894a83bd311d3409795b4e040ba017, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60894a83bd311d3409795b4e040ba017, type: 3}
@@ -3740,11 +3745,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
---- !u!4 &903963142 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3077785154255718323, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
-  m_PrefabInstance: {fileID: 903963141}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &950973912
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,6 +4448,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1185826033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1185826034}
+  m_Layer: 0
+  m_Name: AtkPOS (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1185826034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185826033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.5, y: -1.3782018, z: -0.038528886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1187074194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,6 +5664,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17063fb425ebe8449af6f8f519fd4ca0, type: 3}
+--- !u!1 &1355598091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1355598092}
+  m_Layer: 0
+  m_Name: AtkPOS (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1355598092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355598091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.36, y: -1.3782018, z: -0.038528886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1363512635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6028,6 +6090,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400961895}
   m_CullTransparentMesh: 1
+--- !u!1 &1423628040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423628041}
+  m_Layer: 0
+  m_Name: AtkPOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423628041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423628040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.945699, y: -1.3782018, z: -0.038528886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425305989
 GameObject:
   m_ObjectHideFlags: 0
@@ -8449,7 +8542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4741797696011722590, guid: 81272960f94d7c24c8e31f7604e8b4ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81272960f94d7c24c8e31f7604e8b4ce, type: 3}
@@ -9320,7 +9413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180e63ea818dca14ca3d9c549073093c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 903963142}
+  target: {fileID: 567418984}
   speed: 25
   center: {x: 7.5, y: 0}
   size: {x: 51, y: 10.2}

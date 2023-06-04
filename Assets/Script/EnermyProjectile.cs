@@ -12,7 +12,6 @@ public class EnermyProjectile : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
-            Destroy(gameObject);
         }
     }
 }
