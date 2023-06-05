@@ -1390,6 +1390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3414242587782414311, guid: ed77dc69661c856458e0e61733f67860, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 4741797696011722590, guid: f2086e166003e8b45aa7ac76b81dc511, type: 3}
     - target: {fileID: 7739365292629797013, guid: ed77dc69661c856458e0e61733f67860, type: 3}
       propertyPath: m_Name
       value: MidBoss
@@ -2437,7 +2441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419496874670712433, guid: 17063fb425ebe8449af6f8f519fd4ca0, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 419496874670712433, guid: 17063fb425ebe8449af6f8f519fd4ca0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2784,7 +2788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3378700811516285070, guid: 60894a83bd311d3409795b4e040ba017, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3378700811516285070, guid: 60894a83bd311d3409795b4e040ba017, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3685,10 +3689,13 @@ MonoBehaviour:
   StageNumber: {fileID: 274422107}
   Weapon1L: {fileID: 4787299881679389491, guid: 78303ac58cf17944bb98baa24e940b3d, type: 3}
   Weapon1R: {fileID: 4787299881679389491, guid: 5e7120e5a2a08a44f819390e1a24dcfc, type: 3}
+  Weapon1U: {fileID: 0}
   Weapon2L: {fileID: 6982617944397340478, guid: 5cdc3ebb8ef4b2c41b3009d922fe220e, type: 3}
   Weapon2R: {fileID: 6982617944397340478, guid: 2ed1df452962d614294345967302b899, type: 3}
+  Weapon2U: {fileID: 0}
   CurrnetWeaponL: {fileID: 5604588126115341994, guid: e6fc084f6564c74409ebe647db6b1037, type: 3}
   CurrnetWeaponR: {fileID: 1129516893501772617, guid: 6500fb00445a9d6488e5826b4df9caab, type: 3}
+  CurrnetWeaponU: {fileID: 0}
   Cointext: {fileID: 1891642997}
 --- !u!4 &881958638
 Transform:
@@ -3703,7 +3710,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &903963141
 PrefabInstance:
@@ -3722,7 +3729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077785153178210069, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3077785153178210069, guid: 18d82fd5aac83554faa9750ee5775aca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4256,7 +4263,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105275053
 GameObject:
@@ -5898,7 +5905,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1366646982
 MonoBehaviour:
@@ -9426,7 +9433,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2024781790
 MonoBehaviour:
