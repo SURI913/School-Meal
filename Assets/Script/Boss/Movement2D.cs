@@ -22,5 +22,6 @@ public class Movement2D : MonoBehaviour
     public void MoveTo(Vector3 direction)
     {
         moveDirection = direction;
+        //벡터 거리 입력시 그 만큼 이동함
     }
 }

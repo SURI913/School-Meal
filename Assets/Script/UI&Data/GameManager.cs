@@ -64,10 +64,13 @@ public class GameManager : MonoBehaviour
     //매점 관리
     public GameObject Weapon1L;
     public GameObject Weapon1R;
+    public GameObject Weapon1U;
     public GameObject Weapon2L;
     public GameObject Weapon2R;
+    public GameObject Weapon2U;
     public GameObject CurrnetWeaponL;
     public GameObject CurrnetWeaponR;
+    public GameObject CurrnetWeaponU;
     private int Coin;
     public GameObject Cointext;
 
@@ -109,8 +112,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HpSystem();
-        //enemyHpSystem();
+        HpSystem(); //플레이어가 죽을 때 모든 동작을 멈추고 GameOver창을 띄운다
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
     }
@@ -147,8 +149,8 @@ public class GameManager : MonoBehaviour
         }
         if (Hp <= 0) // 플레이어 체력이 0이되면 사망
         {
-            //죽음 처리하는 함수 만들어서 여기에 생성해주세요
-
+            StartCoroutine(GameOver());
+            //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
             //Gameover UI처리
             StartCoroutine("GameOver");
         }
@@ -168,12 +170,14 @@ public class GameManager : MonoBehaviour
     public double GetMaxenemyHP(){
         return MaxenemyHP;
     }
+    //중간보스 체력 
     public double GetMaxMidBossHP(){
         return MaxMidBossHP;
     }
     public double GetMidBossHP(){
         return MidBossHP;
     }
+    //보스 체력 
     public double GetBossHP(){
         return BossHP;
     }
@@ -222,7 +226,7 @@ public class GameManager : MonoBehaviour
             isMidBossHit = true;
             isBossHit = false;
         }
-        else if(isBossHit){
+        else if(Hit == 3){
             isEnemyHit = false;
             isMidBossHit = false;
             isBossHit = true;
@@ -316,12 +320,14 @@ public class GameManager : MonoBehaviour
             //첫번째 상점 무기로 변경
             CurrnetWeaponL = Weapon1L;
             CurrnetWeaponR = Weapon1R;
+            CurrnetWeaponU = Weapon1U;
             Coin -=5;
         }
         else if(number == 2 && Coin >=7 && CurrnetWeaponL == !Weapon2L){
             //두번째 상점 무기로 변경
             CurrnetWeaponL = Weapon2L;
             CurrnetWeaponR = Weapon2R;
+            CurrnetWeaponU = Weapon2U;
             Coin-=7;
         }
         else{
@@ -335,6 +341,11 @@ public class GameManager : MonoBehaviour
     public GameObject GetWeaposnR(){
         return CurrnetWeaponR;
     }
+
+    public GameObject GetWeaposnU(){
+        return CurrnetWeaponR;
+    }
+
     public void purchaseMaxHpPlus(float plusMaxHp){
         if(Coin >= 7){
             MaxHp+= (double)plusMaxHp;
