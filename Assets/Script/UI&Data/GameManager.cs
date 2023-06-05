@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         {
             //Gameover UI처리
             //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-            StartCoroutine("GameOver");
+             StartCoroutine(GameOver());
         }
     }
 
