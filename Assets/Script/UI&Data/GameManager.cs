@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
+    public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
+    public static double summonMaxenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxMidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
@@ -151,7 +153,6 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(GameOver());
             //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-            //Gameover UI처리
             StartCoroutine("GameOver");
         }
     }
@@ -169,6 +170,15 @@ public class GameManager : MonoBehaviour
     }
     public double GetMaxenemyHP(){
         return MaxenemyHP;
+    }
+     //중간보스소환잡몹 체력
+    public double GetsummonenemyHP()
+    {
+        return summonenemyHP;
+    }
+    public double GetsummonMaxenemyHP()
+    {
+        return summonMaxenemyHP;
     }
     //중간보스 체력 
     public double GetMaxMidBossHP(){
@@ -373,4 +383,7 @@ public class GameManager : MonoBehaviour
     public void SetCoin(int money){
         Coin += money;
     }
+
+    //스테이지별 클리어 조건
+
 }
