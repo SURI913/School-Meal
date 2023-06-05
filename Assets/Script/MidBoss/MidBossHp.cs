@@ -40,6 +40,7 @@ public class MidBossHp : MonoBehaviour
         {
             Debug.Log("MidBoss HP : 0.. Die");
             Destroy(gameObject);
+            GameManager.instance.Clear();
         }
         animator.SetBool("isHunted", false);
     }

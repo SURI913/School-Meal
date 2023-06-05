@@ -93,6 +93,8 @@ public class Boss : MonoBehaviour
         Instantiate(bossDie, transform.position, Quaternion.identity);
         // 보스삭제
         Destroy(gameObject);
+        GameManager.instance.Clear();
+        //스토리 등장해야함 이 후에
     }
 
 }

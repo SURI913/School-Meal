@@ -140,7 +140,12 @@ public class GameManager : MonoBehaviour
         GameOverAnim.SetTrigger("isGameOver");  //동일한 애니메이션임
         yield return new WaitForSeconds(2);
         Gameclear.SetActive(false);
-        Door.SetActive(true);
+        Door.SetActive(true);   //문 오픈
+    }
+
+    //게임 클리어 재생
+    public void Clear(){
+        StartCoroutine(GameClear());
     }
 
     public void HpSystem()
@@ -153,8 +158,6 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(GameOver());
             //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-            //Gameover UI처리
-            StartCoroutine("GameOver");
         }
     }
 
@@ -388,4 +391,18 @@ public class GameManager : MonoBehaviour
 
     //스테이지별 클리어 조건
 
+    private int S1_1 = 99;
+    private int S1_2 = 99;
+    private int S1_3 = 99;
+    private int S1_4 = 99;
+    private int S2_1 = 99;
+    private int S2_2 = 99;
+    private int S2_3 = 99;
+    private int S3_1 = 99;
+    private int S3_2 = 99;
+    private int S3_3 = 99;
+    private int S4_1 = 99;
+    private int S4_2 = 99;
+    private int S4_3 = 99;
+    //보스나 미들보스는 그 개체 죽고 띄우자
 }
