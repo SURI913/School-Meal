@@ -18,9 +18,11 @@ public class Coin : MonoBehaviour
             {
                 RandomAmountCoin();
 
+            
                 //G키를 눌렀을 때
                 GameManager.instance.SetCoin(CoinAmount);
                 //게임매니저에 코인값을 보낸다.
+                Debug.Log("코인 먹었다.");
                 Destroy(gameObject);
             }
         }
