@@ -66,9 +66,9 @@ public class MidBossMove : MonoBehaviour
 
         pos = this.GetComponent<Transform>().position;
 
-        pos2 += new Vector3(0.02f, 0, 0);
-        pos3 += new Vector3(0.05f, 0, 0);
-        pos4 += new Vector3(0.1f, 0, 0);
+        pos2 += new Vector3(0.3f, 0, 0);
+        pos3 += new Vector3(0.7f, 0, 0);
+        pos4 += new Vector3(2f, 0, 0);
         if (pos2.x >= 31)   //범위 벗어나면
         {
             pos2 = new Vector3(-17f, 4.5f, -1); //초기화
@@ -82,23 +82,23 @@ public class MidBossMove : MonoBehaviour
             pos4 = new Vector3(-17f, 4.5f, -1);
         }
         //총알 떨어트리는 페이즈
-        if (atktime1 >= 2)
+        if (atktime1 >= 3)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD1, pos2, transform.rotation);
-            GameObject bulletcopy2 = Instantiate(bulletD2, pos3, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD2, pos2, transform.rotation);
+            GameObject bulletcopy2 = Instantiate(bulletD1, pos3, transform.rotation);
             atktime1 = 0;
         }
         if (atktime2 >= 7)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD3, pos2, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD2, pos2, transform.rotation);
             GameObject bulletcopy3 = Instantiate(bulletD1, pos4, transform.rotation);
             atktime2 = 0;
         }
         if (atktime3 >= 11)
         {
-            GameObject bulletcopy1 = Instantiate(bulletD2, pos2, transform.rotation);
+            GameObject bulletcopy1 = Instantiate(bulletD3, pos2, transform.rotation);
             GameObject bulletcopy2 = Instantiate(bulletD3, pos3, transform.rotation);
-            GameObject bulletcopy3 = Instantiate(bulletD1, pos4, transform.rotation);
+            GameObject bulletcopy3 = Instantiate(bulletD3, pos4, transform.rotation);
             atktime3 = 0;
         }
 
@@ -114,7 +114,7 @@ public class MidBossMove : MonoBehaviour
                 if (currenttime <= 0)
                 {
                     atkrand = Random.Range(0, 10); // 0~9 까지 랜덤 숫자
-                    if (atkrand >= 1)
+                    if (atkrand >= 3)
                     {
                         GameObject bulletcopy1 = Instantiate(bulletR, pos, transform.rotation);
                         GameObject bulletcopy2 = Instantiate(bulletL, pos, transform.rotation);
