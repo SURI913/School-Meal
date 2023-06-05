@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     public static double summonMaxenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxMidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
-    public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
-    public static double summonMaxenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
@@ -414,4 +412,8 @@ public class GameManager : MonoBehaviour
     private int S4_2 = 99;
     private int S4_3 = 99;
     //보스나 미들보스는 그 개체 죽고 띄우자
+
+    public void setStageClearS1_1(int count){
+        S1_1 -=count;
+    }
 }

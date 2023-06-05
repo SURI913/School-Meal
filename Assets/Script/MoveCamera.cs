@@ -12,30 +12,37 @@ public class MoveCamera : MonoBehaviour
     float width;
     void Start()
     {
-        height = Camera.main.orthographicSize;// ¼¼·Î ¹İÀ» orthographicSize ·Î ±¸ÇÔ
+        height = Camera.main.orthographicSize;// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ orthographicSize ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         width=height*Screen.width / Screen.height;
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;// Ä«¸Ş¶ó Å×µÎ¸® º¸ÀÌ°Ô »ö»óº¯°æ
+        Gizmos.color = Color.yellow;// Ä«ï¿½Ş¶ï¿½ ï¿½×µÎ¸ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½óº¯°ï¿½
         Gizmos.DrawWireCube(center,size);
     }
     // Update is called once per frame
     private void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//ÇöÀç À§Ä¡¿Í ¼Óµµ·Î Ä«¸Ş¶óÀÌµ¿
+        if(target != null){
+            //íƒ€ê²Ÿì´ ìˆì„ë•Œ ì‘ë™ë˜ëŠ” ifë¬¸ì…ë‹ˆë‹¤
+            //ì¹´ë©”ë¼ ì›€ì§ì´ëŠ” ë¶€ë¶„ ì—¬ê¸° ë„£ì–´ì£¼ì‹œê³ 
+        }
+        else{
+            //ë§ˆì§€ë§‰ì— ìˆë˜ íƒ€ê²Ÿì˜ ìœ„ì¹˜ê°’ ì €ì¥í•´ë‘”ê±°ë¥¼ ê³ ì •í•´ì„œ ì‚¬ìš©í•˜ë„ë¡ ìˆ˜ì •ë¶€íƒë“œë ¤ìš”
+        }
+        transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ Ä«ï¿½Ş¶ï¿½ï¿½Ìµï¿½
              
-        // transform.position = new Vector3(transform.position.x,0, -10f);  //Ä«¸Ş¶ó°ª yÃà 0À¸·Î °íÁ¤,zÃà-10 À¸·Î °íÁ¤ ÁÂ¿ì·Î¸¸ Ä«¸Ş¶ó ÀÌµ¿ 
-        //Ä«¸Ş¶ó°¡ ¸ÊÀ» ¹ş¾î³ªÁö ¾Ê°Ô  
-       // Mathf.Clamp(value, min, max) value°ªÀÌ min°úmax »çÀÌ¸é value ¹İÈ¯
-        //minº¸´Ù ÀÛÀ¸¸é min, maxº¸´Ù Å©¸é max ¹İÈ¯
+        // transform.position = new Vector3(transform.position.x,0, -10f);  //Ä«ï¿½Ş¶ï¿½ yï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,zï¿½ï¿½-10 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Â¿ï¿½Î¸ï¿½ Ä«ï¿½Ş¶ï¿½ ï¿½Ìµï¿½ 
+        //Ä«ï¿½Ş¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³ªï¿½ï¿½ ï¿½Ê°ï¿½  
+       // Mathf.Clamp(value, min, max) valueï¿½ï¿½ï¿½ï¿½ minï¿½ï¿½max ï¿½ï¿½ï¿½Ì¸ï¿½ value ï¿½ï¿½È¯
+        //minï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ min, maxï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ max ï¿½ï¿½È¯
         float lx = size.x * 0.5f - width;
         float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
 
         //float ly = size.y * 0.5f - height;
         //float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
 
-        transform.position = new Vector3(clampX,0, -10f);//Ä«¸Ş¶ó zÃà °íÁ¤ 
+        transform.position = new Vector3(clampX,0, -10f);//Ä«ï¿½Ş¶ï¿½ zï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 
     }
 }
