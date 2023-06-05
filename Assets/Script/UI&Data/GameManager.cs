@@ -151,8 +151,10 @@ public class GameManager : MonoBehaviour
         }
         if (Hp <= 0) // 플레이어 체력이 0이되면 사망
         {
+            StartCoroutine(GameOver());
             //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-             StartCoroutine(GameOver());
+            //Gameover UI처리
+            StartCoroutine("GameOver");
         }
     }
 
