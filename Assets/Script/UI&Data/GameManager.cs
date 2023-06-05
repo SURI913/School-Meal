@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
     public double GetMaxenemyHP(){
         return MaxenemyHP;
     }
+    
     //중간보스소환잡몹 체력
     public double GetsummonenemyHP()
     {
