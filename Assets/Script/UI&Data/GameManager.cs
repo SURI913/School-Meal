@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
     {
         return summonMaxenemyHP;
     }
-    
+        
     //중간보스 체력 
     public double GetMaxMidBossHP(){
         return MaxMidBossHP;
