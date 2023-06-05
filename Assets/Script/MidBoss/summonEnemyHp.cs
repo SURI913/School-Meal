@@ -5,8 +5,8 @@ using UnityEngine;
 public class summonEnemyHp : MonoBehaviour
 {
     //체력은 전부 GameMnager에서 가져오고 변경한다.
-    private double maxHP;  
-    private double currentHP;
+    private double maxHP;
+    public static double currentHP;
     private SpriteRenderer spriteRenderer;
 
     public double MaxHP => maxHP;               // maxHP 다른 함수에서 얘를 부를 수 있게

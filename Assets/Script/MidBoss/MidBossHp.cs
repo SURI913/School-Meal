@@ -41,6 +41,7 @@ public class MidBossHp : MonoBehaviour
             Debug.Log("MidBoss HP : 0.. Die");
             Destroy(gameObject);
             GameManager.instance.Clear();
+            summonEnemyHp.currentHP = 0;
         }
         animator.SetBool("isHunted", false);
     }
