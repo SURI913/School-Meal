@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxMidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
+    public static double summonMaxenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
     public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
     public static double MaxBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
 
@@ -64,10 +66,13 @@ public class GameManager : MonoBehaviour
     //매점 관리
     public GameObject Weapon1L;
     public GameObject Weapon1R;
+    public GameObject Weapon1U;
     public GameObject Weapon2L;
     public GameObject Weapon2R;
+    public GameObject Weapon2U;
     public GameObject CurrnetWeaponL;
     public GameObject CurrnetWeaponR;
+    public GameObject CurrnetWeaponU;
     private int Coin;
     public GameObject Cointext;
 
@@ -109,8 +114,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HpSystem();
-        //enemyHpSystem();
+        HpSystem(); //플레이어가 죽을 때 모든 동작을 멈추고 GameOver창을 띄운다
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
     }
@@ -147,8 +151,8 @@ public class GameManager : MonoBehaviour
         }
         if (Hp <= 0) // 플레이어 체력이 0이되면 사망
         {
-            //죽음 처리하는 함수 만들어서 여기에 생성해주세요
-
+            StartCoroutine(GameOver());
+            //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
             //Gameover UI처리
             StartCoroutine("GameOver");
         }
@@ -168,12 +172,24 @@ public class GameManager : MonoBehaviour
     public double GetMaxenemyHP(){
         return MaxenemyHP;
     }
+    //중간보스소환잡몹 체력
+    public double GetsummonenemyHP()
+    {
+        return summonenemyHP;
+    }
+    public double GetsummonMaxenemyHP()
+    {
+        return summonMaxenemyHP;
+    }
+
+    //중간보스 체력 
     public double GetMaxMidBossHP(){
         return MaxMidBossHP;
     }
     public double GetMidBossHP(){
         return MidBossHP;
     }
+    //보스 체력 
     public double GetBossHP(){
         return BossHP;
     }
@@ -193,6 +209,13 @@ public class GameManager : MonoBehaviour
     public void setenemyHP(double currentHp){
         enemyHP = currentHp;
     }
+
+    public void setsummonenemyHP(double currentHp)
+    {
+        summonenemyHP = currentHp;
+    }
+
+
     public void setMidBossHP(double currentHp){
         MidBossHP = currentHp;
     }public void setBossHP(double currentHp){
@@ -222,7 +245,7 @@ public class GameManager : MonoBehaviour
             isMidBossHit = true;
             isBossHit = false;
         }
-        else if(isBossHit){
+        else if(Hit == 3){
             isEnemyHit = false;
             isMidBossHit = false;
             isBossHit = true;
@@ -316,12 +339,14 @@ public class GameManager : MonoBehaviour
             //첫번째 상점 무기로 변경
             CurrnetWeaponL = Weapon1L;
             CurrnetWeaponR = Weapon1R;
+            CurrnetWeaponU = Weapon1U;
             Coin -=5;
         }
         else if(number == 2 && Coin >=7 && CurrnetWeaponL == !Weapon2L){
             //두번째 상점 무기로 변경
             CurrnetWeaponL = Weapon2L;
             CurrnetWeaponR = Weapon2R;
+            CurrnetWeaponU = Weapon2U;
             Coin-=7;
         }
         else{
@@ -335,6 +360,11 @@ public class GameManager : MonoBehaviour
     public GameObject GetWeaposnR(){
         return CurrnetWeaponR;
     }
+
+    public GameObject GetWeaposnU(){
+        return CurrnetWeaponR;
+    }
+
     public void purchaseMaxHpPlus(float plusMaxHp){
         if(Coin >= 7){
             MaxHp+= (double)plusMaxHp;

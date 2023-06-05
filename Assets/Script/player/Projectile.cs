@@ -23,5 +23,9 @@ public class Projectile : MonoBehaviour
         {
             collision.GetComponent<EnemyHp>().TakeDamage(damage);
         }
+        if (collision.CompareTag("SummonEnemy"))
+        {
+            collision.GetComponent<summonEnemyHp>().TakeDamage(damage);
+        }
     }
 }

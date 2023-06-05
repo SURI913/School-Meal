@@ -2,117 +2,117 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType {  CircleFire = 0, CircleFire02=1, CircleFire03 }
+public enum AttackType {  CircleFire = 0, CircleFire02=1, CircleFire03 }    //ì–´íƒ íƒ€ì„ ì—´ê±°í˜•
 
 public class BossWeapon : MonoBehaviour
 {
     [SerializeField]
-    private GameObject projectilePrefab;  // °ø°İÇÒ ¶§ »ı¼ºµÇ´Â ¹ß»çÃ¼ ÇÁ·¡ÆÕ
+    private GameObject projectilePrefab;  //ê³µê²©í•  ë–„ ìƒì„±ë˜ëŠ” ë°œì‚¬ì²´ í”„ë¦¬í©
 
     public void StartFiring(AttackType attackType)
     {
-        // attackType ¿­°ÅÇüÀÇ ÀÌ¸§°ú °°Àº ÄÚ·çÆ¾À» ½ÇÇà
+        //attack Type ì—´ê±°í˜•ì˜ ì´ë¦„ê³¼ ê°™ì€ ì½”ë£¨í‹´ì„ ì‹¤í–‰
         StartCoroutine(attackType.ToString());
     }
 
     public void StopFiring(AttackType attackType)
     {
-        // attackType ¿­°ÅÇüÀÇ ÀÌ¸§°ú °°Àº ÄÚ·çÆ¾À» ÁßÁö
+        // attackType ì—´ê±°í˜•ì˜ ì´ë¦„ê³¼ ê°™ì€ ì½”ë£¨í‹´ì„ ì¤‘ì§€
         StopCoroutine(attackType.ToString());
     }
 
     private IEnumerator CircleFire()
     {
-        Debug.Log("1ÆäÀÌÁî ½ÃÀÛ");
-        float attackRate = 1.5f;                 // °ø°İ ÁÖ±â
-        int count = 10;                              // ¹ß»çÃ¼ »ı¼º °³¼ö
-        float intervalAngle = 360 / count;  // ¹ß»çÃ¼ »çÀÌÀÇ °¢µµ
-        float weightAngle = 0;                   // °¡ÁßµÇ´Â °¢µµ (Ç×»ó °°Àº À§Ä¡·Î ¹ß»çÇÏÁö ¾Êµµ·Ï ¼³Á¤)
+        Debug.Log("1í˜ì´ì¦ˆ ì‹œì‘");
+        float attackRate = 1.5f;                 // ê³µê²©ì£¼ê¸°
+        int count = 10;                              // ë°œì‚¬ì²´ ìƒì„± ê°œìˆ˜
+        float intervalAngle = 360 / count;  // ë°œì‚¬ì²´ ì‚¬ì´ì˜ ê°ë„
+        float weightAngle = 0;                   // ê°€ì¤‘ë˜ëŠ” ê°ë„(í•­ìƒ ê°™ì€ ìœ„ì¹˜ë¡œ ë°œì‚¬í•˜ì§€ ì•Šë„ë¡ ì„¤ì •)
 
-        // ¿ø ÇüÅÂ·Î ¹æ»çÇÏ´Â ¹ß»çÃ¼ »ı¼º(count °¹¼ö ¸¸Å­)
+        //ì› í˜•íƒœë¡œ ë°©ì‚¬í•˜ëŠ” ë°œì‚¬ì²´ ìƒì„±(count ê°¯ìˆ˜ ë§Œí¼)
         while (true)
         {
             for (int i = 0; i < count; i++)
             {
-                // ¹ß»çÃ¼ »ı¼º
+                // ë°œì‚¬ì²´ ìƒì„±
                 GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ(°¢µµ)
+                // ë°œì‚¬ì²´ ì´ë™ë°©í–¥(ê°ë„)
                 float angle = weightAngle * i * intervalAngle;
-                // ¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ(º¤ÅÍ)
-                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(°¢µµ), ¶óµğ¾È ´ÜÀ§ÀÇ °¢µµ Ç¥ÇöÀ» À§ÇØ PI / 180À» °öÇÔ
+                //ë°œì‚¬
+                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(ê°ë„), ë¼ë””ì•ˆ ë‹¨ìœ„ì˜ ê°ë„ í‘œí˜„ì„ ìœ„í•´ PI/180ì„ ê³±í•¨
                 float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ ¼³Á¤
+                // ë°œì‚¬ì²´ ì´ë™ë°©í–¥ ì„¤ì •
                 clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
             }
 
-            // ¹ß»çÃ¼°¡ »ı¼ºµÇ´Â ½ÃÀÛ °¢µµ ¼³Á¤À» À§ÇÑ º¯¼ö
+            //ë°œì‚¬ì²´ê°€ ìƒì„±ë˜ëŠ” ì‹œì‘ ê°ë„ ì„¤ì •ì„ ìœ„í•œ ë³€ìˆ˜
             weightAngle += 1;
 
-            // attackRate ½Ã°£¸¸Å­ ´ë±â
+            // attackRate ì‹œê°„ë§Œí¼ ëŒ€ê¸°
             yield return new WaitForSeconds(attackRate);
         }
     }
 
     private IEnumerator CircleFire02()
     {
-        Debug.Log("2ÆäÀÌÁî ½ÃÀÛ");
-        float attackRate = 1.0f;                 // °ø°İ ÁÖ±â
-        int count = 20;                              // ¹ß»çÃ¼ »ı¼º °³¼ö
-        float intervalAngle = 360 / count;  // ¹ß»çÃ¼ »çÀÌÀÇ °¢µµ
-        float weightAngle = 0;                   // °¡ÁßµÇ´Â °¢µµ (Ç×»ó °°Àº À§Ä¡·Î ¹ß»çÇÏÁö ¾Êµµ·Ï ¼³Á¤)
+        Debug.Log("2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+        float attackRate = 1.0f;                 // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
+        int count = 20;                              // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float intervalAngle = 360 / count;  // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float weightAngle = 0;                   // ï¿½ï¿½ï¿½ßµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½×»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-        // ¿ø ÇüÅÂ·Î ¹æ»çÇÏ´Â ¹ß»çÃ¼ »ı¼º(count °¹¼ö ¸¸Å­)
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½(count ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­)
         while (true)
         {
             for (int i = 0; i < count; i++)
             {
-                // ¹ß»çÃ¼ »ı¼º
+                // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
                 GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ(°¢µµ)
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
                 float angle = weightAngle * i * intervalAngle;
-                // ¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ(º¤ÅÍ)
-                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(°¢µµ), ¶óµğ¾È ´ÜÀ§ÀÇ °¢µµ Ç¥ÇöÀ» À§ÇØ PI / 180À» °öÇÔ
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(ï¿½ï¿½ï¿½ï¿½), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ PI / 180ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ ¼³Á¤
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
             }
 
-            // ¹ß»çÃ¼°¡ »ı¼ºµÇ´Â ½ÃÀÛ °¢µµ ¼³Á¤À» À§ÇÑ º¯¼ö
+            // ï¿½ß»ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             weightAngle += 1;
 
-            // attackRate ½Ã°£¸¸Å­ ´ë±â
+            // attackRate ï¿½Ã°ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(attackRate);
         }
     }
 
     private IEnumerator CircleFire03()
     {
-        Debug.Log("3ÆäÀÌÁî ½ÃÀÛ");
-        float attackRate = 0.5f;                 // °ø°İ ÁÖ±â
-        int count = 25;                              // ¹ß»çÃ¼ »ı¼º °³¼ö
-        float intervalAngle = 360 / count;  // ¹ß»çÃ¼ »çÀÌÀÇ °¢µµ
-        float weightAngle = 0;                   // °¡ÁßµÇ´Â °¢µµ (Ç×»ó °°Àº À§Ä¡·Î ¹ß»çÇÏÁö ¾Êµµ·Ï ¼³Á¤)
+        Debug.Log("3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+        float attackRate = 0.5f;                 // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
+        int count = 25;                              // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float intervalAngle = 360 / count;  // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        float weightAngle = 0;                   // ï¿½ï¿½ï¿½ßµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½×»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
-        // ¿ø ÇüÅÂ·Î ¹æ»çÇÏ´Â ¹ß»çÃ¼ »ı¼º(count °¹¼ö ¸¸Å­)
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½(count ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­)
         while (true)
         {
             for (int i = 0; i < count; i++)
             {
-                // ¹ß»çÃ¼ »ı¼º
+                // ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
                 GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ(°¢µµ)
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
                 float angle = weightAngle * i * intervalAngle;
-                // ¹ß»çÃ¼ ÀÌµ¿ ¹æÇâ(º¤ÅÍ)
-                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(°¢µµ), ¶óµğ¾È ´ÜÀ§ÀÇ °¢µµ Ç¥ÇöÀ» À§ÇØ PI / 180À» °öÇÔ
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+                float x = Mathf.Cos(angle * Mathf.PI / 180.0f); // cos(ï¿½ï¿½ï¿½ï¿½), ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ PI / 180ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
-                // ¹ß»çÃ¼ ÀÌµ¿¹æÇâ ¼³Á¤
+                // ï¿½ß»ï¿½Ã¼ ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
             }
 
-            // ¹ß»çÃ¼°¡ »ı¼ºµÇ´Â ½ÃÀÛ °¢µµ ¼³Á¤À» À§ÇÑ º¯¼ö
+            // ï¿½ß»ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             weightAngle += 1;
 
-            // attackRate ½Ã°£¸¸Å­ ´ë±â
+            // attackRate ï¿½Ã°ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(attackRate);
         }
     }

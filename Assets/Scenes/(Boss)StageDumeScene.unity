@@ -3082,7 +3082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 100
   MaxHp: 100
-  enemy: {fileID: 291299994}
   BackGroundMusic: {fileID: 1282969638}
   ButtonSound: {fileID: 1391104455}
   PlayerAttackSound: {fileID: 1249899769}
@@ -3103,6 +3102,13 @@ MonoBehaviour:
   Door: {fileID: 0}
   Gameclear: {fileID: 0}
   StageNumber: {fileID: 646168043}
+  Weapon1L: {fileID: 0}
+  Weapon1R: {fileID: 0}
+  Weapon2L: {fileID: 0}
+  Weapon2R: {fileID: 0}
+  CurrnetWeaponL: {fileID: 0}
+  CurrnetWeaponR: {fileID: 0}
+  Cointext: {fileID: 0}
 --- !u!4 &881958638
 Transform:
   m_ObjectHideFlags: 0
@@ -4056,6 +4062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e404f7a76e15f4b9606572da6b5b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageInterval: 1
 --- !u!50 &1271519165
 Rigidbody2D:
   serializedVersion: 4
@@ -6808,7 +6815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419496874670712432, guid: 17063fb425ebe8449af6f8f519fd4ca0, type: 3}
       propertyPath: m_Name
-      value: MoingPlatform
+      value: MovingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 419496874670712433, guid: 17063fb425ebe8449af6f8f519fd4ca0, type: 3}
       propertyPath: m_RootOrder

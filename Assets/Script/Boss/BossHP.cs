@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossHP : MonoBehaviour
 {
-    [SerializeField]
-    public double maxHP = 500;
+
+    double maxHP = 10;
     public double currentHP;
     private SpriteRenderer spriteRenderer;
     private Boss boss;
@@ -28,7 +28,8 @@ public class BossHP : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //데미지를 입은 경우 최근체력 감소시킴
-        animator.SetBool("isHunted", true);
+        StartCoroutine(PlayAnim());
+        Debug.Log("데미지 들어가유");
         currentHP -= damage;
         GameManager.instance.setBossHP(currentHP);
         GameManager.instance.PlayEnemyHitSound();
@@ -38,6 +39,19 @@ public class BossHP : MonoBehaviour
             // ü���� 0dlaus OnDie() �Լ��� ȣ���ؼ� �׾����� ó���� �Ѵ�.
             boss.Ondie();
         }
+    }
+
+    IEnumerator PlayAnim(){
+        animator.SetBool("isHunted", true);
+        yield return new WaitForSecondsRealtime(1.0f);
         animator.SetBool("isHunted", false);
+    }
+
+    void Update() {
+        if(currentHP <= 0)
+        {
+            // ü���� 0dlaus OnDie() �Լ��� ȣ���ؼ� �׾����� ó���� �Ѵ�.
+            boss.Ondie();
+        }
     }
 }

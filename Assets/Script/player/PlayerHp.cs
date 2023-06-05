@@ -34,6 +34,7 @@ public class PlayerHp : MonoBehaviour
         //데미지를 입은 경우 최근체력 감소시킴
         animator.SetBool("isHunted", true);
         currentHP -= damage;
+        GameManager.instance.PlayPlayerHitSound();
         GameManager.instance.setCurrentHp(currentHP);   //체력값 전달
 
         //체력이 0이면 플레이어 죽음
@@ -41,6 +42,7 @@ public class PlayerHp : MonoBehaviour
         {
             Debug.Log("Player HP : 0.. Die");
             Destroy(gameObject);
+            Time.timeScale = 0; //일시정지
         }
         animator.SetBool("isHunted", false);
     }
