@@ -30,7 +30,7 @@ public class DialogSystem : MonoBehaviour
         {
             SetActiveObjects(speakers[i], false);
             //캐릭터 이미지는 보이도록 설정
-            speakers[i].spriteRenderer.gameObject.SetActive(false);
+            speakers[i].spriteRenderer.gameObject.SetActive(true);
         }
     }
 
@@ -50,16 +50,16 @@ public class DialogSystem : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             //대사가 남아있을경우 다음 대사 재생 
-            if(dialogs.Length>currentDialogIndex+1)
+            if(dialogs.Length > currentDialogIndex +1 )
             {
                 SetNextDialog();
             }
             else
             {
-                for(int i=0; i < speakers.Length; ++i)
+                for(int i=0; i < speakers.Length; ++ i)
                 {
                     SetActiveObjects(speakers[i], false);
-                    speakers[i].spriteRenderer.gameObject.SetActive(false);
+                    speakers[i].spriteRenderer.gameObject.SetActive(true);
                 }
                 return true;
             }
@@ -70,7 +70,7 @@ public class DialogSystem : MonoBehaviour
     {
         SetActiveObjects(speakers[currnetSpearkerIndex], false);
 
-        currentDialogIndex++;
+        currentDialogIndex ++;
 
         currnetSpearkerIndex = dialogs[currentDialogIndex].speakerIndex;
 

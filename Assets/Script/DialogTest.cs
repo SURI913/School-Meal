@@ -11,6 +11,7 @@ public class DialogTest : MonoBehaviour
     private DialogSystem dialogSystem02;
     [SerializeField]
     private TextMeshProUGUI textCountdown;
+    
 
     private IEnumerator Start()
     {
@@ -19,17 +20,19 @@ public class DialogTest : MonoBehaviour
        
         yield return new WaitUntil(() => dialogSystem01.UpdateDialog());
 
-        textCountdown.gameObject.SetActive(true);
-        //int count = 3;
-        //while(count>0)
+        //textCountdown.gameObject.SetActive(true);
+        //int count = 2;
+        //while (count > 0)
         //{
         //    textCountdown.text = count.ToString();
         //    count--;
         //    yield return new WaitForSeconds(1);
+        //    textCountdown.gameObject.SetActive(false);
         //}
-        textCountdown.gameObject.SetActive(false);
+        //textCountdown.gameObject.SetActive(false);
 
         //두번째 시작
+        
         yield return new WaitUntil(() => dialogSystem02.UpdateDialog());
 
         textCountdown.gameObject.SetActive(true);
