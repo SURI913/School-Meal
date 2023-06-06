@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour
     private int S3_2 = 6;
     private int S4_1 = 4;
     private int S4_2 = 1;   //코인 먹을때 카운트 올림
-    private int S4_3 = 44;
+    private int S4_3 = 4;
 
     private int HitCount = 0;
     
