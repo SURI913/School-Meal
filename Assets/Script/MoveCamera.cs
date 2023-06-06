@@ -12,37 +12,46 @@ public class MoveCamera : MonoBehaviour
     float width;
     void Start()
     {
-        height = Camera.main.orthographicSize;// ���� ���� orthographicSize �� ����
-        width=height*Screen.width / Screen.height;
+        height = Camera.main.orthographicSize;//세로의 절반크기를 orthographicSize로 얻음 
+        width = height * Screen.width / Screen.height;
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;// ī�޶� �׵θ� ���̰� ���󺯰�
-        Gizmos.DrawWireCube(center,size);
+        Gizmos.color = Color.yellow;// 카메라 테두리 확인을 위해 노란색으로 표시 
+        Gizmos.DrawWireCube(center, size);
     }
     // Update is called once per frame
     private void LateUpdate()
     {
-        if(target != null){
+        float lx;
+        float clampX;
+        if (target != null)
+        {
             //타겟이 있을때 작동되는 if문입니다
             //카메라 움직이는 부분 여기 넣어주시고
+            transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);//플레이어 위치를 받옴 
+            lx = size.x * 0.5f - width;
+            clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+
+
+            transform.position = new Vector3(clampX, 0, -10f);
         }
-        else{
+        else
+        {
+
+            transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);
             //마지막에 있던 타겟의 위치값 저장해둔거를 고정해서 사용하도록 수정부탁드려요
         }
-        transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//���� ��ġ�� �ӵ��� ī�޶��̵�
-             
-        // transform.position = new Vector3(transform.position.x,0, -10f);  //ī�޶� y�� 0���� ����,z��-10 ���� ���� �¿�θ� ī�޶� �̵� 
-        //ī�޶� ���� ����� �ʰ�  
-       // Mathf.Clamp(value, min, max) value���� min��max ���̸� value ��ȯ
-        //min���� ������ min, max���� ũ�� max ��ȯ
-        float lx = size.x * 0.5f - width;
-        float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+        // transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//       ġ    ӵ    ī ޶  ̵ 
 
-        //float ly = size.y * 0.5f - height;
-        //float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
+        // transform.position = new Vector3(transform.position.x,0, -10f);  //ī ޶  y   0         ,z  -10            ¿ θ  ī ޶   ̵  
 
-        transform.position = new Vector3(clampX,0, -10f);//ī�޶� z�� ���� 
+        //float lx = size.x * 0.5f - width;
+        //float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+
+
+
+        //transform.position = new Vector3(clampX,0, -10f);//ī ޶  z        
 
     }
 }
