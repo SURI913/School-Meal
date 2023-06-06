@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4610863556825808272}
   - component: {fileID: 7290046951921298208}
+  - component: {fileID: 372892159603036800}
   - component: {fileID: -5125527573198825479}
   - component: {fileID: 3695104944414713237}
   m_Layer: 0
@@ -86,6 +87,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &372892159603036800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982617944397340478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9635057838a23e8479d4eabedfda58d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!114 &-5125527573198825479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,11 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1b8cbcdf3c32408fc77b6a96f969f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 50
   distance: 1
   isLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
 --- !u!58 &3695104944414713237
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -113,7 +127,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04367584, y: -0.0065514147}

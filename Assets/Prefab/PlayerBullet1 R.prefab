@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8580f6e9e633a9543af1496129caaeb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 50
   distance: 1
   isLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
 --- !u!58 &-270469035795956056
 CircleCollider2D:
   m_ObjectHideFlags: 0

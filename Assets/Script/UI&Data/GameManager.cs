@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
         BackDoor.tag = BackStageNumberTag;
         Coin = PlayerData.coin;
         isClear = false;
+        enemyHP = 100;
+        MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
 
         //스테이지 정보 가져오기
         switch (StageNumberTag)
@@ -147,7 +149,7 @@ public class GameManager : MonoBehaviour
         GameOverAnim  = Gameclear.GetComponent<Animator>();
         Gameclear.SetActive(true);
         GameOverAnim.SetTrigger("isGameOver");  //동일한 애니메이션임
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3.0f);
         Gameclear.SetActive(false);
         Door.SetActive(true);   //문 오픈
     }
@@ -480,50 +482,61 @@ public class GameManager : MonoBehaviour
     public void HitCountCheck(int i){
         HitCount+=i;
     }
-
+    public int ClearCount = 0;
     public void StageState (){
-        if(S1_1 == HitCount){
+        if(S1_1 == HitCount && ClearCount ==0 && StageNumberTag == "1-1"){
             PlayerData.S1_1Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S1_2 == HitCount){
+        if(S1_2 == HitCount && ClearCount ==0 && StageNumberTag == "1-2"){
             PlayerData.S1_2Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S1_3 == HitCount){
+        if(S1_3 == HitCount && ClearCount ==0 && StageNumberTag == "1-3"){
             PlayerData.S1_3Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S2_1 == HitCount){
+        if(S2_1 == HitCount && ClearCount ==0 && StageNumberTag == "2-1"){
             PlayerData.S2_1Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S2_2 == HitCount){
+        if(S2_2 == HitCount && ClearCount ==0 && StageNumberTag == "2-2"){
             PlayerData.S2_2Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S2_3 == HitCount){
+        if(S2_3 == HitCount && ClearCount ==0 && StageNumberTag == "2-3"){
             PlayerData.S2_3Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S3_1 == HitCount){
+        if(S3_1 == HitCount && ClearCount ==0 && StageNumberTag == "3-1"){
             PlayerData.S3_1Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S3_2 == HitCount){
+        if(S3_2 == HitCount && ClearCount ==0 && StageNumberTag == "3-2"){
             PlayerData.S3_2Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S4_1 == HitCount){
+        if(S4_1 == HitCount && ClearCount ==0 && StageNumberTag == "4-1"){
             PlayerData.S4_1Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S4_2 == HitCount){
+        if(S4_2 == HitCount && ClearCount ==0 && StageNumberTag == "4-2"){
             PlayerData.S4_2Clear = true;
+            ClearCount++;
             Clear();
         }
-        if(S4_3 == HitCount){
+        if(S4_3 == HitCount && ClearCount ==0 && StageNumberTag == "4-3"){
             PlayerData.S4_3Clear = true;
+            ClearCount++;
             Clear();
         }
     }
