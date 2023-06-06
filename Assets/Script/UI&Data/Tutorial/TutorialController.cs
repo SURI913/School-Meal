@@ -26,7 +26,7 @@ public class TutorialController : MonoBehaviour
     void Update()
     {
         if(currentTutorial != null){
-            //currentTutorial.Execute(this); //익스큐트 메소드 호출
+            currentTutorial.Execute(this); //익스큐트 메소드 호출
         }
     }
 

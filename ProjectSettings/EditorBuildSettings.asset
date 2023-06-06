@@ -12,9 +12,90 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: eca964ab4a581d94593577c29170d4eb
   - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: 62c56c18900884445a666013c3507b8f
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/StageDumeScene2.unity
-    guid: 5ce4e7264efdc0c4f97e553b2d5c2cce
+    path: Assets/Scenes/STAGE/1-1.unity
+    guid: 85038ea40ff7f614ca933bf94ad2032d
+  - enabled: 1
+    path: Assets/Scenes/STAGE/1-2.unity
+    guid: 1d079a2b681180c40a4356dde06a0d58
+  - enabled: 1
+    path: Assets/Scenes/STAGE/1-3.unity
+    guid: c4dd0cd0816f0ab4796256b7066b2b0d
+  - enabled: 1
+    path: Assets/Scenes/STAGE/2-1.unity
+    guid: 04ed5cfe95beee04fbbad2966e935fcd
+  - enabled: 1
+    path: Assets/Scenes/STAGE/2-2.unity
+    guid: 138e4b2c0f0e1394c824faa478ce5a74
+  - enabled: 1
+    path: Assets/Scenes/STAGE/2-3.unity
+    guid: c104fd9db5e252148ae3bde70ed44c72
+  - enabled: 1
+    path: Assets/Scenes/STAGE/3-1.unity
+    guid: 5353652852de15246915b1c745225855
+  - enabled: 1
+    path: Assets/Scenes/STAGE/3-2.unity
+    guid: a6eee5a08360e0d4086a043144318d61
+  - enabled: 1
+    path: Assets/Scenes/STAGE/4-1.unity
+    guid: b42e37a3ddb9c744ebf5206bfc26faf9
+  - enabled: 1
+    path: Assets/Scenes/STAGE/4-2.unity
+    guid: f8ce8f077828c604f9f7e7632426f3a0
+  - enabled: 1
+    path: Assets/Scenes/STAGE/4-3.unity
+    guid: 8826b793e78bb1f46b5ac380154e1dd5
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Cafeteria.unity
+    guid: 160e088922ed5644da6e52bf84096af1
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Office.unity
+    guid: 5f795f7c674b6ea4eb93047fa0650105
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Shop1.unity
+    guid: 0512e277ef49d584e94b4a33533ee03c
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Shop2.unity
+    guid: 00f3c2fea3c92324dacf0c9eebc3fe62
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/1-1Clear.unity
+    guid: ea881669bfe19574489878b53f70316c
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/1-2Clear.unity
+    guid: f93d2c14ff183434fbf8c0356d14af13
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/1-3Clear.unity
+    guid: 597776c28c853774f84d6a19ab34374e
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/2-1Clear.unity
+    guid: 070179b25ad69d84f96c052555ccb3bf
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/2-2Clear.unity
+    guid: f834621f18b8caf419aab4c544329ea3
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/2-3Clear.unity
+    guid: 5fe0944468b888648b0eac9d347a930e
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/3-1Clear.unity
+    guid: eaedc8a274fe4e14aa068f2188d6c3d6
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/3-2Clear.unity
+    guid: 07da19cf6fb88c4459dcd25d32381444
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/4-1Clear.unity
+    guid: 66444b56b59a3e94091dba3dc7e721b6
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/4-2Clear.unity
+    guid: 1a57b24bd9fa532499642d2fcdec887c
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/4-3Clear.unity
+    guid: 56c885475fc8b3d428246352d4151aa3
+  - enabled: 1
+    path: Assets/Scenes/STAGE/Clear/CafeteriaClear.unity
+    guid: c7a9c3592adbaea468f1d50c525c8a68
   m_configObjects: {}
