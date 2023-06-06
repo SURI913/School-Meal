@@ -13,8 +13,8 @@ public class PlayerData : MonoBehaviour
     public static double MaxHp = 100;
     public static int coin = 0;
 
-    public static int StageNum1 = 1;
-    public static int StageNum2 = 1;
+    public static string CurrentStageTag = "1-1";
+    public static string BackStageTag = "1-1"; //스트링으로 관리
     public static GameObject WeaponL;
     public static GameObject WeaponR;
 
@@ -23,8 +23,8 @@ public class PlayerData : MonoBehaviour
             CurrnetHp = 100;
             MaxHp = 100;
             coin = 100;
-            StageNum1 = 1;
-            StageNum2 = 1;
+            CurrentStageTag = "1-1";
+            BackStageTag = "StartScene"; //스트링으로 관리
         }       
         catch (NullReferenceException)
         {
@@ -44,23 +44,23 @@ public class PlayerData : MonoBehaviour
             CurrnetHp = 100;
             MaxHp = 100;
             coin = 0;
-            StageNum1 = 1;
-            StageNum2 = 1;
+            CurrentStageTag = "1-1";
+            BackStageTag = "StartScene"; //스트링으로 관리
             //인스턴스가 없으면 싹다 초기화
         }
     }
 
-    public bool S1_1Clear = false;
-    public bool S1_2Clear = false;
-    public bool S1_3Clear = false;
-    public bool S1_4Clear = false;
-    public bool S2_1Clear = false;
-    public bool S2_2Clear = false;
-    public bool S2_3Clear = false;
-    public bool S3_1Clear = false;
-    public bool S3_2Clear = false;
-    public bool S3_3Clear = false;
-    public bool S4_1Clear = false;
-    public bool S4_2Clear = false;
-    public bool S4_3Clear = false;
+    public static bool S1_1Clear = false;
+    public static bool S1_2Clear = false;
+    public static bool S1_3Clear = false;
+    public static bool S2_1Clear = true;    //코인방
+    public static bool S2_2Clear = false;
+    public static bool S2_3Clear = false;
+    public static bool S3_1Clear = false;
+    public static bool S3_2Clear = false;
+    public static bool S4_1Clear = false;
+    public static bool S4_2Clear = true;
+    public static bool S4_3Clear = false;
+    public static bool MidBossClear = false;
+    public static bool BossClear = false;
 }

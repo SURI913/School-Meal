@@ -60,8 +60,10 @@ public class GameManager : MonoBehaviour
 
     //스테이지 관리
     //첫 스타트 스테이지를 1-1로 설정한다 (Start버튼이 눌리고 게임씬이 생성되면 매번 이 씬부터 시작 GameManager 생성을 위해)
-    private int StageNumber1;
-    private int StageNumber2;
+    private string StageNumberTag;
+    private string BackStageNumberTag;
+    public GameObject BackDoor;
+    //뒤로가는 문 관리 매점에서는 작동하지 않는다
 
     public GameObject StageNumber;
 
@@ -91,19 +93,24 @@ public class GameManager : MonoBehaviour
         //플레이어 데이터 가져오기
         Hp = PlayerData.CurrnetHp;
         MaxHp = PlayerData.MaxHp;
-        StageNumber1 = PlayerData.StageNum1;
-        StageNumber2 = PlayerData.StageNum2;
+        StageNumberTag = PlayerData.CurrentStageTag;
+        BackStageNumberTag = PlayerData.BackStageTag;
+        BackDoor.tag = BackStageNumberTag;
         Coin = PlayerData.coin;
         isClear = false;
+
         //스테이지 정보 가져오기
-        if(StageNumber1 == 0){
+        if(StageNumberTag == "Cafeteria"){
             StageNumber.GetComponent<Text>().text = $"급식실";
         }
-        else if(StageNumber1 == 9){
+        else if(StageNumberTag == "Office"){
             StageNumber.GetComponent<Text>().text = $"교장실";
         }
+        else if(StageNumberTag == "Shop1" ||StageNumberTag == "Shop2"){
+            StageNumber.GetComponent<Text>().text = $"매점";
+        }
         else{
-            StageNumber.GetComponent<Text>().text = $"{StageNumber1}학년 {StageNumber2}반";
+            StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
         }
 
     }
@@ -114,6 +121,7 @@ public class GameManager : MonoBehaviour
         HpSystem(); //플레이어가 죽을 때 모든 동작을 멈추고 GameOver창을 띄운다
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
+        StageState();   //일반맵 클리어 조건 달성했나 체크
     }
 
     //게임 오버
@@ -128,7 +136,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0; //일시정지
         yield return new WaitForSeconds(1);
     }
-
+   
     //게임 클리어
     IEnumerator GameClear(){
         GameClearSound.Play();
@@ -318,8 +326,6 @@ public class GameManager : MonoBehaviour
     }
     public void ReSetScene(){
         Time.timeScale = 1; //일시정지 해제
-        //씬이름변경
-        SceneManager.LoadScene("1-1");
         //모든 값 초기화
         Coin = 0;
         Hp = 100;
@@ -328,6 +334,9 @@ public class GameManager : MonoBehaviour
         CurrnetWeaponL = Weapon[0];
         CurrnetWeaponR = Weapon[1];
         CurrnetWeaponU = Weapon[2];
+        PlayerData.BackStageTag = "StartScene";
+        PlayerData.CurrentStageTag = "1-1";
+        SceneManager.LoadScene("1-1");
     }
 
     //플레이 종료 함수
@@ -353,7 +362,7 @@ public class GameManager : MonoBehaviour
             //첫번째 상점 무기로 변경
             CurrnetWeaponL =  Weapon[3];
             CurrnetWeaponR = Weapon[4];
-            //CurrnetWeaponU = Weapon[5];
+            CurrnetWeaponU = Weapon[5];
             Changeweapon1 = true;
             Coin -=5;
             
@@ -362,7 +371,7 @@ public class GameManager : MonoBehaviour
             //두번째 상점 무기로 변경
             CurrnetWeaponL = Weapon[6];
             CurrnetWeaponR = Weapon[7];
-            //CurrnetWeaponU = Weapon[8];
+            CurrnetWeaponU = Weapon[8];
             Changeweapon2 = true;
             Coin-=7;
         }
@@ -428,80 +437,63 @@ public class GameManager : MonoBehaviour
     }
 
     //스테이지별 클리어 조건
-
     private int S1_1 = 99;
-    private bool S1_1Clear = false;
     private int S1_2 = 99;
-    private bool S1_2Clear = false;
     private int S1_3 = 99;
-    private bool S1_3Clear = false;
-    private int S1_4 = 99;
-    private bool S1_4Clear = false;
-    private int S2_1 = 99;
-    private bool S2_1Clear = false;
+    private int S2_1 = 1;   //코인 있는 곳 코인먹을때 카운트 올림
     private int S2_2 = 99;
-    private bool S2_2Clear = false;
     private int S2_3 = 99;
-    private bool S2_3Clear = false;
     private int S3_1 = 99;
-    private bool S3_1Clear = false;
     private int S3_2 = 99;
-    private bool S3_2Clear = false;
-    private int S3_3 = 99;
-    private bool S3_3Clear = false;
     private int S4_1 = 99;
-    private bool S4_1Clear = false;
-    private int S4_2 = 99;
-    private bool S4_2Clear = false;
+    private int S4_2 = 1;   //코인 먹을때 카운트 올림
     private int S4_3 = 99;
-    private bool S4_3Clear = false;
 
-    private bool MidBossClear = false;
-    private bool BossClear = false;
+    private int HitCount = 0;
+    
     //보스나 미들보스는 그 개체 죽고 띄우자
 
-    public void setStageClearS1_1(int count){
-        S1_1 -=count;
-    }
-    public void setStageClearS1_2(int count){
-        S1_2 -=count;
-    }
-    public void setStageClearS1_3(int count){
-        S1_3 -=count;
-    }
-    public void setStageClearS1_4(int count){
-        S1_4 -=count;
+    public void HitCountCheck(int i){
+        HitCount+=i;
     }
 
-    public void setStageClearS2_1(int count){
-        S2_1 -=count;
+    public void StageState (){
+        if(S1_1 == HitCount){
+            PlayerData.S1_1Clear = true;
+            Clear();
+        }
+        if(S1_2 == HitCount){
+            PlayerData.S1_2Clear = true;
+            Clear();
+        }
+        if(S1_3 == HitCount){
+            PlayerData.S1_3Clear = true;
+            Clear();
+        }
+        if(S2_2 == HitCount){
+            PlayerData.S2_2Clear = true;
+            Clear();
+        }
+        if(S3_1 == HitCount){
+            PlayerData.S3_1Clear = true;
+            Clear();
+        }
+        if(S3_2 == HitCount){
+            PlayerData.S3_2Clear = true;
+            Clear();
+        }
+        if(S4_1 == HitCount){
+            PlayerData.S4_1Clear = true;
+            Clear();
+        }
+        if(S4_2 == HitCount){
+            PlayerData.S4_2Clear = true;
+            Clear();
+        }
+        if(S4_3 == HitCount){
+            PlayerData.S4_3Clear = true;
+            Clear();
+        }
     }
-    public void setStageClearS2_2(int count){
-        S2_2 -=count;
-    }
-    public void setStageClearS2_3(int count){
-        S2_3 -=count;
-    }
-    public void setStageClearS3_1(int count){
-        S3_1 -=count;
-    }
-    public void setStageClearS3_2(int count){
-        S3_2 -=count;
-    }
-    public void setStageClearS3_3(int count){
-        S3_3 -=count;
-    }
-    public void setStageClearS4_1(int count){
-        S4_1 -=count;
-    }
-    public void setStageClearS4_2(int count){
-        S4_2 -=count;
-    }
-    public void setStageClearS4_3(int count){
-        S4_3 -=count;
-    }
-
-    public void StageState(){
-
-    }
+    
 }
