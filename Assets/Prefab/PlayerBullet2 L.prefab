@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4610863556825808272}
   - component: {fileID: 7290046951921298208}
   - component: {fileID: -5125527573198825479}
-  - component: {fileID: 7711867506272243680}
+  - component: {fileID: 3695104944414713237}
   m_Layer: 0
   m_Name: PlayerBullet2 L
   m_TagString: Untagged
@@ -103,24 +103,19 @@ MonoBehaviour:
   isLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!95 &7711867506272243680
-Animator:
-  serializedVersion: 5
+--- !u!58 &3695104944414713237
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6982617944397340478}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5df44b8a307b4344bb5ab90c95f4f4e3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04367584, y: -0.0065514147}
+  serializedVersion: 2
+  m_Radius: 0.284615

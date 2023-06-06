@@ -108,6 +108,7 @@ public class MidBossMove : MonoBehaviour
         if (raycast.collider != null)
         {
             isRun = true;
+            turn = 1;
             if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance) //공격할 범위까지 왔다면
             {
                 isRun = false;

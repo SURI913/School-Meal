@@ -29,7 +29,7 @@ public class MidBossHp : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //데미지를 입은 경우 최근체력 감소시킴
-        animator.SetBool("isHunted", true);
+        StartCoroutine(DamageMotion());
         currentHP -= damage;
         GameManager.instance.setMidBossHP(currentHP);   //적 체력값 전달
         GameManager.instance.PlayEnemyHitSound();
@@ -43,6 +43,12 @@ public class MidBossHp : MonoBehaviour
             GameManager.instance.Clear();
             summonEnemyHp.currentHP = 0;
         }
+    }
+    IEnumerator DamageMotion(){
+        animator.SetBool("isHunted", true);
+        yield return new WaitForSecondsRealtime(0.5f);
         animator.SetBool("isHunted", false);
     }
 }
+
+

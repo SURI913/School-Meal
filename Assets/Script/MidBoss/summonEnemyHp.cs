@@ -43,7 +43,6 @@ public class summonEnemyHp : MonoBehaviour
             Debug.Log("Enemy HP : 0.. Die");
             Destroy(gameObject);
         }
-        animator.SetBool("isHunted", false);
     }
     //캐릭터 데미지 x이유 총알이 들어간걸 인식 x
 

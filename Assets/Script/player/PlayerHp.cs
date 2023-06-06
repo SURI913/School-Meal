@@ -32,7 +32,7 @@ public class PlayerHp : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //데미지를 입은 경우 최근체력 감소시킴
-        animator.SetBool("isHunted", true);
+        StartCoroutine(DamageMotion());
         currentHP -= damage;
         GameManager.instance.PlayPlayerHitSound();
         GameManager.instance.setCurrentHp(currentHP);   //체력값 전달
@@ -44,13 +44,18 @@ public class PlayerHp : MonoBehaviour
             Destroy(gameObject);
             Time.timeScale = 0; //일시정지
         }
+    }
+
+    IEnumerator DamageMotion(){
+        animator.SetBool("isHunted", true);
+        yield return new WaitForSecondsRealtime(0.5f);
         animator.SetBool("isHunted", false);
     }
 
     private void OnCollisionStay2D(Collision2D other) {
         //에너미 근접공격
         if(other.collider.CompareTag("Enemy") && isDamage ==false){
-            StartCoroutine(DamagerCooltime());
+            StartCoroutine(DamageCooltime());
         }
     }
 
@@ -62,7 +67,7 @@ public class PlayerHp : MonoBehaviour
         }
     }
 
-    IEnumerator DamagerCooltime(){
+    IEnumerator DamageCooltime(){
         isDamage = true;
         TakeDamage(1);
         yield return new WaitForSecondsRealtime(damageInterval);

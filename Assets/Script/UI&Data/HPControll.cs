@@ -36,11 +36,13 @@ public class HPControll : MonoBehaviour
 
     public void PlayerSliderEvent(){
         PlayerSliderHP.value = PlayerCurrentHP;
+        PlayerSliderHP.maxValue = PlayerMaxHp;
         PlayerText.text = $"{PlayerCurrentHP}/{PlayerMaxHp}";
     }
 
     public void AllEnemySliderEvent(){
         AllEnemySliderHP.value = AllEnemyCurrentHP;
+        PlayerSliderHP.maxValue = AllEnemyMaxHp;
         AllEnemyText.text = $"{AllEnemyCurrentHP}/{AllEnemyMaxHp}";
     }
     // Start is called before the first frame update

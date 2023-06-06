@@ -64,12 +64,7 @@ public class GameManager : MonoBehaviour
     public GameObject StageNumber;
 
     //매점 관리
-    public GameObject Weapon1L;
-    public GameObject Weapon1R;
-    public GameObject Weapon1U;
-    public GameObject Weapon2L;
-    public GameObject Weapon2R;
-    public GameObject Weapon2U;
+    public GameObject []Weapon = new GameObject[9]; //무기전체
     public GameObject CurrnetWeaponL;
     public GameObject CurrnetWeaponR;
     public GameObject CurrnetWeaponU;
@@ -323,6 +318,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; //일시정지 해제
         //씬이름변경
         SceneManager.LoadScene("1-1");
+        //모든 값 초기화
+        Coin = 0;
+        Hp = 100;
+        MaxHp = 100;
+        //전체 웨폰 배열로 만들어 접근하기
+        CurrnetWeaponL = Weapon[0];
+        CurrnetWeaponR = Weapon[1];
+        CurrnetWeaponU = Weapon[2];
     }
 
     //플레이 종료 함수
@@ -335,27 +338,38 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; //일시정지 해제
     }
 
+    public void Paused(){
+        Time.timeScale = 0; //일시정지
+    }
+
     //매점 구매 함수
     // 가격 무기 5, 전체 체력 채우기 7, 50%채우기 3, 최대체력 올리기 10
+    public bool Changeweapon1 =false;
+    public bool Changeweapon2 =false;
     public void purchaseWeapon(int number){
-        if(number == 1 && Coin >= 5 && CurrnetWeaponL == !Weapon1L){
+        if(number == 1 && Coin >= 5 && CurrnetWeaponL != Weapon[3]){
             //첫번째 상점 무기로 변경
-            CurrnetWeaponL = Weapon1L;
-            CurrnetWeaponR = Weapon1R;
-            CurrnetWeaponU = Weapon1U;
+            CurrnetWeaponL =  Weapon[3];
+            CurrnetWeaponR = Weapon[4];
+            //CurrnetWeaponU = Weapon[5];
+            Changeweapon1 = true;
             Coin -=5;
+            
         }
-        else if(number == 2 && Coin >=7 && CurrnetWeaponL == !Weapon2L){
+        else if(number == 2 && Coin >=7 && CurrnetWeaponL != Weapon[6]){
             //두번째 상점 무기로 변경
-            CurrnetWeaponL = Weapon2L;
-            CurrnetWeaponR = Weapon2R;
-            CurrnetWeaponU = Weapon2U;
+            CurrnetWeaponL = Weapon[6];
+            CurrnetWeaponR = Weapon[7];
+            //CurrnetWeaponU = Weapon[8];
+            Changeweapon2 = true;
             Coin-=7;
         }
         else{
-            
+            StartCoroutine(NoCoinState());
         }
     }
+
+    public GameObject NoCoinUI;
 
     public GameObject GetWeaposnL(){
         return CurrnetWeaponL;
@@ -368,10 +382,19 @@ public class GameManager : MonoBehaviour
         return CurrnetWeaponR;
     }
 
+    IEnumerator NoCoinState(){
+        NoCoinUI.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.0f);
+        NoCoinUI.SetActive(false);
+    }
+
     public void purchaseMaxHpPlus(float plusMaxHp){
         if(Coin >= 7){
             MaxHp+= (double)plusMaxHp;
             Coin -= 7;
+        }
+        else{
+            StartCoroutine(NoCoinState());
         }
     }
 
@@ -380,11 +403,17 @@ public class GameManager : MonoBehaviour
             Hp += Hp*0.5;
             Coin -= 3;
         }
+        else{
+            StartCoroutine(NoCoinState());
+        }
     }
     public void purchaseMaxHp(){
         if(Coin >= 10){
             Hp = MaxHp;
             Coin -= 10;
+        }
+        else{
+            StartCoroutine(NoCoinState());
         }
     }
 
@@ -399,21 +428,78 @@ public class GameManager : MonoBehaviour
     //스테이지별 클리어 조건
 
     private int S1_1 = 99;
+    private bool S1_1Clear = false;
     private int S1_2 = 99;
+    private bool S1_2Clear = false;
     private int S1_3 = 99;
+    private bool S1_3Clear = false;
     private int S1_4 = 99;
+    private bool S1_4Clear = false;
     private int S2_1 = 99;
+    private bool S2_1Clear = false;
     private int S2_2 = 99;
+    private bool S2_2Clear = false;
     private int S2_3 = 99;
+    private bool S2_3Clear = false;
     private int S3_1 = 99;
+    private bool S3_1Clear = false;
     private int S3_2 = 99;
+    private bool S3_2Clear = false;
     private int S3_3 = 99;
+    private bool S3_3Clear = false;
     private int S4_1 = 99;
+    private bool S4_1Clear = false;
     private int S4_2 = 99;
+    private bool S4_2Clear = false;
     private int S4_3 = 99;
+    private bool S4_3Clear = false;
+
+    private bool MidBossClear = false;
+    private bool BossClear = false;
     //보스나 미들보스는 그 개체 죽고 띄우자
 
     public void setStageClearS1_1(int count){
         S1_1 -=count;
+    }
+    public void setStageClearS1_2(int count){
+        S1_2 -=count;
+    }
+    public void setStageClearS1_3(int count){
+        S1_3 -=count;
+    }
+    public void setStageClearS1_4(int count){
+        S1_4 -=count;
+    }
+
+    public void setStageClearS2_1(int count){
+        S2_1 -=count;
+    }
+    public void setStageClearS2_2(int count){
+        S2_2 -=count;
+    }
+    public void setStageClearS2_3(int count){
+        S2_3 -=count;
+    }
+    public void setStageClearS3_1(int count){
+        S3_1 -=count;
+    }
+    public void setStageClearS3_2(int count){
+        S3_2 -=count;
+    }
+    public void setStageClearS3_3(int count){
+        S3_3 -=count;
+    }
+    public void setStageClearS4_1(int count){
+        S4_1 -=count;
+    }
+    public void setStageClearS4_2(int count){
+        S4_2 -=count;
+    }
+    public void setStageClearS4_3(int count){
+        S4_3 -=count;
+    }
+
+    public void StageState(){
+
     }
 }

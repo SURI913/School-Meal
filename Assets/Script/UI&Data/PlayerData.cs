@@ -22,7 +22,7 @@ public class PlayerData : MonoBehaviour
         try {
             CurrnetHp = 100;
             MaxHp = 100;
-            coin = 0;
+            coin = 100;
             StageNum1 = 1;
             StageNum2 = 1;
         }       
@@ -49,4 +49,18 @@ public class PlayerData : MonoBehaviour
             //인스턴스가 없으면 싹다 초기화
         }
     }
+
+    public bool S1_1Clear = false;
+    public bool S1_2Clear = false;
+    public bool S1_3Clear = false;
+    public bool S1_4Clear = false;
+    public bool S2_1Clear = false;
+    public bool S2_2Clear = false;
+    public bool S2_3Clear = false;
+    public bool S3_1Clear = false;
+    public bool S3_2Clear = false;
+    public bool S3_3Clear = false;
+    public bool S4_1Clear = false;
+    public bool S4_2Clear = false;
+    public bool S4_3Clear = false;
 }

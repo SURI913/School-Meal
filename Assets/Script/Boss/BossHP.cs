@@ -43,7 +43,7 @@ public class BossHP : MonoBehaviour
 
     IEnumerator PlayAnim(){
         animator.SetBool("isHunted", true);
-        yield return new WaitForSecondsRealtime(1.0f);
+        yield return new WaitForSecondsRealtime(0.5f);
         animator.SetBool("isHunted", false);
     }
 

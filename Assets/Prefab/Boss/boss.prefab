@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0122329a2e920194a91324f507446653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
   currentHP: 0
 --- !u!95 &-5357776228123288193
 Animator:
@@ -218,7 +217,7 @@ GameObject:
   - component: {fileID: 3404325135559599948}
   m_Layer: 6
   m_Name: Collider (1)
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +265,7 @@ GameObject:
   - component: {fileID: 7871487154584736782}
   m_Layer: 6
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
