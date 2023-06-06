@@ -336,6 +336,20 @@ public class GameManager : MonoBehaviour
         CurrnetWeaponU = Weapon[2];
         PlayerData.BackStageTag = "StartScene";
         PlayerData.CurrentStageTag = "1-1";
+        //적 처치 초기화
+        PlayerData.BossClear = false;
+        PlayerData.MidBossClear = false;
+        PlayerData.S1_1Clear = false;
+        PlayerData.S1_2Clear = false;
+        PlayerData.S1_3Clear = false;
+        PlayerData.S2_1Clear = false;
+        PlayerData.S2_2Clear = false;
+        PlayerData.S2_3Clear = false;
+        PlayerData.S3_1Clear = false;
+        PlayerData.S3_2Clear = false;
+        PlayerData.S4_1Clear = false;
+        PlayerData.S4_2Clear = false;
+        PlayerData.S4_3Clear = false;
         SceneManager.LoadScene("1-1");
     }
 
@@ -443,17 +457,17 @@ public class GameManager : MonoBehaviour
     }
 
     //스테이지별 클리어 조건
-    private int S1_1 = 5;
-    private int S1_2 = 7;
-    private int S1_3 = 10;
+    private int S1_1 = 4;
+    private int S1_2 = 4;
+    private int S1_3 = 4;
     private int S2_1 = 1;   //코인 있는 곳 코인먹을때 카운트 올림
-    private int S2_2 = 3;
-    private int S2_3 = 3;
-    private int S3_1 = 15;
-    private int S3_2 = 17;
-    private int S4_1 = 99;
+    private int S2_2 = 4;
+    private int S2_3 = 4;
+    private int S3_1 = 5;
+    private int S3_2 = 6;
+    private int S4_1 = 4;
     private int S4_2 = 1;   //코인 먹을때 카운트 올림
-    private int S4_3 = 99;
+    private int S4_3 = 44;
 
     private int HitCount = 0;
     

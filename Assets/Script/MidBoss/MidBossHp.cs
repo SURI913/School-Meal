@@ -39,6 +39,7 @@ public class MidBossHp : MonoBehaviour
         if(currentHP <= 0) 
         {
             Debug.Log("MidBoss HP : 0.. Die");
+            PlayerData.MidBossClear = true;
             Destroy(gameObject);
             GameManager.instance.Clear();
             summonEnemyHp.currentHP = 0;

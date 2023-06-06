@@ -91,6 +91,7 @@ public class Boss : MonoBehaviour
     {
         // 보스 죽음 파티클 생성
         Instantiate(bossDie, transform.position, Quaternion.identity);
+        PlayerData.BossClear = true;
         // 보스삭제
         Destroy(gameObject);
         GameManager.instance.Clear();
