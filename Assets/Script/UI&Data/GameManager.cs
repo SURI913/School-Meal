@@ -100,17 +100,21 @@ public class GameManager : MonoBehaviour
         isClear = false;
 
         //스테이지 정보 가져오기
-        if(StageNumberTag == "Cafeteria"){
-            StageNumber.GetComponent<Text>().text = $"급식실";
-        }
-        else if(StageNumberTag == "Office"){
-            StageNumber.GetComponent<Text>().text = $"교장실";
-        }
-        else if(StageNumberTag == "Shop1" ||StageNumberTag == "Shop2"){
-            StageNumber.GetComponent<Text>().text = $"매점";
-        }
-        else{
-            StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
+        switch (StageNumberTag)
+        {
+            case "Cafeteria":
+                StageNumber.GetComponent<Text>().text = "급식실";
+                break;
+            case "Office":
+                StageNumber.GetComponent<Text>().text = "교장실";
+                break;
+            case "Shop1":
+            case "Shop2":
+                StageNumber.GetComponent<Text>().text = "매점";
+                break;
+            default:
+                StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
+                break;
         }
 
     }
