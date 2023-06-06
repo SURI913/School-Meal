@@ -394,6 +394,12 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator NoCoinState(){
+        if(CurrnetWeaponL == Weapon[3]||CurrnetWeaponL == Weapon[6]){
+            NoCoinUI.GetComponentInChildren<Text>().text = "소지 중인 무기!";
+        }
+        else{
+            NoCoinUI.GetComponentInChildren<Text>().text = "Coin이 없어요!";
+        }
         NoCoinUI.SetActive(true);
         yield return new WaitForSecondsRealtime(1.0f);
         NoCoinUI.SetActive(false);
@@ -437,14 +443,14 @@ public class GameManager : MonoBehaviour
     }
 
     //스테이지별 클리어 조건
-    private int S1_1 = 99;
-    private int S1_2 = 99;
-    private int S1_3 = 99;
+    private int S1_1 = 5;
+    private int S1_2 = 7;
+    private int S1_3 = 10;
     private int S2_1 = 1;   //코인 있는 곳 코인먹을때 카운트 올림
-    private int S2_2 = 99;
-    private int S2_3 = 99;
-    private int S3_1 = 99;
-    private int S3_2 = 99;
+    private int S2_2 = 3;
+    private int S2_3 = 3;
+    private int S3_1 = 15;
+    private int S3_2 = 17;
     private int S4_1 = 99;
     private int S4_2 = 1;   //코인 먹을때 카운트 올림
     private int S4_3 = 99;
@@ -470,8 +476,16 @@ public class GameManager : MonoBehaviour
             PlayerData.S1_3Clear = true;
             Clear();
         }
+        if(S2_1 == HitCount){
+            PlayerData.S2_1Clear = true;
+            Clear();
+        }
         if(S2_2 == HitCount){
             PlayerData.S2_2Clear = true;
+            Clear();
+        }
+        if(S2_3 == HitCount){
+            PlayerData.S2_3Clear = true;
             Clear();
         }
         if(S3_1 == HitCount){

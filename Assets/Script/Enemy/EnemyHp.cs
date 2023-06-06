@@ -41,6 +41,7 @@ public class EnemyHp : MonoBehaviour
         if(currentHP <= 0) 
         {
             Debug.Log("Enemy HP : 0.. Die");
+            GameManager.instance.HitCountCheck(1);
             Destroy(gameObject);
         }
     }

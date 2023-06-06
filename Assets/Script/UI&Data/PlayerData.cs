@@ -53,12 +53,12 @@ public class PlayerData : MonoBehaviour
     public static bool S1_1Clear = false;
     public static bool S1_2Clear = false;
     public static bool S1_3Clear = false;
-    public static bool S2_1Clear = true;    //코인방
+    public static bool S2_1Clear = false;    //코인방
     public static bool S2_2Clear = false;
     public static bool S2_3Clear = false;
     public static bool S3_1Clear = false;
     public static bool S3_2Clear = false;
-    public static bool S4_1Clear = false;
+    public static bool S4_1Clear = false; //코인방
     public static bool S4_2Clear = true;
     public static bool S4_3Clear = false;
     public static bool MidBossClear = false;
