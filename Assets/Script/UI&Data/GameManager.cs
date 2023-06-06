@@ -42,8 +42,10 @@ public class GameManager : MonoBehaviour
     public Sprite MuteSound;
     public Sprite OnSound;
 
-    public GameObject MusicHandle;
-    public GameObject SoundHandle;
+    public Slider MusicHandle;
+    public GameObject MusicHandleIMG;
+    public GameObject SoundHandleIMG;
+    public Slider SoundHandle;
 
     //게임오버
     public GameObject Gameover;
@@ -270,10 +272,10 @@ public class GameManager : MonoBehaviour
     //효과음 및 배경음악 재생 함수
     public void SetSoundVloum(float volume){
         if(volume == 0) {
-            SoundHandle.GetComponent<Image>().sprite = MuteSound;   //0이면 뮤트이미지로 변경
+            SoundHandleIMG.GetComponent<Image>().sprite = MuteSound;   //0이면 뮤트이미지로 변경
         }
         else{
-            SoundHandle.GetComponent<Image>().sprite = OnSound;   //0이면 뮤트이미지로 변경
+            SoundHandleIMG.GetComponent<Image>().sprite = OnSound;   //0이면 뮤트이미지로 변경
         }
         PlayerHitSound.volume = volume;
         EnemyHitSound.volume = volume;
@@ -284,10 +286,10 @@ public class GameManager : MonoBehaviour
 
     public void SetMusicVloum(float volume){
         if(volume == 0) {
-            MusicHandle.GetComponent<Image>().sprite = MuteMusic;   //0이면 뮤트이미지로 변경
+            MusicHandleIMG.GetComponent<Image>().sprite = MuteMusic;   //0이면 뮤트이미지로 변경
         }
         else{
-            MusicHandle.GetComponent<Image>().sprite = OnMusic;   //아니라면 기본이미지
+            MusicHandleIMG.GetComponent<Image>().sprite = OnMusic;   //아니라면 기본이미지
         }
         BackGroundMusic.volume = volume;
     }
