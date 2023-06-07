@@ -4,55 +4,12 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] 
-    private GameObject enemyPrefab;         // º¹Á¦ÇØ¼­ »ı¼ºÇÒ Àû Ä³¸¯ÅÍ ÇÁ¸®ÆÕ
     [SerializeField]
-    private Transform canvasTransform;          // UI¸¦ Ç¥ÇöÇÏ´Â Canvas ¿ÀºêÁ§Æ®ÀÇ Transform
-    [SerializeField]
-    private GameObject boss;                         // º¸½º ¿ÀºêÁ§Æ®
-    [SerializeField]
-    private float spawnTime;                           // »ı¼º ÁÖ±â
-    [SerializeField]
-    private int maxEnemyCount = 5;              // ÇöÀç ½ºÅ×ÀÌÁöÀÇ ÃÖÀç Àû »ı¼º ¼ıÀÚ
+    private GameObject boss;                         // ë³´ìŠ¤ ì˜¤ë¸Œì íŠ¸
 
     private void Awake()
     {
-        boss.SetActive(false);
-
-        StartCoroutine("SpawnEnemy");
-
-        
-    }
-
-    
-
-    private IEnumerator SpawnEnemy()
-    {
-        int currentEnemyCount = 0;
-
-        while (true)
-        {
-            // x À§Ä¡´Â ½ºÅ×ÀÌÁöÀÇ Å©±â ¹üÀ§ ³»¿¡¼­ ÀÓÀÇÀÇ °ªÀ» ¼±ÅÃ
-            float positionX = Random.Range(-9, 9);
-            // Àû »ı¼º À§Ä¡
-            Vector3 position = new Vector3(positionX, -4.0f, 0.0f);
-            // Àû Ä³¸¯ÅÍ »ı¼º
-            GameObject enemyClone = Instantiate(enemyPrefab, position, Quaternion.identity);
-            //Instantiate(enemyPrefab, new Vector3(positionX, stageData.LimitMax.y+1, 0.0f),Quaternion.identity);
-
-            
-            // Àû »ı¼º ¼ıÀÚ Áõ°¡
-            currentEnemyCount++;
-            // ÀûÀ» ÃÖ´ë ¼ıÀÚ±îÁö »ı¼ºÇÏ¸é Àû »ı¼º ÄÚ·çÆ¾ ÁßÁö, º¸½º »ı¼º ÄÚ·çÆ¾ ½ÇÇà
-            if(currentEnemyCount == maxEnemyCount)
-            {
-                StartCoroutine("SpawnBoss");
-                break;
-            }
-
-            // spawnTime ¸¸Å­ ´ë±â
-            yield return new WaitForSeconds(spawnTime);
-        }
+        StartCoroutine("SpawnBoss");
     }
 
     private IEnumerator SpawnBoss()
