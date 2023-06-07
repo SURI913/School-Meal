@@ -138,16 +138,14 @@ public class GameManager : MonoBehaviour
     //게임 오버
     IEnumerator GameOver(){
         isGameOver = true;
-        Destroy(BackGroundMusic);
+        BackGroundMusic.volume = 0;
         GameoverSound.Play();
-        AllBulrCam.SetActive(true);
-        GameOverAnim  = Gameover.GetComponent<Animator>();
         Gameover.SetActive(true);
         GameOverAnim.SetTrigger("isGameOver");
+        AllBulrCam.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         Retry.SetActive(true);
         Time.timeScale = 0; //일시정지
-        yield return new WaitForSeconds(1);
     }
    
     //게임 클리어
@@ -164,6 +162,10 @@ public class GameManager : MonoBehaviour
     //게임 클리어 재생
     public void Clear(){
         StartCoroutine(GameClear());
+    }
+
+    public void gameOver(){
+        StartCoroutine(GameOver());
     }
 
     public void HpSystem()

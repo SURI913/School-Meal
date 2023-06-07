@@ -42,7 +42,7 @@ public class PlayerHp : MonoBehaviour
         {
             Debug.Log("Player HP : 0.. Die");
             Destroy(gameObject);
-            Time.timeScale = 0; //일시정지
+            GameManager.instance.gameOver();
         }
     }
 
@@ -56,14 +56,6 @@ public class PlayerHp : MonoBehaviour
         //에너미 근접공격
         if((other.collider.CompareTag("Enemy") || other.collider.CompareTag("SummonEnemy")) && isDamage ==false){
             StartCoroutine(DamageCooltime());
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.collider.CompareTag("Enemy")|| other.collider.CompareTag("SummonEnemy"))
-        {
-            isDamage = false;
         }
     }
 
