@@ -20,8 +20,8 @@ public class summonEnemyHp : MonoBehaviour
     private void Start()
     {
         //게임매니저에 있는 전체체력을 가져온다.
-        currentHP = GameManager.instance.GetsummonenemyHP();
-        maxHP = GameManager.instance.GetsummonMaxenemyHP();
+        currentHP = 50;
+        maxHP = 50;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>(); //애니메이션
