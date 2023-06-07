@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
-    public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
-    public static double summonMaxenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
-    public static double MidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
-    public static double MaxMidBossHP = 200; //중간보스 체력 플레이어 보다 큼 임의설정
-    public static double BossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
-    public static double MaxBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double summonenemyHP = 50; //중간보스 소환 잡몹 체력 플레이어보다 낮다
+    public static double summonMaxenemyHP = 50; //중간보스 소환 잡몹 체력 플레이어보다 낮다
+    public static double MidBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double MaxMidBossHP = 500; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double BossHP = 800; //중간보스 체력 플레이어 보다 큼 임의설정
+    public static double MaxBossHP = 800; //중간보스 체력 플레이어 보다 큼 임의설정
 
     //공격한 적이 누구인가
     private bool isEnemyHit = false;
