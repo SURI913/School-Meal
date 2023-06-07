@@ -45,11 +45,11 @@ public class playerattack : MonoBehaviour
     void Update()
     {
         //무기변경
-        //if(GameManager.instance.Changeweapon1 == true || GameManager.instance.Changeweapon1 == true){
-            //leftattack = GameManager.instance.GetWeaposnL();
-            //rightattack = GameManager.instance.GetWeaposnR();
-            //upattack = GameManager.instance.GetWeaposnU();
-        //}
+        // if(GameManager.instance.Changeweapon1 == true || GameManager.instance.Changeweapon1 == true){
+        //     leftattack = GameManager.instance.GetWeaposnL();
+        //     rightattack = GameManager.instance.GetWeaposnR();
+        //     upattack = GameManager.instance.GetWeaposnU();
+        // }
         curtime -= Time.deltaTime;
         pos = this.GetComponent<Transform>().position; //플레이어 위치 가져옴
 

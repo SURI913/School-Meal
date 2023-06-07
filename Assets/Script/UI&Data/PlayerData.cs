@@ -15,9 +15,8 @@ public class PlayerData : MonoBehaviour
 
     public static string CurrentStageTag = "1-1";
     public static string BackStageTag = "1-1"; //스트링으로 관리
-    public static GameObject WeaponL;
-    public static GameObject WeaponR;
-    public static GameObject WeaponU;
+
+    public static int  WeaponType = 0;
 
     void Start () {
         try {
@@ -38,9 +37,7 @@ public class PlayerData : MonoBehaviour
             CurrnetHp = GameManager.instance.GetCurrnetHP();
             MaxHp = GameManager.instance.GetMaxHP();
             coin = GameManager.instance.GetCoin();
-            WeaponL = GameManager.instance.GetWeaposnL();
-            WeaponR = GameManager.instance.GetWeaposnR();
-            WeaponU = GameManager.instance.GetWeaposnU();
+            WeaponType = playerattack.atktype;
         }
         else{
             CurrnetHp = 100;

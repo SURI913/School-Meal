@@ -71,10 +71,6 @@ public class GameManager : MonoBehaviour
     public GameObject StageNumber;
 
     //매점 관리
-    public GameObject []Weapon = new GameObject[9]; //무기전체
-    private GameObject CurrnetWeaponL;
-    private GameObject CurrnetWeaponR;
-    private GameObject CurrnetWeaponU;
     private int Coin;
     public GameObject Cointext;
 
@@ -99,9 +95,7 @@ public class GameManager : MonoBehaviour
         BackDoor.tag = BackStageNumberTag;
         Coin = PlayerData.coin;
         isClear = false;
-        CurrnetWeaponL = PlayerData.WeaponL;
-        CurrnetWeaponR = PlayerData.WeaponR;
-        CurrnetWeaponU = PlayerData.WeaponU;
+        playerattack.atktype = PlayerData.WeaponType;
     }
 
     private void Start(){
@@ -332,11 +326,7 @@ public class GameManager : MonoBehaviour
         PlayerData.coin = 0;
         PlayerData.CurrnetHp = 100;
         PlayerData.MaxHp = 100;
-        //전체 웨폰 배열로 만들어 접근하기
-        playerattack.atktype = 0;
-        PlayerData.WeaponL = Weapon[0];
-        PlayerData.WeaponR = Weapon[1];
-        PlayerData.WeaponU = Weapon[2];
+        playerattack.atktype = 0; //기본총알
         PlayerData.BackStageTag = "1-1";
         PlayerData.CurrentStageTag = "1-1";
         //적 처치 초기화
@@ -393,24 +383,18 @@ public class GameManager : MonoBehaviour
     public bool Changeweapon1 =false;
     public bool Changeweapon2 =false;
     public void purchaseWeapon(int number){
-        if(number == 2 && Coin >= 5 && CurrnetWeaponL != Weapon[3] && Changeweapon1 ==false){
-            //첫번째 상점 무기로 변경
+        if(number == 2 && Coin >= 5 && playerattack.atktype != 2 && Changeweapon1 ==false){
+            //두번째 상점 무기로 변경 
             //속사무기
             playerattack.atktype = 2;
-            CurrnetWeaponL =  Weapon[3];
-            CurrnetWeaponR = Weapon[4];
-            CurrnetWeaponU = Weapon[5];
             Changeweapon1 = true;
             Coin -=5;
             
         }
-        else if(number == 1 && Coin >=7 && CurrnetWeaponL != Weapon[6] && Changeweapon2 ==false){
+        else if(number == 1 && Coin >=7 && playerattack.atktype != 1 && Changeweapon2 ==false){
             playerattack.atktype = 1;
-            //두번째 상점 무기로 변경
+            //첫번째 상점 무기로 변경
             //관통무기
-            CurrnetWeaponL = Weapon[6];
-            CurrnetWeaponR = Weapon[7];
-            CurrnetWeaponU = Weapon[8];
             Changeweapon2 = true;
             Coin-=7;
         }
@@ -421,19 +405,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject NoCoinUI;
 
-    public GameObject GetWeaposnL(){
-        return CurrnetWeaponL;
-    }
-    public GameObject GetWeaposnR(){
-        return CurrnetWeaponR;
-    }
-
-    public GameObject GetWeaposnU(){
-        return CurrnetWeaponR;
-    }
-
     IEnumerator NoCoinState(){
-        if(CurrnetWeaponL == Weapon[3]||CurrnetWeaponL == Weapon[6]){
+        if(Changeweapon1 == true ||Changeweapon2 == true){
             NoCoinUI.GetComponentInChildren<Text>().text = "소지 중인 무기!";
         }
         else{
