@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4610863556825808272}
   - component: {fileID: 7290046951921298208}
   - component: {fileID: 7050395434430618944}
-  - component: {fileID: -5514628062897436172}
+  - component: {fileID: -4743138902085252099}
   - component: {fileID: -1753930380333167093}
   m_Layer: 0
   m_Name: PlayerBullet2 R
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9635057838a23e8479d4eabedfda58d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
---- !u!114 &-5514628062897436172
+  damage: 7
+--- !u!114 &-4743138902085252099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,14 +109,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982617944397340478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8580f6e9e633a9543af1496129caaeb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 77d51f68b5943da4d8e0f2a2efd49a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  distance: 3
-  isLayer:
-    serializedVersion: 2
-    m_Bits: 192
+  speed: 10
 --- !u!58 &-1753930380333167093
 CircleCollider2D:
   m_ObjectHideFlags: 0

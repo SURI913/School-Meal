@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletU: MonoBehaviour
+public class upgradeBulletR : MonoBehaviour
 {
     public float speed;
-    public float distance;
-    public LayerMask isLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +14,7 @@ public class BulletU: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.right, distance, isLayer);
-        if (ray.collider != null)
-        {
-            DestroyBullet();
-        }
-        transform.Translate(transform.up * speed * Time.deltaTime);
+        transform.Translate(transform.right * speed * Time.deltaTime);
     }
 
     void DestroyBullet()

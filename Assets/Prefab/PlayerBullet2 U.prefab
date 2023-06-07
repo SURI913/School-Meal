@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5237858094959993822}
   - component: {fileID: 6014278311940931250}
-  - component: {fileID: 8259286824263222833}
   - component: {fileID: 123159165026890649}
+  - component: {fileID: -3824486064309831959}
   - component: {fileID: 2505869456436143666}
   m_Layer: 0
   m_Name: PlayerBullet2 U
@@ -87,23 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8259286824263222833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317862037724060260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff013fbe516312b4c984b7306bdf83b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
-  distance: 0
-  isLayer:
-    serializedVersion: 2
-    m_Bits: 192
 --- !u!114 &123159165026890649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +99,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9635057838a23e8479d4eabedfda58d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 7
+--- !u!114 &-3824486064309831959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317862037724060260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2497c60185d081f449b9daf477281570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!58 &2505869456436143666
 CircleCollider2D:
   m_ObjectHideFlags: 0
