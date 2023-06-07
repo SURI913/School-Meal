@@ -129,7 +129,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HpSystem(); //플레이어가 죽을 때 모든 동작을 멈추고 GameOver창을 띄운다
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
         StageState();   //일반맵 클리어 조건 달성했나 체크
@@ -137,7 +136,6 @@ public class GameManager : MonoBehaviour
 
     //게임 오버
     IEnumerator GameOver(){
-        isGameOver = true;
         BackGroundMusic.volume = 0;
         GameoverSound.Play();
         Gameover.SetActive(true);
@@ -165,20 +163,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void gameOver(){
+        isGameOver = true;
+        StopAllCoroutines();
         StartCoroutine(GameOver());
-    }
-
-    public void HpSystem()
-    {
-        if (Hp > MaxHp) //체력이 최대체력을 넘어가지 못하게하기
-        {
-            Hp = MaxHp;
-        }
-        if (Hp <= 0 && isGameOver == false) // 플레이어 체력이 0이되면 사망
-        {
-            StartCoroutine(GameOver());
-            //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-        }
     }
 
 
@@ -362,7 +349,7 @@ public class GameManager : MonoBehaviour
         isClear = false;
         isGameOver = false;
         AllBulrCam.SetActive(false); //블러처리 해제
-        Gameover.SetActive(false);
+        BackGroundMusic.volume = 1;
 
     }
 
