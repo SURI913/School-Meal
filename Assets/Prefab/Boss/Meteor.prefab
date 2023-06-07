@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8945206890287573570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8945206890287573568}
+  - component: {fileID: 8945206890287573571}
+  m_Layer: 0
+  m_Name: Meteor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8945206890287573568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945206890287573570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9126205, y: 1.6635327, z: -1.18253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8945206890287573571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945206890287573570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f7415d23b11f74d9838e5bcc8fe22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorA: {fileID: 5125289061911715690, guid: e530100e91ab5354c82f8a29c50f79fa, type: 3}
+  meteorB: {fileID: 1146487891407011177, guid: 514f46aa9dc36e24bab4e45da2a0ec29, type: 3}
+  meteorC: {fileID: 1957300313307420415, guid: 24ccb7034ef3b824f87623ec9965e2a5, type: 3}
+  meteorD: {fileID: 1957300313307420415, guid: 24ccb7034ef3b824f87623ec9965e2a5, type: 3}
