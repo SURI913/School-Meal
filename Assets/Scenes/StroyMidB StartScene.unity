@@ -293,90 +293,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24407247}
   m_CullTransparentMesh: 1
---- !u!1 &39867990
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39867992}
-  - component: {fileID: 39867991}
-  m_Layer: 0
-  m_Name: DialogSystem02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &39867991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39867990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15af6f19dd0afc741861d9bb72703a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speakers:
-  - panelplayer: {fileID: 988364041}
-    spriteRenderer: {fileID: 879220108}
-    TextDaiolg: {fileID: 43808076}
-    TextName: {fileID: 2071509679}
-    TextSkip: {fileID: 294443724}
-  - panelplayer: {fileID: 512160200}
-    spriteRenderer: {fileID: 942334044}
-    TextDaiolg: {fileID: 1481861373}
-    TextName: {fileID: 1981973888}
-    TextSkip: {fileID: 2067141964}
-  - panelplayer: {fileID: 1440717402}
-    spriteRenderer: {fileID: 476859643}
-    TextDaiolg: {fileID: 284732798}
-    TextName: {fileID: 174175893}
-    TextSkip: {fileID: 615715697}
-  - panelplayer: {fileID: 1573669102}
-    spriteRenderer: {fileID: 476859643}
-    TextDaiolg: {fileID: 1953361692}
-    TextName: {fileID: 926571960}
-    TextSkip: {fileID: 615715697}
-  dialogs:
-  - speakerIndex: 2
-    name: 
-    dialogue: "OO\uD559\uAD50\uC758 \uD559\uC0DD\uD68C"
-  - speakerIndex: 3
-    name: "\uB108\uB4DC(\uD68C\uC7A5\uC758 \uCE21\uADFC)"
-    dialogue: "\uD559\uC0DD\uD68C\uC7A5 \uC544\uBB34\uB798\uB3C4 \uD0AC\uB9AC\uAC00
-      \uAE09\uC2DD\uBB38\uC81C\uB85C \uD68C\uC7A5\uD55C\uD14C \uCC3E\uC544\uC624\uB824\uB098\uBD10
-      !"
-  - speakerIndex: 1
-    name: "\uD559\uC0DD\uD68C"
-    dialogue: "\uBB50?! \uADF8 \uACE8\uCE6B\uB369\uC5B4\uB9AC\uAC00? \uC548\uADF8\uB798
-      \uD559\uC0DD\uD68C\uC5D0 \uD560\uC77C\uC774 \uD0DC\uC0B0\uC778\uB370 !!\n\uB108\uB4DC
-      !! \uC560\uB4E4\uD55C\uD14C \uAC00\uC11C \uD0AC\uB9AC\uAC00 \uB098\uD55C\uD14C
-      \uC624\uC9C0 \uBABB\uD558\uAC8C \uB9C9\uC73C\uB77C\uACE0\uD574 "
-  - speakerIndex: 3
-    name: "\uB108\uB4DC(\uD68C\uC7A5\uC758 \uCE21\uADFC)"
-    dialogue: "\uC54C\uACA0\uC5B4 !!"
-  isAutoStart: 1
---- !u!4 &39867992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39867990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 293, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43808074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,7 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogSystem01: {fileID: 1014482265}
-  dialogSystem02: {fileID: 39867991}
+  dialogSystem02: {fileID: 0}
   textCountdown: {fileID: 1220090511}
 --- !u!4 &759387866
 Transform:
@@ -1434,7 +1350,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819345131
 GameObject:
@@ -2156,62 +2072,34 @@ MonoBehaviour:
     TextDaiolg: {fileID: 43808076}
     TextName: {fileID: 2071509679}
     TextSkip: {fileID: 294443724}
+  - panelplayer: {fileID: 512160200}
+    spriteRenderer: {fileID: 942334044}
+    TextDaiolg: {fileID: 1481861373}
+    TextName: {fileID: 1981973888}
+    TextSkip: {fileID: 2067141964}
   - panelplayer: {fileID: 1440717402}
     spriteRenderer: {fileID: 1742510411}
     TextDaiolg: {fileID: 284732798}
     TextName: {fileID: 174175893}
     TextSkip: {fileID: 615715697}
-  - panelplayer: {fileID: 1440717402}
-    spriteRenderer: {fileID: 1742510411}
-    TextDaiolg: {fileID: 284732798}
-    TextName: {fileID: 174175893}
-    TextSkip: {fileID: 615715697}
-  - panelplayer: {fileID: 1573669102}
-    spriteRenderer: {fileID: 476859643}
-    TextDaiolg: {fileID: 1953361692}
-    TextName: {fileID: 926571960}
-    TextSkip: {fileID: 1431386905}
   dialogs:
   - speakerIndex: 2
     name: 
-    dialogue: "OO \uD559\uAD50 \uAE09\uC2DD\uC2E4..\n\uD0AC\uB9AC\uB294 \uC624\uB298\uB3C4
-      \uC5B4\uAE40\uC5C6\uC774 \uAE09\uC2DD\uC744 \uBA39\uACE0 \uC788\uC5C8\uB2E4."
+    dialogue: "\uD0AC\uB9AC\uAC00 \uD559\uC0DD\uD68C\uC2E4 \uBB38\uC744 \uC5F4\uACE0
+      \uB4E4\uC5B4\uAC04\uB2E4."
   - speakerIndex: 0
     name: "\uD0AC\uB9AC"
-    dialogue: "\uC624\uB298\uB3C4 \uC5EC\uC804\uD788 \uB9DB\uC5C6\uB294 \uBC25\uC774\uB124..\n\uB3C4\uB300\uCCB4
-      \uC5B4\uB5BB\uAC8C \uD558\uBA74 \uC774\uB807\uAC8C \uB9DB\uC774 \uC5C6\uC9C0? "
+    dialogue: "\uD68C\uC7A5 ! \uB098\uB791 \uC598\uAE30 \uC880 \uD558\uC790! \uAE09\uC2DD\uC774.. "
   - speakerIndex: 1
-    name: "\uCE5C\uAD6C 1"
-    dialogue: "\uD0AC\uB9AC \uADF8\uB0E5 \uBA39\uC5B4\n\uD22C\uC815\uD55C\uB2E4\uACE0
-      \uAE09\uC2DD\uC774 \uBC14\uB00C\uB294\uAC8C \uC544\uB2CC\uAC78.."
+    name: "\uD559\uC0DD\uD68C\uC7A5"
+    dialogue: "\uC870\uC6A9\uD788 \uC880 \uD574 !!\n\uC9C0\uAE08 \uB108\uB791 \uC598\uAE30
+      \uD560 \uC2DC\uAC04 \uC5C6\uB2E4\uACE0 !!\n\uB0B4\uAC00 \uC9C0\uAE08 \uCC98\uB9AC\uD574\uC57C
+      \uD560 \uC77C\uC774 \uC5BC\uB9C8\uB098\uB9CE\uC740\uC9C0 \uC54C\uC544? \uC73C\uC73C\uC73C..
+      \uB2F9\uC7A5 \uB098\uAC00 !!"
   - speakerIndex: 0
     name: "\uD0AC\uB9AC"
-    dialogue: "\uB10C \uC774\uB7F0\uBC25\uC744 \uBA39\uACE0 \uADF8\uB7F0\uC18C\uB9AC\uAC00
-      \uB098\uC640?\n\uC548\uB418\uACA0\uC5B4 \uB0B4\uAC00 \uC9C1\uC811 \uD559\uC0DD\uD68C\uC7A5\uC774\uB791
-      \uC598\uAE30\uD574\uBD10\uC57C\uACA0\uC5B4"
-  - speakerIndex: 1
-    name: "\uCE5C\uAD6C 1"
-    dialogue: "\uD559\uC0DD\uD68C\uC7A5\uC774 \uC6B0\uB9AC \uB9D0\uC744 \uB4E4\uC5B4\uC904\uAE4C?
-      \n\uC18C\uBB38\uC73C\uB860 \uC644\uC804 \uAE50\uAE50\uD558\uB2E4\uACE0 \uB4E4\uC5C8\uB294\uB370..\n\uADF8\uB0E5
-      \uC774\uB300\uB85C \uC9C0\uB0B4\uB294\uAC8C \uD3B8\uD574 "
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uB09C \uC774\uB300\uB85C \uC9C0\uB0BC\uBC14\uC5D4 \uCC3E\uC544\uAC00\uC11C
-      \uD55C\uB9C8\uB514 \uD558\uACA0\uC5B4 !"
-  - speakerIndex: 1
-    name: "\uCE5C\uAD6C 1"
-    dialogue: "\uB9D0\uB9AC\uC9C4 \uC54A\uACA0\uC9C0\uB9CC \uD559\uC0DD\uD68C\uC7A5
-      \uC8FC\uC704\uC5D4 \uADF8\uB97C \uC9C0\uC9C0\uD558\uB294 \uC0AC\uB78C\uC774
-      \uB9CE\uC73C\uB2C8 \uC870\uC2EC\uD574 "
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uBB3C\uB860\uC774\uC9C0! \uC870\uAE08\uB9CC \uAE30\uB2E4\uB824\n\uADF8\uB7FC
-      \uC774 \uB9DB\uC5C6\uB294 \uAE09\uC2DD\uB3C4 \uC548\uB155\uC774\uB2C8\uAE4C
-      !"
-  - speakerIndex: 3
-    name: "\uD68C\uC7A5\uC758 \uCE21\uADFC"
-    dialogue: "....(\uC774\uC57C\uAE30\uB97C \uC5FF\uB4E4\uC73C\uBA70 \uAE09\uC2DD\uC744
-      \uBA39\uACE0\uC788\uB2E4.)"
+    dialogue: "(\uC774\uAC70 \uC548\uB418\uACA0\uB124.. \uC598\uAE30\uB97C \uD560
+      \uC0C1\uD669\uC774 \uC544\uB2C8\uC57C. \uC77C\uB2E8 \uC81C\uC555\uD574\uC57C\uACA0\uC5B4.)"
   isAutoStart: 1
 --- !u!4 &1014482266
 Transform:
@@ -2942,7 +2830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1573669103
 RectTransform:
   m_ObjectHideFlags: 0

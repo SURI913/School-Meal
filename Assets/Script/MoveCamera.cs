@@ -28,13 +28,10 @@ public class MoveCamera : MonoBehaviour
         float lx;
         float clampX;
         if (target != null)
-        {
-            //타겟이 있을때 작동되는 if문입니다
-            //카메라 움직이는 부분 여기 넣어주시고
+        {  
             transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);//플레이어 위치를 받옴 
             lx = size.x * 0.5f - width;
             clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
-
 
             transform.position = new Vector3(clampX, 0, -10f);
         }
@@ -44,14 +41,10 @@ public class MoveCamera : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, NonTagetTransform, Time.deltaTime * speed);
             //마지막에 있던 타겟의 위치값 저장해둔거를 고정해서 사용하도록 수정부탁드려요
         }
-        // transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//       ġ    ӵ    ī ޶  ̵ 
-
-        // transform.position = new Vector3(transform.position.x,0, -10f);  //ī ޶  y   0         ,z  -10            ¿ θ  ī ޶   ̵  
-
+        
+        //y위치인데 이건 고정 
         //float lx = size.x * 0.5f - width;
         //float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
-
-
 
         //transform.position = new Vector3(clampX,0, -10f);//ī ޶  z        
 
