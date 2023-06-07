@@ -3755,8 +3755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d55d1235cfbca4aab8fe4fdc30e8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  MaxHp: 100
   BackGroundMusic: {fileID: 1282969638}
   ButtonSound: {fileID: 1391104455}
   PlayerAttackSound: {fileID: 1249899769}

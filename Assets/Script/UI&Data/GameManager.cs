@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance; //싱글턴 접근
     
-    public double Hp; //현재체력
-    public double MaxHp; //최대체력
+    double Hp; //현재체력
+    double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     //게임오버
     public GameObject Gameover;
     private Animator GameOverAnim;
+    private Animator GameClearAnim;
     public GameObject Retry;
     public GameObject AllBulrCam; //블러처리
     bool isGameOver = false;
@@ -89,9 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두 개 이상의 게임매니저가 존재합니다!");
             Destroy(gameObject);
         }
-    }
 
-    private void Start(){
         //플레이어 데이터 가져오기
         Hp = PlayerData.CurrnetHp;
         MaxHp = PlayerData.MaxHp;
@@ -103,8 +102,9 @@ public class GameManager : MonoBehaviour
         CurrnetWeaponL = PlayerData.WeaponL;
         CurrnetWeaponR = PlayerData.WeaponR;
         CurrnetWeaponU = PlayerData.WeaponU;
-        enemyHP = 100;
-        MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
+    }
+
+    private void Start(){
 
         //스테이지 정보 가져오기
         switch (StageNumberTag)
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
                 StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
                 break;
         }
-
+        AllBulrCam.SetActive(false);
     }
 
     // Update is called once per frame
@@ -133,26 +133,38 @@ public class GameManager : MonoBehaviour
         Cointext.GetComponent<Text>().text = $"{Coin}";
         StageState();   //일반맵 클리어 조건 달성했나 체크
     }
+    public void gameOver(){
+        StopAllCoroutines();
+        StartCoroutine(GameOver());
+    }
 
     //게임 오버
-    IEnumerator GameOver(){
-        BackGroundMusic.volume = 0;
-        GameoverSound.Play();
-        Gameover.SetActive(true);
-        GameOverAnim.SetTrigger("isGameOver");
-        AllBulrCam.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
-        Retry.SetActive(true);
-        Time.timeScale = 0; //일시정지
+    public IEnumerator GameOver()
+    {
+        if(isGameOver ==false){
+            // 게임 오버 처리 로직을 구현하세요
+            GameOverAnim = Gameover.GetComponent<Animator>();
+            isGameOver = true;
+            BackGroundMusic.volume = 0;
+            GameoverSound.Play();
+            Gameover.SetActive(true);
+            GameOverAnim.SetBool("isGameover", true);
+            AllBulrCam.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            Retry.SetActive(true);
+            Time.timeScale = 0; // 일시정지
+            GameOverAnim.SetBool("isGameover", false);
+        }
     }
    
     //게임 클리어
     IEnumerator GameClear(){
         GameClearSound.Play();
-        GameOverAnim  = Gameclear.GetComponent<Animator>();
+        GameClearAnim  = Gameclear.GetComponent<Animator>();
         Gameclear.SetActive(true);
-        GameOverAnim.SetTrigger("isGameOver");  //동일한 애니메이션임
+        GameClearAnim.SetBool("isGameover", true);   //동일한 애니메이션 사용
         yield return new WaitForSeconds(3.0f);
+        GameClearAnim.SetBool("isGameover", false);
         Gameclear.SetActive(false);
         Door.SetActive(true);   //문 오픈
     }
@@ -160,12 +172,6 @@ public class GameManager : MonoBehaviour
     //게임 클리어 재생
     public void Clear(){
         StartCoroutine(GameClear());
-    }
-
-    public void gameOver(){
-        isGameOver = true;
-        StopAllCoroutines();
-        StartCoroutine(GameOver());
     }
 
 

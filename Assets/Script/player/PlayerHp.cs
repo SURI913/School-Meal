@@ -31,6 +31,7 @@ public class PlayerHp : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+
         //데미지를 입은 경우 최근체력 감소시킴
         StartCoroutine(DamageMotion());
         currentHP -= damage;
@@ -44,6 +45,7 @@ public class PlayerHp : MonoBehaviour
             gameObject.SetActive(false);
             GameManager.instance.gameOver();
         }
+
     }
 
     IEnumerator DamageMotion(){
