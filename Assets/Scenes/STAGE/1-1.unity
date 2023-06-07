@@ -3726,7 +3726,7 @@ MonoBehaviour:
   SoundHandleIMG: {fileID: 764456758}
   SoundHandle: {fileID: 857732291}
   Gameover: {fileID: 2042952483}
-  Retry: {fileID: 541288952}
+  Retry: {fileID: 1540262591}
   AllBulrCam: {fileID: 1052216307}
   Door: {fileID: 480600433}
   Gameclear: {fileID: 1480044477}
@@ -3746,7 +3746,6 @@ MonoBehaviour:
   Changeweapon1: 0
   Changeweapon2: 0
   NoCoinUI: {fileID: 1030001414}
-  ClearCount: 0
 --- !u!4 &881958638
 Transform:
   m_ObjectHideFlags: 0
@@ -7245,7 +7244,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881958637}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ButtonSoundPlay
         m_Mode: 1
@@ -7257,7 +7256,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 881958637}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ReSetScene
         m_Mode: 1

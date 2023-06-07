@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         GameOverAnim  = Gameover.GetComponent<Animator>();
         Gameover.SetActive(true);
         GameOverAnim.SetTrigger("isGameOver");
+        yield return new WaitForSeconds(3.0f);
         Retry.SetActive(true);
         Time.timeScale = 0; //일시정지
         yield return new WaitForSeconds(1);
@@ -357,6 +358,9 @@ public class GameManager : MonoBehaviour
         PlayerData.S4_2Clear = false;
         PlayerData.S4_3Clear = false;
         isClear = false;
+        isGameOver = false;
+        AllBulrCam.SetActive(false); //블러처리 해제
+        Gameover.SetActive(false);
 
     }
 
