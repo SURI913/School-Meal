@@ -62,7 +62,7 @@ public class HPControll : MonoBehaviour
             EnemyHp.SetActive(true);
             //잡몹이 공격당했다.
             AllEnemyCurrentHP = ((float)GameManager.instance.GetenemyHP());
-            AllEnemyMaxHp = ((float)GameManager.instance.GetMaxenemyHP());
+            AllEnemyMaxHp = 100;
             AllEnemySliderEvent();
             Enemyfacefream.SetActive(true);
             Enemyface.SetActive(true);
@@ -73,7 +73,7 @@ public class HPControll : MonoBehaviour
             EnemyHp.SetActive(true);
             //중간보스몹이 공격당했다.
             AllEnemyCurrentHP = ((float)GameManager.instance.GetMidBossHP());
-            AllEnemyMaxHp = 200;
+            AllEnemyMaxHp = 500;
             AllEnemySliderEvent();
             Enemyfacefream.SetActive(true);
             Enemyface.SetActive(false);
@@ -84,7 +84,7 @@ public class HPControll : MonoBehaviour
             EnemyHp.SetActive(true);
             //보스몹이 공격당했다.
             AllEnemyCurrentHP = ((float)GameManager.instance.GetBossHP());
-            AllEnemyMaxHp = 500;
+            AllEnemyMaxHp = 800;
             AllEnemySliderEvent();
             Enemyfacefream.SetActive(true);
             Enemyface.SetActive(false);

@@ -18,6 +18,6 @@ public class StartUIManager : MonoBehaviour
 
     //Tutorial버튼 클릭 시 TutorialScene으로 이동.
     public void GoTutorialScene(){
-        //SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Tutorial");
     }
 }
