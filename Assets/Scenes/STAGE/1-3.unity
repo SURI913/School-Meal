@@ -2323,7 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 567418984}
-  speed: 2.5
+  speed: 3
   center: {x: 7.5, y: 0}
   size: {x: 51, y: 10.2}
 --- !u!1 &541288952
@@ -3882,8 +3882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d55d1235cfbca4aab8fe4fdc30e8b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  MaxHp: 100
   BackGroundMusic: {fileID: 1282969638}
   ButtonSound: {fileID: 1391104455}
   PlayerAttackSound: {fileID: 1249899769}
@@ -3907,16 +3905,6 @@ MonoBehaviour:
   Gameclear: {fileID: 1480044477}
   BackDoor: {fileID: 226144706}
   StageNumber: {fileID: 274422107}
-  Weapon:
-  - {fileID: 317862037724060260, guid: 7483140b7b6ce21438f9fac0b50eb203, type: 3}
-  - {fileID: 317862037724060260, guid: e48b4e47ececdb04ba210a8539fcd189, type: 3}
-  - {fileID: 317862037724060260, guid: 49be6d91e2c3fa24abb52056db08929a, type: 3}
-  - {fileID: 4787299881679389491, guid: 78303ac58cf17944bb98baa24e940b3d, type: 3}
-  - {fileID: 4787299881679389491, guid: 5e7120e5a2a08a44f819390e1a24dcfc, type: 3}
-  - {fileID: 317862037724060260, guid: 98c70f633436bf04abca9300572c92ee, type: 3}
-  - {fileID: 6982617944397340478, guid: 5cdc3ebb8ef4b2c41b3009d922fe220e, type: 3}
-  - {fileID: 6982617944397340478, guid: 2ed1df452962d614294345967302b899, type: 3}
-  - {fileID: 317862037724060260, guid: aa99fdac08734ea408a097d8e00df645, type: 3}
   Cointext: {fileID: 484256089}
   Changeweapon1: 0
   Changeweapon2: 0

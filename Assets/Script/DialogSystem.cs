@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Net.Http.Headers;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class DialogSystem : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class DialogSystem : MonoBehaviour
     private bool isFirst = true;                    //1회만 호출 
     private int currentDialogIndex = -1;            //현재 대사 순번
     private int currnetSpearkerIndex = 0;           //말하는 화자의 speakers 순번 
+    //[SerializeField]
+    //private string nextSceneName = "";                //다음씬 이름을 저장
 
     private void Awake()
     {
@@ -92,7 +96,17 @@ public class DialogSystem : MonoBehaviour
         color.a = visible == true ? 1 : 0.2f;
         speaker.spriteRenderer.color = color;
     }
+   //public void nextScene()
+   // {
+   //     if (!nextSceneName.Equals(""))
+   //     {
+   //         SceneManager.LoadScene(nextSceneName);
+   //     }
+   // }
+
 }
+   
+
 
 [System.Serializable]
 public struct Speaker
@@ -113,3 +127,4 @@ public struct DialogData
     [TextArea(3, 5)]
     public string dialogue; //대사 
 }
+

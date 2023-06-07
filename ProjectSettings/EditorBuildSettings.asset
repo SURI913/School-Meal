@@ -104,4 +104,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/STAGE/Clear/CafeteriaClear.unity
     guid: c7a9c3592adbaea468f1d50c525c8a68
+  - enabled: 1
+    path: Assets/Scenes/StroyB LastScene.unity
+    guid: 704821b9e490c7444b9df2ab8aa291dd
+  - enabled: 1
+    path: Assets/Scenes/StroyEnding Scene.unity
+    guid: b78688bd940249149b332667bdaf5f51
+  - enabled: 1
+    path: Assets/Scenes/StroyStartScene.unity
+    guid: 42e7e4394f8a7fc47a07107a11a8ce4e
+  - enabled: 1
+    path: Assets/Scenes/StroyB StartScene.unity
+    guid: 9a3eb1dcfc59e22429b1081544763b96
+  - enabled: 1
+    path: Assets/Scenes/StroyMidB LastScene 1.unity
+    guid: 062a9424f42a8ab42b318514bbdc425d
+  - enabled: 1
+    path: Assets/Scenes/StroyMidB StartScene.unity
+    guid: 47ac401a73c210b4292c44122c4c754f
   m_configObjects: {}

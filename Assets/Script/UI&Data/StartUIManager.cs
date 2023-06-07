@@ -13,7 +13,7 @@ public class StartUIManager : MonoBehaviour
 
     //Start버튼 클릭 시 GameScene으로 이동.
     public void GoGameScene(){
-        SceneManager.LoadScene("1-1");
+        SceneManager.LoadScene("StroyStartScene");
     }
 
     //Tutorial버튼 클릭 시 TutorialScene으로 이동.
