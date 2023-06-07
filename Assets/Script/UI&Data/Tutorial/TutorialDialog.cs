@@ -9,7 +9,7 @@ public class TutorialDialog : TutorialBase
 	public override void Enter()
 	{
 		dialogSystem = GetComponent<DialogSystem>();
-		//dialogSystem.Setup(); //이거 추가하고싶어
+		dialogSystem.Setup(); //이거 이미 있네 아무튼 세팅
 	}
 
 	public override void Execute(TutorialController controller)

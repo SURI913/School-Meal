@@ -23,7 +23,7 @@ public class DialogSystem : MonoBehaviour
         Setup();
     }
 
-    private void Setup()
+    public void Setup()
     {
         //모든 대화관련 게임오브젝트 비활
         for(int i =0; i<speakers.Length;++i)
