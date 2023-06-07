@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
     public Transform target;
-    public float speed;
+    public float speed=3;
     public Vector2 center;
     public Vector2 size;
     float height;
