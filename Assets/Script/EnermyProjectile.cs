@@ -9,7 +9,7 @@ public class EnermyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision != null && collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
             Destroy(gameObject);

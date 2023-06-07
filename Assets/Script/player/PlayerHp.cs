@@ -31,6 +31,7 @@ public class PlayerHp : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+
         //데미지를 입은 경우 최근체력 감소시킴
         StartCoroutine(DamageMotion());
         currentHP -= damage;
@@ -41,9 +42,10 @@ public class PlayerHp : MonoBehaviour
         if(currentHP <= 0) 
         {
             Debug.Log("Player HP : 0.. Die");
-            Destroy(gameObject);
-            Time.timeScale = 0; //일시정지
+            gameObject.SetActive(false);
+            GameManager.instance.gameOver();
         }
+
     }
 
     IEnumerator DamageMotion(){
@@ -54,16 +56,8 @@ public class PlayerHp : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other) {
         //에너미 근접공격
-        if(other.collider.CompareTag("Enemy") && isDamage ==false){
+        if((other.collider.CompareTag("Enemy") || other.collider.CompareTag("SummonEnemy")) && isDamage ==false){
             StartCoroutine(DamageCooltime());
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.collider.CompareTag("Enemy"))
-        {
-            isDamage = false;
         }
     }
 

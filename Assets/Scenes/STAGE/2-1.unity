@@ -3675,6 +3675,7 @@ MonoBehaviour:
   Changeweapon1: 0
   Changeweapon2: 0
   NoCoinUI: {fileID: 1030001414}
+  ClearCount: 0
 --- !u!4 &881958638
 Transform:
   m_ObjectHideFlags: 0
@@ -8448,11 +8449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 415251030606281963, guid: 0635856a604a683499e72e09cc18dfff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.19
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 415251030606281963, guid: 0635856a604a683499e72e09cc18dfff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.64
+      value: -4.38
       objectReference: {fileID: 0}
     - target: {fileID: 415251030606281963, guid: 0635856a604a683499e72e09cc18dfff, type: 3}
       propertyPath: m_LocalPosition.z

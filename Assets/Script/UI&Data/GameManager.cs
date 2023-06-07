@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance; //싱글턴 접근
     
-    public double Hp; //현재체력
-    public double MaxHp; //최대체력
+    double Hp; //현재체력
+    double MaxHp; //최대체력
     public static double enemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
     public static double summonenemyHP = 30; //중간보스 소환 잡몹 체력 플레이어보다 낮다
@@ -50,8 +50,11 @@ public class GameManager : MonoBehaviour
     //게임오버
     public GameObject Gameover;
     private Animator GameOverAnim;
+    private Animator GameClearAnim;
     public GameObject Retry;
     public GameObject AllBulrCam; //블러처리
+    bool isGameOver = false;
+
 
     //게임클리어
     bool isClear = false;
@@ -69,9 +72,9 @@ public class GameManager : MonoBehaviour
 
     //매점 관리
     public GameObject []Weapon = new GameObject[9]; //무기전체
-    public GameObject CurrnetWeaponL;
-    public GameObject CurrnetWeaponR;
-    public GameObject CurrnetWeaponU;
+    private GameObject CurrnetWeaponL;
+    private GameObject CurrnetWeaponR;
+    private GameObject CurrnetWeaponU;
     private int Coin;
     public GameObject Cointext;
 
@@ -87,9 +90,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두 개 이상의 게임매니저가 존재합니다!");
             Destroy(gameObject);
         }
-    }
 
-    private void Start(){
         //플레이어 데이터 가져오기
         Hp = PlayerData.CurrnetHp;
         MaxHp = PlayerData.MaxHp;
@@ -98,52 +99,72 @@ public class GameManager : MonoBehaviour
         BackDoor.tag = BackStageNumberTag;
         Coin = PlayerData.coin;
         isClear = false;
+        CurrnetWeaponL = PlayerData.WeaponL;
+        CurrnetWeaponR = PlayerData.WeaponR;
+        CurrnetWeaponU = PlayerData.WeaponU;
+    }
+
+    private void Start(){
 
         //스테이지 정보 가져오기
-        if(StageNumberTag == "Cafeteria"){
-            StageNumber.GetComponent<Text>().text = $"급식실";
+        switch (StageNumberTag)
+        {
+            case "Cafeteria":
+                StageNumber.GetComponent<Text>().text = "급식실";
+                break;
+            case "Office":
+                StageNumber.GetComponent<Text>().text = "교장실";
+                break;
+            case "Shop1":
+            case "Shop2":
+                StageNumber.GetComponent<Text>().text = "매점";
+                break;
+            default:
+                StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
+                break;
         }
-        else if(StageNumberTag == "Office"){
-            StageNumber.GetComponent<Text>().text = $"교장실";
-        }
-        else if(StageNumberTag == "Shop1" ||StageNumberTag == "Shop2"){
-            StageNumber.GetComponent<Text>().text = $"매점";
-        }
-        else{
-            StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
-        }
-
+        AllBulrCam.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        HpSystem(); //플레이어가 죽을 때 모든 동작을 멈추고 GameOver창을 띄운다
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
         StageState();   //일반맵 클리어 조건 달성했나 체크
     }
+    public void gameOver(){
+        StopAllCoroutines();
+        StartCoroutine(GameOver());
+    }
 
     //게임 오버
-    IEnumerator GameOver(){
-        Destroy(BackGroundMusic);
-        GameoverSound.Play();
-        AllBulrCam.SetActive(true);
-        GameOverAnim  = Gameover.GetComponent<Animator>();
-        Gameover.SetActive(true);
-        GameOverAnim.SetTrigger("isGameOver");
-        Retry.SetActive(true);
-        Time.timeScale = 0; //일시정지
-        yield return new WaitForSeconds(1);
+    public IEnumerator GameOver()
+    {
+        if(isGameOver ==false){
+            // 게임 오버 처리 로직을 구현하세요
+            GameOverAnim = Gameover.GetComponent<Animator>();
+            isGameOver = true;
+            BackGroundMusic.volume = 0;
+            GameoverSound.Play();
+            Gameover.SetActive(true);
+            GameOverAnim.SetBool("isGameover", true);
+            AllBulrCam.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            Retry.SetActive(true);
+            Time.timeScale = 0; // 일시정지
+            GameOverAnim.SetBool("isGameover", false);
+        }
     }
    
     //게임 클리어
     IEnumerator GameClear(){
         GameClearSound.Play();
-        GameOverAnim  = Gameclear.GetComponent<Animator>();
+        GameClearAnim  = Gameclear.GetComponent<Animator>();
         Gameclear.SetActive(true);
-        GameOverAnim.SetTrigger("isGameOver");  //동일한 애니메이션임
-        yield return new WaitForSeconds(2);
+        GameClearAnim.SetBool("isGameover", true);   //동일한 애니메이션 사용
+        yield return new WaitForSeconds(3.0f);
+        GameClearAnim.SetBool("isGameover", false);
         Gameclear.SetActive(false);
         Door.SetActive(true);   //문 오픈
     }
@@ -151,19 +172,6 @@ public class GameManager : MonoBehaviour
     //게임 클리어 재생
     public void Clear(){
         StartCoroutine(GameClear());
-    }
-
-    public void HpSystem()
-    {
-        if (Hp > MaxHp) //체력이 최대체력을 넘어가지 못하게하기
-        {
-            Hp = MaxHp;
-        }
-        if (Hp <= 0) // 플레이어 체력이 0이되면 사망
-        {
-            StartCoroutine(GameOver());
-            //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
-        }
     }
 
 
@@ -319,22 +327,16 @@ public class GameManager : MonoBehaviour
         ButtonSound.Play();
     }
 
-    //씬 전환 함수
-    public void ChangeStartScene(){
-        Time.timeScale = 1; //일시정지 해제
-        SceneManager.LoadScene("StartScene");
-    }
-    public void ReSetScene(){
-        Time.timeScale = 1; //일시정지 해제
+    private void ResetData(){
         //모든 값 초기화
-        Coin = 0;
-        Hp = 100;
-        MaxHp = 100;
+        PlayerData.coin = 0;
+        PlayerData.CurrnetHp = 100;
+        PlayerData.MaxHp = 100;
         //전체 웨폰 배열로 만들어 접근하기
-        CurrnetWeaponL = Weapon[0];
-        CurrnetWeaponR = Weapon[1];
-        CurrnetWeaponU = Weapon[2];
-        PlayerData.BackStageTag = "StartScene";
+        PlayerData.WeaponL = Weapon[0];
+        PlayerData.WeaponR = Weapon[1];
+        PlayerData.WeaponU = Weapon[2];
+        PlayerData.BackStageTag = "1-1";
         PlayerData.CurrentStageTag = "1-1";
         //적 처치 초기화
         PlayerData.BossClear = false;
@@ -350,12 +352,30 @@ public class GameManager : MonoBehaviour
         PlayerData.S4_1Clear = false;
         PlayerData.S4_2Clear = false;
         PlayerData.S4_3Clear = false;
+        isClear = false;
+        isGameOver = false;
+        AllBulrCam.SetActive(false); //블러처리 해제
+        BackGroundMusic.volume = 1;
+
+    }
+
+    //씬 전환 함수
+    public void ChangeStartScene(){
+        Time.timeScale = 1; //일시정지 해제
+        ResetData();
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void ReSetScene(){
+        Time.timeScale = 1; //일시정지 해제
+        ResetData();
         SceneManager.LoadScene("1-1");
     }
 
     //플레이 종료 함수
     public void ExitGame(){
         Time.timeScale = 1; //일시정지 해제
+        ResetData();
         Application.Quit();
     }
 
@@ -467,7 +487,7 @@ public class GameManager : MonoBehaviour
     private int S3_2 = 6;
     private int S4_1 = 4;
     private int S4_2 = 1;   //코인 먹을때 카운트 올림
-    private int S4_3 = 44;
+    private int S4_3 = 4;
 
     private int HitCount = 0;
     
@@ -478,48 +498,59 @@ public class GameManager : MonoBehaviour
     }
 
     public void StageState (){
-        if(S1_1 == HitCount){
+        if(S1_1 == HitCount && isClear == false && StageNumberTag == "1-1"){
             PlayerData.S1_1Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S1_2 == HitCount){
+        if(S1_2 == HitCount && isClear == false && StageNumberTag == "1-2"){
             PlayerData.S1_2Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S1_3 == HitCount){
+        if(S1_3 == HitCount && isClear == false && StageNumberTag == "1-3"){
             PlayerData.S1_3Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S2_1 == HitCount){
+        if(S2_1 == HitCount && isClear == false && StageNumberTag == "2-1"){
+            isClear = true;
             PlayerData.S2_1Clear = true;
             Clear();
         }
-        if(S2_2 == HitCount){
+        if(S2_2 == HitCount && isClear == false && StageNumberTag == "2-2"){
+            isClear = true;
             PlayerData.S2_2Clear = true;
             Clear();
         }
-        if(S2_3 == HitCount){
+        if(S2_3 == HitCount && isClear == false && StageNumberTag == "2-3"){
+            isClear = true;
             PlayerData.S2_3Clear = true;
             Clear();
         }
-        if(S3_1 == HitCount){
+        if(S3_1 == HitCount && isClear == false && StageNumberTag == "3-1"){
+            isClear = true;
             PlayerData.S3_1Clear = true;
             Clear();
         }
-        if(S3_2 == HitCount){
+        if(S3_2 == HitCount && isClear == false && StageNumberTag == "3-2"){
             PlayerData.S3_2Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S4_1 == HitCount){
+        if(S4_1 == HitCount && isClear == false && StageNumberTag == "4-1"){
             PlayerData.S4_1Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S4_2 == HitCount){
+        if(S4_2 == HitCount && isClear == false && StageNumberTag == "4-2"){
             PlayerData.S4_2Clear = true;
+            isClear = true;
             Clear();
         }
-        if(S4_3 == HitCount){
+        if(S4_3 == HitCount && isClear == false && StageNumberTag == "4-3"){
             PlayerData.S4_3Clear = true;
+            isClear = true;
             Clear();
         }
     }
