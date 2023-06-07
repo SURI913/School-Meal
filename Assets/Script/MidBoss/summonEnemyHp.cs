@@ -35,8 +35,7 @@ public class summonEnemyHp : MonoBehaviour
         currentHP -= damage;
         GameManager.instance.setsummonenemyHP(currentHP);   //적 체력값 전달
         GameManager.instance.PlayEnemyHitSound();
-        //GameManager.instance.setWhoseDamage(1); //잡몹이 데미지 입음
-
+        //보스가 생성하는 몹은 체력바를 띄우지 않는다.
         //체력이 0이면 플레이어 죽음
         if(currentHP <= 0) 
         {
