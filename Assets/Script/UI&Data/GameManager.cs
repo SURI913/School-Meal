@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
 
     //게임클리어
-    bool isClear = false;
+    public bool isClear = false;
     public GameObject Door; //문 오픈
     public GameObject Gameclear;
 
@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
     //첫 스타트 스테이지를 1-1로 설정한다 (Start버튼이 눌리고 게임씬이 생성되면 매번 이 씬부터 시작 GameManager 생성을 위해)
     //이부분도 깔끔하게 정리하자
     public string StageNumberTag = null;
-    private string BackStageNumberTag = null;
     public GameObject BackDoor;
     
     public Stack<string> StageRoute = new Stack<string>();
@@ -90,10 +89,6 @@ public class GameManager : MonoBehaviour
         
         Hp = PlayerData.CurrnetHp;
         MaxHp = PlayerData.MaxHp;
-        StageNumberTag = "1-1";
-        BackStageNumberTag = "1-1";
-        
-        StageRoute.Push("1-1"); //처음은 무조건
         //튜토리얼가서 푸쉬팝 만들어두기
 
         Coin = PlayerData.coin;
@@ -102,6 +97,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start(){
+        StageNumberTag = "1-1";
+        StageRoute.Push("1-1"); //처음은 무조건
 
         //스테이지 정보 가져오기
         switch (StageNumberTag)
@@ -357,8 +354,8 @@ public class GameManager : MonoBehaviour
         PlayerData.CurrnetHp = 100;
         PlayerData.MaxHp = 100;
         playerattack.atktype = 0; //기본총알
-        PlayerData.BackStageTag = "1-1";
-        PlayerData.CurrentStageTag = "1-1";
+        StageNumberTag = "1-1";
+        
         //적 처치 초기화
         PlayerData.BossClear = false;
         PlayerData.MidBossClear = false;
@@ -507,6 +504,7 @@ public class GameManager : MonoBehaviour
         HitCount+=i;
     }
     public void ResetHitCount(){
+        isClear = false;
         HitCount = 0 ;
     }
     

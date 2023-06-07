@@ -22,7 +22,7 @@ public class EnemyHp : MonoBehaviour
     private void Start()
     {
         //게임매니저에 있는 전체체력을 가져온다.
-        currentHP = 100;
+        currentHP = 10;
         maxHP = 100;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
