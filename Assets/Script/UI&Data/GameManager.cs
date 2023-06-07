@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
     public string StageNumberTag = null;
     private string BackStageNumberTag = null;
     public GameObject BackDoor;
-    //뒤로가는 문 관리 매점에서는 작동하지 않는다
-
+    
+    public Stack<string> StageRoute = new Stack<string>();
     public GameObject StageNumber;
 
     //매점 관리
@@ -87,13 +87,15 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("씬에 두 개 이상의 게임매니저가 존재합니다!");
             Destroy(gameObject);
         }
-
-        //플레이어 데이터 가져오기
+        
         Hp = PlayerData.CurrnetHp;
         MaxHp = PlayerData.MaxHp;
-        StageNumberTag = PlayerData.CurrentStageTag;
-        BackStageNumberTag = PlayerData.BackStageTag;
-        BackDoor.tag = BackStageNumberTag;
+        StageNumberTag = "1-1";
+        BackStageNumberTag = "1-1";
+        
+        StageRoute.Push("1-1"); //처음은 무조건
+        //튜토리얼가서 푸쉬팝 만들어두기
+
         Coin = PlayerData.coin;
         isClear = false;
         playerattack.atktype = PlayerData.WeaponType;
@@ -114,11 +116,37 @@ public class GameManager : MonoBehaviour
             case "Shop2":
                 StageNumber.GetComponent<Text>().text = "매점";
                 break;
+            case "Tutorial":
+                StageNumber.GetComponent<Text>().text = "튜토리얼";
+                break;    
             default:
                 StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
                 break;
         }
         AllBulrCam.SetActive(false);
+    }
+
+    public void LoadStageNumSetting(){
+        //스테이지 정보 가져오기
+        switch (StageNumberTag)
+        {
+            case "Cafeteria":
+                StageNumber.GetComponent<Text>().text = "급식실";
+                break;
+            case "Office":
+                StageNumber.GetComponent<Text>().text = "교장실";
+                break;
+            case "Shop1":
+            case "Shop2":
+                StageNumber.GetComponent<Text>().text = "매점";
+                break;
+            case "Tutorial":
+                StageNumber.GetComponent<Text>().text = "튜토리얼";
+                break;    
+            default:
+                StageNumber.GetComponent<Text>().text = $"{StageNumberTag[0]}학년 {StageNumberTag[2]}반";
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -127,6 +155,7 @@ public class GameManager : MonoBehaviour
         //코인 초기화
         Cointext.GetComponent<Text>().text = $"{Coin}";
         StageState();   //일반맵 클리어 조건 달성했나 체크
+        LoadStageNumSetting();
     }
     public void gameOver(){
         StopAllCoroutines();
@@ -348,6 +377,8 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         AllBulrCam.SetActive(false); //블러처리 해제
         BackGroundMusic.volume = 1;
+        StageRoute.Clear();//스테이지 초기화
+        HitCount = 0;
 
     }
 

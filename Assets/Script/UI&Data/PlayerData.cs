@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     //게임 내 플레이어에게 필요한 정보 저장하는 스크립트
-    //공격 주기값 변경하는것도 이걸로 바꿀 수 있을것같아요
-    //오브젝트도 여기서 값 받아서 변경합시다.
+    
 
     public static double CurrnetHp = 100;
     public static double MaxHp = 100;
