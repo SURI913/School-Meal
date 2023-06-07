@@ -26,6 +26,8 @@ TagManager:
   - SummonEnemy
   - Shop1
   - Shop2
+  - TutorialShop
+  - TutorialBox
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,8 @@ public class TargetControll : MonoBehaviour
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
 
+    public	bool IsMoved		{ set; get; } = false; //플레이어 이동이 가능하도록 설정하는용도
+
     private void Start(){
         //애니메이터 변수 초기화
         animator = GetComponent<Animator>();
@@ -27,6 +29,11 @@ public class TargetControll : MonoBehaviour
         ScaleVal_Y = transform.localScale.y;
 
         rigidbody = GetComponent<Rigidbody2D>();
+
+        if(GameManager.instance.StageNumberTag != "Tutorial"){
+            //스테이지가 본격적으로 시작하면 자유롭게 움직이기 가능
+            IsMoved = true;
+        }
     }
     
 
@@ -34,36 +41,38 @@ public class TargetControll : MonoBehaviour
     private void Update()
     {
 
-        //방향키로 움직임 설정
-        isRun = false;
-        moveX = 0;
-        moveY = 0;
-        if (Input.GetKey("right"))
-        {
-            moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        if(IsMoved == true){
+            //방향키로 움직임 설정
+            isRun = false;
+            moveX = 0;
+            moveY = 0;
+            if (Input.GetKey("right"))
+            {
+                moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 
-            //회전 및 애니메이션 키  설정
-            isRun = true;
-            turn = -1;
-        }
-        if(Input.GetKey("left"))
-        {
-            moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+                //회전 및 애니메이션 키  설정
+                isRun = true;
+                turn = -1;
+            }
+            if(Input.GetKey("left"))
+            {
+                moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+                
+                //회전 및 애니메이션 키  설정
+                isRun = true;
+                turn = 1;
+            }
+            //점프 코드 
+            if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
+            {
+                rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                jumpCount = 1;
+            }
             
-            //회전 및 애니메이션 키  설정
-            isRun = true;
-            turn = 1;
+            transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
+            animator.SetBool("isRun", isRun);
+            transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
         }
-        //점프 코드 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
-        {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jumpCount = 1;
-        }
-        
-        transform.position = new Vector2(transform.position.x + moveX, transform.position.y + moveY);
-        animator.SetBool("isRun", isRun);
-        transform.localScale = new Vector3(ScaleVal_X*turn, ScaleVal_Y, 1);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

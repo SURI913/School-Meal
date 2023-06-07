@@ -25,7 +25,6 @@ public class EnemyMove : MonoBehaviour
 
     Vector3 nonTargetTransform = new Vector3(0,0,0);
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,7 +35,6 @@ public class EnemyMove : MonoBehaviour
 
         ScaleVal_X = transform.localScale.x;
         ScaleVal_Y = transform.localScale.y;
-        
     }
     void Update()
     {
@@ -48,24 +46,24 @@ public class EnemyMove : MonoBehaviour
     {
         if(target != null){
             isRun = false;
-        if (Vector2.Distance(transform.position, target.position) > contactDistance && follow){
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-            isRun = true;
-            
-        }
-        else{
-            rb.velocity = Vector2.zero;
-        }
+            if (Vector2.Distance(transform.position, target.position) > contactDistance && follow){
+                transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                isRun = true;
+                    
+            }
+            else{
+                rb.velocity = Vector2.zero;
+            }
 
-        if (target.position.x > transform.position.x){
-            turn = -1;
-        }
-        else{
-            turn = 1;
-        }
+            if (target.position.x > transform.position.x){
+                turn = -1;
+            }
+            else{
+                turn = 1;
+            }
 
-        animator.SetBool("isRun", isRun);
-        transform.localScale = new Vector3(ScaleVal_X * turn, ScaleVal_Y, 1);
+            animator.SetBool("isRun", isRun);
+            transform.localScale = new Vector3(ScaleVal_X * turn, ScaleVal_Y, 1);
         }
     }
 
