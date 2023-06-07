@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEditor.Rendering.PostProcessing;
 
 
 public class Dialog : MonoBehaviour, IPointerDownHandler
