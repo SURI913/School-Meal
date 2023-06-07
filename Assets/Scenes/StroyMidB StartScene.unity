@@ -1337,6 +1337,8 @@ MonoBehaviour:
   dialogSystem01: {fileID: 1014482265}
   dialogSystem02: {fileID: 0}
   textCountdown: {fileID: 1220090511}
+  dialogScene: {fileID: 0}
+  nextSceneName: Cafeteria
 --- !u!4 &759387866
 Transform:
   m_ObjectHideFlags: 0
@@ -2248,7 +2250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

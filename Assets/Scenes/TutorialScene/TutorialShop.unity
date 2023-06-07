@@ -9080,7 +9080,7 @@ MonoBehaviour:
   - {fileID: 775110784}
   - {fileID: 1276366239}
   - {fileID: 1876692660}
-  nextSceneName: 1-1
+  nextSceneName: StroyStartScene
 --- !u!4 &1688555135
 Transform:
   m_ObjectHideFlags: 0

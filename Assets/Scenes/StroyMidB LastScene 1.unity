@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 39867992}
   - component: {fileID: 39867991}
   m_Layer: 0
-  m_Name: DialogSystem02
+  m_Name: DialogSystem01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,9 +371,6 @@ MonoBehaviour:
       \uD560\uC218\uC5C6\uC5B4. \n\uB098\uB3C4 \uC774 \uB9DB\uC5C6\uB294 \uAE09\uC2DD\uC774
       \uBC14\uB00C\uC5B4\uC57C\uD55C\uB2E4 \uC0DD\uAC01\uD558\uC9C0\uB9CC ...\n\uC774
       \uBB38\uC81C\uB294 \uAD50\uC7A5\uC120\uC0DD\uB2D8\uACFC \uC9C1\uC811 \uC598\uAE30\uD574\uC57C\uD574"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uB108.."
   - speakerIndex: 0
     name: "\uD0AC\uB9AC"
     dialogue: "\uADF8\uB7FC \uB108\uAC00 \uC598\uAE30\uD574\uC8FC\uBA74 \uB418\uACA0\uB124
@@ -1471,9 +1468,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bfb8a47110f5649aca980db2527d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogSystem01: {fileID: 0}
-  dialogSystem02: {fileID: 39867991}
+  dialogSystem01: {fileID: 39867991}
+  dialogSystem02: {fileID: 0}
   textCountdown: {fileID: 1220090511}
+  dialogScene: {fileID: 0}
+  nextSceneName: CafeteriaClear
 --- !u!4 &759387866
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,7 +2305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2690,7 +2689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3512,7 +3511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
