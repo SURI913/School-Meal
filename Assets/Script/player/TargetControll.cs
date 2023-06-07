@@ -15,7 +15,7 @@ public class TargetControll : MonoBehaviour
     private int turn = 1;
     private float jumpPower = 6.0f; //점프 높이
     private int jumpCount = 0;
-    new Rigidbody2D rigidbody;
+    public new Rigidbody2D rigidbody;
 
     private float ScaleVal_X;   //스케일 값은 float로 되어있음
     private float ScaleVal_Y;
