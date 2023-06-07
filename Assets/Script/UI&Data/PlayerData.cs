@@ -17,6 +17,7 @@ public class PlayerData : MonoBehaviour
     public static string BackStageTag = "1-1"; //스트링으로 관리
     public static GameObject WeaponL;
     public static GameObject WeaponR;
+    public static GameObject WeaponU;
 
     void Start () {
         try {
@@ -24,7 +25,7 @@ public class PlayerData : MonoBehaviour
             MaxHp = 100;
             coin = 100;
             CurrentStageTag = "1-1";
-            BackStageTag = "StartScene"; //스트링으로 관리
+            BackStageTag = "1-1"; //스트링으로 관리
         }       
         catch (NullReferenceException)
         {
@@ -39,13 +40,14 @@ public class PlayerData : MonoBehaviour
             coin = GameManager.instance.GetCoin();
             WeaponL = GameManager.instance.GetWeaposnL();
             WeaponR = GameManager.instance.GetWeaposnR();
+            WeaponU = GameManager.instance.GetWeaposnU();
         }
         else{
             CurrnetHp = 100;
             MaxHp = 100;
             coin = 0;
             CurrentStageTag = "1-1";
-            BackStageTag = "StartScene"; //스트링으로 관리
+            BackStageTag = "1-1"; //스트링으로 관리
             //인스턴스가 없으면 싹다 초기화
         }
     }

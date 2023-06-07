@@ -69,9 +69,9 @@ public class GameManager : MonoBehaviour
 
     //매점 관리
     public GameObject []Weapon = new GameObject[9]; //무기전체
-    public GameObject CurrnetWeaponL;
-    public GameObject CurrnetWeaponR;
-    public GameObject CurrnetWeaponU;
+    private GameObject CurrnetWeaponL;
+    private GameObject CurrnetWeaponR;
+    private GameObject CurrnetWeaponU;
     private int Coin;
     public GameObject Cointext;
 
@@ -98,6 +98,9 @@ public class GameManager : MonoBehaviour
         BackDoor.tag = BackStageNumberTag;
         Coin = PlayerData.coin;
         isClear = false;
+        CurrnetWeaponL = PlayerData.WeaponL;
+        CurrnetWeaponR = PlayerData.WeaponR;
+        CurrnetWeaponU = PlayerData.WeaponU;
         enemyHP = 100;
         MaxenemyHP = 100; //잡몹 체력 플레이어와 동일하다
 
@@ -325,22 +328,16 @@ public class GameManager : MonoBehaviour
         ButtonSound.Play();
     }
 
-    //씬 전환 함수
-    public void ChangeStartScene(){
-        Time.timeScale = 1; //일시정지 해제
-        SceneManager.LoadScene("StartScene");
-    }
-    public void ReSetScene(){
-        Time.timeScale = 1; //일시정지 해제
+    private void ResetData(){
         //모든 값 초기화
-        Coin = 0;
-        Hp = 100;
-        MaxHp = 100;
+        PlayerData.coin = 0;
+        PlayerData.CurrnetHp = 100;
+        PlayerData.MaxHp = 100;
         //전체 웨폰 배열로 만들어 접근하기
-        CurrnetWeaponL = Weapon[0];
-        CurrnetWeaponR = Weapon[1];
-        CurrnetWeaponU = Weapon[2];
-        PlayerData.BackStageTag = "StartScene";
+        PlayerData.WeaponL = Weapon[0];
+        PlayerData.WeaponR = Weapon[1];
+        PlayerData.WeaponU = Weapon[2];
+        PlayerData.BackStageTag = "1-1";
         PlayerData.CurrentStageTag = "1-1";
         //적 처치 초기화
         PlayerData.BossClear = false;
@@ -356,12 +353,25 @@ public class GameManager : MonoBehaviour
         PlayerData.S4_1Clear = false;
         PlayerData.S4_2Clear = false;
         PlayerData.S4_3Clear = false;
+    }
+
+    //씬 전환 함수
+    public void ChangeStartScene(){
+        Time.timeScale = 1; //일시정지 해제
+        ResetData();
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void ReSetScene(){
+        Time.timeScale = 1; //일시정지 해제
+        ResetData();
         SceneManager.LoadScene("1-1");
     }
 
     //플레이 종료 함수
     public void ExitGame(){
         Time.timeScale = 1; //일시정지 해제
+        ResetData();
         Application.Quit();
     }
 
