@@ -293,143 +293,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24407247}
   m_CullTransparentMesh: 1
---- !u!1 &39867990
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39867992}
-  - component: {fileID: 39867991}
-  m_Layer: 0
-  m_Name: DialogSystem02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &39867991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39867990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15af6f19dd0afc741861d9bb72703a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speakers:
-  - panelplayer: {fileID: 988364041}
-    spriteRenderer: {fileID: 879220108}
-    TextDaiolg: {fileID: 43808076}
-    TextName: {fileID: 2071509679}
-    TextSkip: {fileID: 294443724}
-  - panelplayer: {fileID: 512160200}
-    spriteRenderer: {fileID: 942334044}
-    TextDaiolg: {fileID: 1481861373}
-    TextName: {fileID: 1981973888}
-    TextSkip: {fileID: 2067141964}
-  - panelplayer: {fileID: 1440717402}
-    spriteRenderer: {fileID: 1742510411}
-    TextDaiolg: {fileID: 284732798}
-    TextName: {fileID: 174175893}
-    TextSkip: {fileID: 615715697}
-  dialogs:
-  - speakerIndex: 1
-    name: "\uD559\uC0DD\uD68C\uC7A5"
-    dialogue: "\uC544\uC57C\uC57C.. \uC54C\uACA0\uC5B4! \uC54C\uACA0\uB2E4\uACE0
-      !!\n\uBB34\uC2A8 \uC774\uC57C\uAE30 \uD558\uB7EC \uC628\uAC74\uC9C0 \uC815\uB3C4\uB294
-      \uB4E4\uC5B4\uC904\uD14C\uB2C8 \uADF8\uB9CC\uD574 !!"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uB4DC\uB514\uC5B4 \uC598\uAE30 \uD560 \uB9C8\uC74C\uC774 \uC0DD\uACBC\uB098\uBCF4\uB124.
-      \uC544\uBB34\uD2BC \uAE09\uC2DD\uC774 \uB108\uBB34 \uB9DB\uC774\uC5C6\uC5B4!!\n\uC774\uB7F0\uBC25\uC744
-      \uBA39\uC73C\uBA74\uC11C \uB3C4\uC800\uD788 \uD559\uAD50\uB97C \uB2E4\uB2D0
-      \uC218 \uC5C6\uC5B4!\n\uD68C\uC7A5\uC774\uB2C8\uAE4C \uAE09\uC2E4\uC744 \uBC14\uAFC0\uC218
-      \uC788\uAC8C \uB3C4\uC640\uC918"
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uBB50\uC57C \uADF8\uB7F0\uAC83 \uB54C\uBB38\uC5D0 \uC774\uC18C\uB3D9\uC744
-      \uBC8C\uC774\uBA74\uC11C \uCC3E\uC544\uC628\uAC70\uB77C\uACE0?\t"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uC560\uB4E4\uC744 \uBCF4\uB0B4\uC11C \uC77C \uD0A4\uC6B4\uAC74 \uB108\uC796\uC544!!"
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uADF8\uCE58\uB9CC \uC0AC\uACE0\uBB49\uCE58\uC778 \uB108\uAC00 \uC628\uB2E4\uAE30\uC5D0
-      \uC4F8\uB54C\uC5C6\uB294 \uC18C \uC778\uC904 \uC54C\uC558\uC5B4 "
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uB108.."
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uC544\uBB34\uD2BC \uAE09\uC2DD\uC740 \uB098\uB3C4 \uC5B4\uB5BB\uAC8C
-      \uD560\uC218\uC5C6\uC5B4. \n\uB098\uB3C4 \uC774 \uB9DB\uC5C6\uB294 \uAE09\uC2DD\uC774
-      \uBC14\uB00C\uC5B4\uC57C\uD55C\uB2E4 \uC0DD\uAC01\uD558\uC9C0\uB9CC ...\n\uC774
-      \uBB38\uC81C\uB294 \uAD50\uC7A5\uC120\uC0DD\uB2D8\uACFC \uC9C1\uC811 \uC598\uAE30\uD574\uC57C\uD574"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uB108.."
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uADF8\uB7FC \uB108\uAC00 \uC598\uAE30\uD574\uC8FC\uBA74 \uB418\uACA0\uB124
-      !"
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uADF8. \uB7EC . \uB2C8 .\uAE4C \uB098\uB294 \uC9C0\uAE08 \uD560 \uC77C\uC774
-      \uD0DC\uC0B0\uC774\uB77C\uACE0 \uB9D0\uD588\uC796\uC544!!!"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uC54C\uACA0\uC5B4 \uC54C\uACA0\uC5B4. \uD654\uB0B4\uC9C0\uB9C8 \uADF8\uB7FC
-      \uBE68\uB9AC \uB299\uB294\uB2E4?"
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uC870\uC6A9\uD788\uD574.."
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uC544\uBB34\uD2BC \uC5B4\uCA54\uC218 \uC5C6\uC9C0. \uB0B4\uAC00 \uC9C1\uC811
-      \uCC3E\uC544 \uBD48\uB294\uC218\uBC16\uC5D0"
-  - speakerIndex: 1
-    name: "\uC804\uAD50\uD68C\uC7A5"
-    dialogue: "\uADF8\uB798 \uB108\uB9D8\uB300\uB85C\uD574~ \n\uADF8\uCE58\uB9CC
-      \uC0AC\uC2E4 \uB098\uB3C4 \uB9DB\uC788\uB294 \uAE09\uC2DD\uC774 \uBA39\uACE0\uC2F6\uAE34\uD574..\n\uD558\uC9C0\uB9CC
-      \uAD50\uC7A5\uC120\uC0DD\uB2D8\uC740 \uD655\uACE0\uD558\uC2E0 \uBD84\uC774\uB77C
-      \uB108\uC758 \uB9D0\uC774 \uC548\uD1B5\uD560 \uC218\uB3C4 \uC788\uC5B4. \uC798
-      \uC124\uB4DD\uD574\uBD10\n\uB0B4\uAC00 \uD574\uC904\uC218 \uC788\uB294\uAC74
-      \uB9CE\uC774 \uC5C6\uC9C0\uB9CC,\n\uBC29\uC1A1\uC73C\uB85C \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C
-      \uAE09\uC2DD\uC5D0\uB300\uD574 \uC598\uAE30\uD560\uC218 \uC788\uB294 \uC790\uB9AC\uB97C
-      \uB9CC\uB4E4\uC5B4 \uC904\uAC8C"
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uADF8\uB798\uC900\uB2E4\uBA74 \uACE0\uB9D9\uC9C0 !"
-  - speakerIndex: 2
-    name: 
-    dialogue: "\uADF8\uB807\uAC8C \uD0AC\uB9AC\uB294 \uD559\uC0DD\uD68C \uBC29\uC1A1\uC73C\uB85C
-      \uD559\uC0DD\uB4E4\uC5D0\uAC8C \uD604\uC7AC \uAE09\uC2DD \uBB38\uC81C\uC810\uC5D0\uB300\uD574
-      \uC5B8\uAE09\uD558\uC600\uACE0,\n\uC774\uC5D0 \uACF5\uAC10\uD55C \uB9CE\uC740
-      \uD559\uC0DD\uB4E4\uC758 \uC9C0\uC9C0\uB97C \uC5BB\uAC8C\uB418\uC5C8\uB2E4.\n\uC774\uB85C
-      \uC778\uD574 \uD559\uAD50\uC758 \uC5EC\uB860\uC740 \uAE09\uC2DD\uC774 \uBC14\uB00C\uC5B4\uC57C\uD55C\uB2E4\uB294
-      \uBD84\uC704\uAE30\uB85C \uBCC0\uD574\uAC00\uACE0\uC788\uC5C8\uB2E4."
-  isAutoStart: 1
---- !u!4 &39867992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39867990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 293, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43808074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogSystem01: {fileID: 1014482265}
-  dialogSystem02: {fileID: 39867991}
+  dialogSystem02: {fileID: 0}
   textCountdown: {fileID: 1220090511}
 --- !u!4 &759387866
 Transform:
@@ -1654,7 +1517,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819345131
 GameObject:
@@ -2622,22 +2485,21 @@ MonoBehaviour:
   dialogs:
   - speakerIndex: 2
     name: 
-    dialogue: "\uD0AC\uB9AC\uB294  \uAD50\uC7A5\uC2E4\uC758 \uBB38\uC744 \uC5F4\uACE0
-      \uB4E4\uC5B4\uAC04\uB2E4..."
-  - speakerIndex: 0
-    name: "\uD0AC\uB9AC"
-    dialogue: "\uC2E4\uB840\uD569\uB2C8\uB2E4. \uAD50\uC7A5\uC120\uC0DD\uB2D8 !\n\uC544\uAE4C
-      \uBC29\uC1A1 \uBCF4\uC168\uB098\uC694?\n\uBAA8\uB4E0 \uD559\uC0DD\uB4E4\uC774
-      \uAC19\uC740 \uC0DD\uAC01\uC744 \uD558\uACE0\uC788\uC5B4\uC694. \uAE09\uC2DD\uC744
-      \uB9DB\uC788\uAC8C \uBC14\uAFD4\uC8FC\uC138\uC694 !"
+    dialogue: "\uAE09\uC2DD\uC744 \uB9DB\uBCF8 \uAD50\uC7A5\uC120\uC0DD\uB2D8\uC758
+      \uD45C\uC815\uC774 \uC774\uC804\uACFC \uB2EC\uB77C\uC814\uB2E4.."
   - speakerIndex: 1
     name: "\uAD50\uC7A5\uC120\uC0DD\uB2D8"
-    dialogue: "\uD6C4\uD6C4\uD6C4.. \uADF8\uAC8C \uC5B4\uCA0C\uB2E4\uB294\uAC70\uC9C0?
-      \uAE09\uC2DD\uC740 \uB9DB\uBCF4\uB2E8 \uC601\uC591\uC18C\uB2E4 !"
+    dialogue: "\uBBF8\uC548\uD558\uB2E4.. \uC0AC\uC2E4 \uAE09\uC2DD\uC744 \uBA39\uC5B4\uBCF8\uC801\uC774
+      \uC5C6\uC5B4 \uB108\uD76C\uB4E4\uC774 \uC5B4\uB5A4 \uAE09\uC2DD\uC744 \uBA39\uB294\uC9C0
+      \uBAB0\uB790\uAD6C\uB098.."
   - speakerIndex: 0
     name: "\uD0AC\uB9AC"
-    dialogue: "(\uC774\uAC70 \uC548\uB418\uACA0\uB124.. \uC598\uAE30\uB97C \uD560
-      \uC0C1\uD669\uC774 \uC544\uB2C8\uC57C. \uC77C\uB2E8 \uC81C\uC555\uD574\uC57C\uACA0\uC5B4.)"
+    dialogue: "\uAD50\uC7A5\uC120\uC0DD\uB2D8.."
+  - speakerIndex: 1
+    name: "\uAD50\uC7A5\uC120\uC0DD\uB2D8"
+    dialogue: "\uC55E\uC73C\uB85C \uAE09\uC2DD\uC740 \uB0B4\uAC00 \uC9C1\uC811 \uB9DB\uBCF4\uACE0
+      \uACE0\uB974\uACA0\uB2E4..\n\uCE5C\uAD6C\uB4E4\uC744 \uC704\uD574 \uC6A9\uAE30\uB0B4\uC8FC\uC5B4
+      \uACE0\uB9D9\uAD6C\uB098"
   isAutoStart: 1
 --- !u!4 &1014482266
 Transform:
