@@ -28,6 +28,7 @@ TagManager:
   - Shop2
   - TutorialShop
   - TutorialBox
+  - Lazer
   layers:
   - Default
   - TransparentFX
