@@ -19,6 +19,7 @@ public class TutorialController : MonoBehaviour
     void Awake(){
         //현재 씬이 튜토리얼 씬이라고 인식시키기
 		GameManager.instance.StageNumberTag = "Tutorial";
+        PlayerData.StageRoute.Push("Tutorial"); //처음은 무조건
     }
     void Start()
     {
@@ -62,6 +63,8 @@ public class TutorialController : MonoBehaviour
         // 현재는 씬 전환
 
         Debug.Log("Complete All");
+        PlayerData.StageRoute.Pop(); //튜토리얼 빼냄
+
 
         if( !nextSceneName.Equals("")){
             SceneManager.LoadScene(nextSceneName);

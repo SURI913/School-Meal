@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226144706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.19, y: 0, z: 0}
+  m_LocalPosition: {x: 3.49, y: 0, z: 0}
   m_LocalScale: {x: 1.635578, y: 2.6416836, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1073,7 +1073,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03712216, y: 0.120666385}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1084,7 +1084,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5197139, y: 1.2413328}
   m_EdgeRadius: 0
 --- !u!1 &235110232
 GameObject:
@@ -3646,8 +3646,10 @@ MonoBehaviour:
   Gameover: {fileID: 2042952483}
   Retry: {fileID: 541288952}
   AllBulrCam: {fileID: 1052216307}
+  isClear: 0
   Door: {fileID: 480600433}
   Gameclear: {fileID: 1480044477}
+  StageNumberTag: 
   BackDoor: {fileID: 226144706}
   StageNumber: {fileID: 274422107}
   Cointext: {fileID: 1891642997}

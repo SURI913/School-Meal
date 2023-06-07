@@ -11,6 +11,8 @@ public class PlayerData : MonoBehaviour
     public static double CurrnetHp = 100;
     public static double MaxHp = 100;
     public static int coin = 0;
+    public static string currnetStage = "1-1";
+    public static Stack<string> StageRoute = new Stack<string>();
 
     public static int  WeaponType = 0;
 
@@ -19,6 +21,7 @@ public class PlayerData : MonoBehaviour
             CurrnetHp = 100;
             MaxHp = 100;
             coin = 100;
+            StageRoute.Push("1-1");
         }       
         catch (NullReferenceException)
         {
