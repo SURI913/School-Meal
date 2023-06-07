@@ -11,7 +11,7 @@ public class BulletR: MonoBehaviour
     //private Animator animator; //애니메이션 등록
     void Start()
     {
-        Invoke("DestroyBullet", 30); //2초뒤에 총알 사라지게
+        Invoke("DestroyBullet", 3); //3초뒤에 총알 사라지게
         //animator = GetComponent<Animator>();
         //animator.SetBool("isHunted", true);
     }

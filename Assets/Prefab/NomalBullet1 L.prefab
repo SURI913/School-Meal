@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9635057838a23e8479d4eabedfda58d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
 --- !u!114 &-2532369903625375536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca1b8cbcdf3c32408fc77b6a96f969f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  distance: 0
+  speed: 10
+  distance: 0.2
   isLayer:
     serializedVersion: 2
     m_Bits: 192
