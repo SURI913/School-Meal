@@ -333,6 +333,7 @@ public class GameManager : MonoBehaviour
         PlayerData.CurrnetHp = 100;
         PlayerData.MaxHp = 100;
         //전체 웨폰 배열로 만들어 접근하기
+        playerattack.atktype = 0;
         PlayerData.WeaponL = Weapon[0];
         PlayerData.WeaponR = Weapon[1];
         PlayerData.WeaponU = Weapon[2];
@@ -392,8 +393,10 @@ public class GameManager : MonoBehaviour
     public bool Changeweapon1 =false;
     public bool Changeweapon2 =false;
     public void purchaseWeapon(int number){
-        if(number == 1 && Coin >= 5 && CurrnetWeaponL != Weapon[3]){
+        if(number == 2 && Coin >= 5 && CurrnetWeaponL != Weapon[3]){
             //첫번째 상점 무기로 변경
+            //속사무기
+            playerattack.atktype = 2;
             CurrnetWeaponL =  Weapon[3];
             CurrnetWeaponR = Weapon[4];
             CurrnetWeaponU = Weapon[5];
@@ -401,8 +404,10 @@ public class GameManager : MonoBehaviour
             Coin -=5;
             
         }
-        else if(number == 2 && Coin >=7 && CurrnetWeaponL != Weapon[6]){
+        else if(number == 1 && Coin >=7 && CurrnetWeaponL != Weapon[6]){
+            playerattack.atktype = 1;
             //두번째 상점 무기로 변경
+            //관통무기
             CurrnetWeaponL = Weapon[6];
             CurrnetWeaponR = Weapon[7];
             CurrnetWeaponU = Weapon[8];

@@ -57,11 +57,11 @@ public class playerattack : MonoBehaviour
         {
             if (atktype == 0) //기본총알
             {
-                if (Input.GetKey(KeyCode.D)) //오른쪽으로 공격
+                if (Input.GetKey(KeyCode.A)) //오른쪽으로 공격
                 {
                     Instantiate(basicrightattack, pos, transform.rotation);
                 }
-                else if (Input.GetKey(KeyCode.A))   //왼쪽으로 공격
+                else if (Input.GetKey(KeyCode.D))   //왼쪽으로 공격
                 {
                     Instantiate(basicleftattack, pos, transform.rotation);
                 }
@@ -73,11 +73,11 @@ public class playerattack : MonoBehaviour
             }
             if (atktype == 1) //관통총알
             {
-                if (Input.GetKey(KeyCode.D)) //오른쪽으로 공격
+                if (Input.GetKey(KeyCode.A)) //오른쪽으로 공격
                 {
                     Instantiate(Penetrationrightattack, pos, transform.rotation);
                 }
-                else if (Input.GetKey(KeyCode.A))   //왼쪽으로 공격
+                else if (Input.GetKey(KeyCode.D))   //왼쪽으로 공격
                 {
                     Instantiate(Penetrationleftattack, pos, transform.rotation);
                 }
@@ -89,13 +89,13 @@ public class playerattack : MonoBehaviour
             }
             if (atktype == 2) //속사총알
             {
-                if (Input.GetKey(KeyCode.D)) //오른쪽으로 공격
+                if (Input.GetKey(KeyCode.A)) //오른쪽으로 공격
                 {
                     quickfireR();
                     Invoke("quickfireR", 0.15f);
                     Invoke("quickfireR", 0.3f);
                 }
-                else if (Input.GetKey(KeyCode.A))   //왼쪽으로 공격
+                else if (Input.GetKey(KeyCode.D))   //왼쪽으로 공격
                 {
                     quickfireL();
                     Invoke("quickfireL", 0.15f);
