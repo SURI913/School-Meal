@@ -24,9 +24,16 @@ public class playerattack : MonoBehaviour
     public float cooltime;
     public float curtime;
 
+    public	bool IsAttacked		{ set; get; } = false; //플레이어 공격이 가능하도록 설정하는용도
+
     void Start()
     {
         pos = this.GetComponent<Transform>().position; //플레이어 위치 가져옴
+
+        if(GameManager.instance.StageNumberTag != "Tutorial"){
+            //스테이지가 본격적으로 시작하면 공격 자유롭게 가능
+            IsAttacked = true;
+        }
     }
     // 속사화살을 위해
     public void quickfireR()
@@ -44,16 +51,10 @@ public class playerattack : MonoBehaviour
 
     void Update()
     {
-        //무기변경
-        // if(GameManager.instance.Changeweapon1 == true || GameManager.instance.Changeweapon1 == true){
-        //     leftattack = GameManager.instance.GetWeaposnL();
-        //     rightattack = GameManager.instance.GetWeaposnR();
-        //     upattack = GameManager.instance.GetWeaposnU();
-        // }
         curtime -= Time.deltaTime;
         pos = this.GetComponent<Transform>().position; //플레이어 위치 가져옴
 
-        if (curtime <= 0)
+        if (curtime <= 0 && IsAttacked == true)
         {
             if (atktype == 0) //기본총알
             {

@@ -11,6 +11,8 @@ public class EnemyHp : MonoBehaviour
 
     public double MaxHP => maxHP;               // maxHP 다른 함수에서 얘를 부를 수 있게
     public double CurrentHP => currentHP;      // currentHP ������ ������ �� �ִ� ������Ƽ (Get�� ����)
+
+    
     //이거 가져오는게 실시간으로 모든 값 가져오는게 아니라 초기값만 가져오는지 체크
 
     //데미지 애니메이션
@@ -20,8 +22,8 @@ public class EnemyHp : MonoBehaviour
     private void Start()
     {
         //게임매니저에 있는 전체체력을 가져온다.
-        currentHP = GameManager.instance.GetenemyHP();
-        maxHP = GameManager.instance.GetMaxenemyHP();
+        currentHP = 100;
+        maxHP = 100;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>(); //애니메이션

@@ -63,8 +63,9 @@ public class GameManager : MonoBehaviour
 
     //스테이지 관리
     //첫 스타트 스테이지를 1-1로 설정한다 (Start버튼이 눌리고 게임씬이 생성되면 매번 이 씬부터 시작 GameManager 생성을 위해)
-    private string StageNumberTag;
-    private string BackStageNumberTag;
+    //이부분도 깔끔하게 정리하자
+    public string StageNumberTag = null;
+    private string BackStageNumberTag = null;
     public GameObject BackDoor;
     //뒤로가는 문 관리 매점에서는 작동하지 않는다
 
@@ -474,6 +475,10 @@ public class GameManager : MonoBehaviour
     public void HitCountCheck(int i){
         HitCount+=i;
     }
+    public void ResetHitCount(){
+        HitCount = 0 ;
+    }
+    
 
     public void StageState (){
         if(S1_1 == HitCount && isClear == false && StageNumberTag == "1-1"){

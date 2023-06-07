@@ -16,7 +16,10 @@ public class TutorialController : MonoBehaviour
     private TutorialBase currentTutorial = null;
     private int currentIndex = -1;
     //현재 진행중인 튜토리얼의 인덱스 저장하거나 현재 행동이 마지막 행동인지 체크
-
+    void Awake(){
+        //현재 씬이 튜토리얼 씬이라고 인식시키기
+		GameManager.instance.StageNumberTag = "Tutorial";
+    }
     void Start()
     {
         SetNextTutorial();    //다음 튜토리얼 호출
