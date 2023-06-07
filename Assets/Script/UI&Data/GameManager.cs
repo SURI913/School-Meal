@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     private Animator GameOverAnim;
     public GameObject Retry;
     public GameObject AllBulrCam; //블러처리
+    bool isGameOver = false;
+
 
     //게임클리어
     bool isClear = false;
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
 
     //게임 오버
     IEnumerator GameOver(){
+        isGameOver = true;
         Destroy(BackGroundMusic);
         GameoverSound.Play();
         AllBulrCam.SetActive(true);
@@ -168,7 +171,7 @@ public class GameManager : MonoBehaviour
         {
             Hp = MaxHp;
         }
-        if (Hp <= 0) // 플레이어 체력이 0이되면 사망
+        if (Hp <= 0 && isGameOver == false) // 플레이어 체력이 0이되면 사망
         {
             StartCoroutine(GameOver());
             //리트라이 버튼 누르면 맨 처음 스테이지로 보냄 1학년 1반 스테이지
@@ -353,6 +356,8 @@ public class GameManager : MonoBehaviour
         PlayerData.S4_1Clear = false;
         PlayerData.S4_2Clear = false;
         PlayerData.S4_3Clear = false;
+        isClear = false;
+
     }
 
     //씬 전환 함수
@@ -492,61 +497,61 @@ public class GameManager : MonoBehaviour
     public void HitCountCheck(int i){
         HitCount+=i;
     }
-    public int ClearCount = 0;
+
     public void StageState (){
-        if(S1_1 == HitCount && ClearCount ==0 && StageNumberTag == "1-1"){
+        if(S1_1 == HitCount && isClear == false && StageNumberTag == "1-1"){
             PlayerData.S1_1Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S1_2 == HitCount && ClearCount ==0 && StageNumberTag == "1-2"){
+        if(S1_2 == HitCount && isClear == false && StageNumberTag == "1-2"){
             PlayerData.S1_2Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S1_3 == HitCount && ClearCount ==0 && StageNumberTag == "1-3"){
+        if(S1_3 == HitCount && isClear == false && StageNumberTag == "1-3"){
             PlayerData.S1_3Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S2_1 == HitCount && ClearCount ==0 && StageNumberTag == "2-1"){
+        if(S2_1 == HitCount && isClear == false && StageNumberTag == "2-1"){
+            isClear = true;
             PlayerData.S2_1Clear = true;
-            ClearCount++;
             Clear();
         }
-        if(S2_2 == HitCount && ClearCount ==0 && StageNumberTag == "2-2"){
+        if(S2_2 == HitCount && isClear == false && StageNumberTag == "2-2"){
+            isClear = true;
             PlayerData.S2_2Clear = true;
-            ClearCount++;
             Clear();
         }
-        if(S2_3 == HitCount && ClearCount ==0 && StageNumberTag == "2-3"){
+        if(S2_3 == HitCount && isClear == false && StageNumberTag == "2-3"){
+            isClear = true;
             PlayerData.S2_3Clear = true;
-            ClearCount++;
             Clear();
         }
-        if(S3_1 == HitCount && ClearCount ==0 && StageNumberTag == "3-1"){
+        if(S3_1 == HitCount && isClear == false && StageNumberTag == "3-1"){
+            isClear = true;
             PlayerData.S3_1Clear = true;
-            ClearCount++;
             Clear();
         }
-        if(S3_2 == HitCount && ClearCount ==0 && StageNumberTag == "3-2"){
+        if(S3_2 == HitCount && isClear == false && StageNumberTag == "3-2"){
             PlayerData.S3_2Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S4_1 == HitCount && ClearCount ==0 && StageNumberTag == "4-1"){
+        if(S4_1 == HitCount && isClear == false && StageNumberTag == "4-1"){
             PlayerData.S4_1Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S4_2 == HitCount && ClearCount ==0 && StageNumberTag == "4-2"){
+        if(S4_2 == HitCount && isClear == false && StageNumberTag == "4-2"){
             PlayerData.S4_2Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
-        if(S4_3 == HitCount && ClearCount ==0 && StageNumberTag == "4-3"){
+        if(S4_3 == HitCount && isClear == false && StageNumberTag == "4-3"){
             PlayerData.S4_3Clear = true;
-            ClearCount++;
+            isClear = true;
             Clear();
         }
     }

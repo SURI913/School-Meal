@@ -23,6 +23,8 @@ public class EnemyMove : MonoBehaviour
 
     private bool follow = false;
 
+    Vector3 nonTargetTransform = new Vector3(0,0,0);
+
 
     void Start()
     {
@@ -44,7 +46,8 @@ public class EnemyMove : MonoBehaviour
     }
     void FollowTarget()
     {
-        isRun = false;
+        if(target != null){
+            isRun = false;
         if (Vector2.Distance(transform.position, target.position) > contactDistance && follow){
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             isRun = true;
@@ -54,13 +57,16 @@ public class EnemyMove : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
-        if (target.position.x > transform.position.x)
+        if (target.position.x > transform.position.x){
             turn = -1;
-        else
+        }
+        else{
             turn = 1;
+        }
 
         animator.SetBool("isRun", isRun);
         transform.localScale = new Vector3(ScaleVal_X * turn, ScaleVal_Y, 1);
+        }
     }
 
     public void SetFollow(bool isTrigger){
