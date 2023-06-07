@@ -25,7 +25,7 @@ public class layer : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision != null && collision.CompareTag("Player") && this.gameObject.tag=="Enemy")
+        if (collision != null && collision.CompareTag("Player") && this.gameObject.tag=="Lazer")
         {
             collision.GetComponent<PlayerHp>().TakeDamage(damage);
             Destroy(gameObject);
@@ -51,7 +51,7 @@ public class layer : MonoBehaviour
             countTime++;
         }
         sprite.color = new Color32(255, 0, 0, 200);
-        this.gameObject.tag = "Enemy";
+        this.gameObject.tag = "Lazer";
         yield return new WaitForSeconds(1.5f);
         this.gameObject.tag = "Untagged";
         Destroy(sprite.gameObject);
