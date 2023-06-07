@@ -10,6 +10,8 @@ public class MoveCamera : MonoBehaviour
     public Vector2 size;
     float height;
     float width;
+
+    Vector3 NonTagetTransform = new Vector3(0,0,0);
     void Start()
     {
         height = Camera.main.orthographicSize;//세로의 절반크기를 orthographicSize로 얻음 
@@ -39,7 +41,7 @@ public class MoveCamera : MonoBehaviour
         else
         {
 
-            transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);
+            transform.position = Vector3.Lerp(transform.position, NonTagetTransform, Time.deltaTime * speed);
             //마지막에 있던 타겟의 위치값 저장해둔거를 고정해서 사용하도록 수정부탁드려요
         }
         // transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime*speed);//       ġ    ӵ    ī ޶  ̵ 

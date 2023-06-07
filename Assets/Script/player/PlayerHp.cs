@@ -54,7 +54,7 @@ public class PlayerHp : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D other) {
         //에너미 근접공격
-        if(other.collider.CompareTag("Enemy") && isDamage ==false){
+        if((other.collider.CompareTag("Enemy") || other.collider.CompareTag("summonEnemy")) && isDamage ==false){
             StartCoroutine(DamageCooltime());
         }
     }
