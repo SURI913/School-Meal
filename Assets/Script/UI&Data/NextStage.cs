@@ -159,7 +159,7 @@ public class NextStage : MonoBehaviour
                 
                 GameManager.instance.ResetHitCount();
                 if(PlayerData.MidBossClear == true){
-                    SceneManager.LoadScene("CafeteriaClear");
+                    SceneManager.LoadScene("StroyMidB StartScene"); //스토리 씬으로 넘어가서 카페테리아로 이동
                 }
                 else{
                     SceneManager.LoadScene(other.tag);
@@ -240,7 +240,8 @@ public class NextStage : MonoBehaviour
                 PlayerData.currnetStage = other.tag;
                 GameManager.instance.StageNumberTag = other.tag;
                 GameManager.instance.ResetHitCount();
-                SceneManager.LoadScene(other.tag);
+
+                SceneManager.LoadScene("StroyB StartScene");
                 
             }
             else if(other.tag == "Shop1" && Input.GetKeyDown(KeyCode.Space)&& isPushKey ==false){ //정비스테이지

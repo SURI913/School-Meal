@@ -210,6 +210,14 @@ public class GameManager : MonoBehaviour
         GameClearAnim.SetBool("isGameover", false);
         Gameclear.SetActive(false);
         Door.SetActive(true);   //문 오픈
+
+        if(PlayerData.MidBossClear == true){
+            SceneManager.LoadScene("StroyMidB LastScene 1");
+        }
+
+        if(PlayerData.BossClear == true){
+            SceneManager.LoadScene("StroyB LastScene");
+        }
     }
 
     //게임 클리어 재생

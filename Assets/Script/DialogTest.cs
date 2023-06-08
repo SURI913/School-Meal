@@ -49,7 +49,7 @@ public class DialogTest : MonoBehaviour
         yield return new WaitForSeconds(1);
 
 
-        UnityEditor.EditorApplication.ExitPlaymode();
+        //UnityEditor.EditorApplication.ExitPlaymode();
 
        
     }
