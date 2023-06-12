@@ -160,7 +160,7 @@ MonoBehaviour:
   quickfireleftattack: {fileID: 4787299881679389491, guid: 78303ac58cf17944bb98baa24e940b3d, type: 3}
   quickfireupattack: {fileID: 317862037724060260, guid: 98c70f633436bf04abca9300572c92ee, type: 3}
   pos: {x: 0, y: 0, z: 0}
-  cooltime: 1
+  cooltime: 0.5
   curtime: 0
 --- !u!114 &1891866768351531662
 MonoBehaviour:

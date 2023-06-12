@@ -19,8 +19,8 @@ public class MidBossHp : MonoBehaviour
     private void Start()
     {
         //게임매니저에 있는 전체체력을 가져온다.
-        currentHP = GameManager.instance.GetMidBossHP();
-        maxHP = GameManager.instance.GetMaxMidBossHP();
+        currentHP = 500;
+        maxHP = 500;
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator = GetComponent<Animator>(); //애니메이션

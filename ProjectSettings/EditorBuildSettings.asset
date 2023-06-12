@@ -108,10 +108,10 @@ EditorBuildSettings:
     path: Assets/Scenes/StroyB LastScene.unity
     guid: 704821b9e490c7444b9df2ab8aa291dd
   - enabled: 1
-    path: Assets/Scenes/StroyEnding Scene.unity
+    path: Assets/Scenes/StroyEnding Scene 2.unity
     guid: b78688bd940249149b332667bdaf5f51
   - enabled: 1
-    path: Assets/Scenes/StroyStartScene.unity
+    path: Assets/Scenes/StroyStartScene 1.unity
     guid: 42e7e4394f8a7fc47a07107a11a8ce4e
   - enabled: 1
     path: Assets/Scenes/StroyB StartScene.unity
@@ -122,4 +122,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StroyMidB StartScene.unity
     guid: 47ac401a73c210b4292c44122c4c754f
+  - enabled: 1
+    path: Assets/Scenes/StroyStartScene.unity
+    guid: c5e81723f73585f4c9153c7d936eb1ed
   m_configObjects: {}

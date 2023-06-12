@@ -37,18 +37,24 @@ public class HPControll : MonoBehaviour
     public void PlayerSliderEvent(){
         PlayerSliderHP.value = PlayerCurrentHP;
         PlayerSliderHP.maxValue = PlayerMaxHp;
-        PlayerText.text = $"{PlayerCurrentHP}/{PlayerMaxHp}";
+        //체력이 0이면 0 만 띄움
+        if(PlayerCurrentHP <= 0){
+            PlayerText.text = $"{0}/{PlayerMaxHp}";
+        }
+        else{
+            PlayerText.text = $"{PlayerCurrentHP}/{PlayerMaxHp}";
+        }
     }
 
     public void AllEnemySliderEvent(){
         AllEnemySliderHP.value = AllEnemyCurrentHP;
         AllEnemySliderHP.maxValue = AllEnemyMaxHp;
-        AllEnemyText.text = $"{AllEnemyCurrentHP}/{AllEnemyMaxHp}";
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        if(AllEnemyCurrentHP <= 0){
+            AllEnemyText.text = $"{0}/{AllEnemyMaxHp}";
+        }
+        else{
+            AllEnemyText.text = $"{AllEnemyCurrentHP}/{AllEnemyMaxHp}";
+        }
     }
 
     // Update is called once per frame

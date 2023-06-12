@@ -16,7 +16,7 @@ public class PlayerData : MonoBehaviour
 
     public static int  WeaponType = 0;
 
-    void Start () {
+    void Awake () { //가장 먼저 업뎃
         try {
             CurrnetHp = 100;
             MaxHp = 100;
@@ -29,7 +29,8 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private void Update() {
+    //게임매니저가 있을 때 데이터를 초기화 한다.
+    private void Update() { //이거 문제인가? 체크하자
         if(GameManager.instance){   //게임매니저 인스턴스가 있다면
             CurrnetHp = GameManager.instance.GetCurrnetHP();
             MaxHp = GameManager.instance.GetMaxHP();
@@ -37,6 +38,7 @@ public class PlayerData : MonoBehaviour
             WeaponType = playerattack.atktype;
         }
         else{
+            //스토리 씬 제외해야함
             CurrnetHp = 100;
             MaxHp = 100;
             coin = 0;
